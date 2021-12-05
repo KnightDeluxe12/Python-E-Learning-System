@@ -1,0 +1,71 @@
+.body
+{
+position: relative;
+width: 1440px;
+height: 900px;
+}
+.NavBar
+{
+position: absolute;
+width: 1440px;
+height: 100px;
+left: 0px;
+top:  0px;
+background: #3EC563;
+}
+#BtnCourse
+{
+position: absolute;
+width: 90px;
+height: 30px;
+left: 877px;
+top: 30px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 28px;
+}
+#BtnProfile
+{
+position: absolute;
+width: 110px;
+height: 30px;
+left: 998px;
+top: 30px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 28px;
+}
+#BtnRewards
+{
+position: absolute;
+width: 131px;
+height: 30px;
+left: 1139px;
+top: 30px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 28px;
+}
+#BtnLogOut
+{
+position: absolute;
+width: 86px;
+height: 30px;
+left: 1301px;
+top: 30px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 28px;
+}

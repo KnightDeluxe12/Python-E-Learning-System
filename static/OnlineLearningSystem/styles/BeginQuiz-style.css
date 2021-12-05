@@ -1,0 +1,182 @@
+.body
+{
+
+}
+.NavBar
+{
+position: absolute;
+width: 1440px;
+height: 100px;
+left: 0px;
+top:  0px;
+background: #3EC563;
+}
+#BtnCourse
+{
+position: absolute;
+width: 90px;
+height: 30px;
+left: 877px;
+top: 30px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 28px;
+}
+#BtnProfile
+{
+position: absolute;
+width: 110px;
+height: 30px;
+left: 998px;
+top: 30px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 28px;
+}
+#BtnRewards
+{
+position: absolute;
+width: 131px;
+height: 30px;
+left: 1139px;
+top: 30px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 28px;
+}
+#BtnLogOut
+{
+position: absolute;
+width: 86px;
+height: 30px;
+left: 1301px;
+top: 30px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 28px;
+}
+#ImgTest
+{
+position: absolute;
+width: 508px;
+height: 336px;
+left: 917px;
+top: 196px;
+object-fit: cover; 
+}
+.QuizDesc
+{
+position: absolute;
+width: 832px;
+height: 272px;
+left: 63px;
+top: 173px;
+}
+#QuizNo
+{
+position: absolute;
+width: 513px;
+height: 83px;
+font-family: TharLon;
+font-style: normal;
+font-weight: normal;
+font-size: 64px;
+line-height: 93px;
+}
+#QuizDesc
+{
+position: absolute;
+width: 830px;
+height: 127px;
+top: 148px;
+
+font-family: TharLon;
+font-style: normal;
+font-weight: normal;
+font-size: 30px;
+line-height: 44px;	
+}
+#BtnStart
+{
+position: absolute;
+width: 237px;
+height: 50px;
+left: 65px;
+top: 596px;
+
+
+background: #3EC563;
+box-shadow: 5px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 15px;
+}
+#Start
+{
+left: 400px;
+font-family: TharLon;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 35px;
+
+color: #FFFFFF;
+
+text-shadow: 5px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.QuizStatus
+{
+position: absolute;
+width: 870px;
+height: 49px;
+left: 60px;
+top: 767px;
+}
+#Items
+{
+position: absolute;
+width: 242px;
+height: 43px;
+
+font-family: TharLon;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 35px;
+}
+#Attempts
+{
+position: absolute;
+width: 278px;
+height: 43px;
+left: 334px;
+
+font-family: TharLon;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 35px;
+}
+#Limit
+{
+position: absolute;
+width: 286px;
+height: 49px;
+left: 644px;
+
+font-family: TharLon;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 35px;
+}

@@ -1,0 +1,964 @@
+.Body
+{
+
+}
+.Area
+{
+position: relative;
+width: 1440px;
+height: 5594px;
+}
+.NavBar
+{
+position: absolute;
+width: 1440px;
+height: 100px;
+left: 0px;
+top:  0px;
+background: #3EC563;
+}
+#BtnCourse
+{
+position: absolute;
+width: 90px;
+height: 30px;
+left: 877px;
+top: 30px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 28px;
+}
+#BtnProfile
+{
+position: absolute;
+width: 110px;
+height: 30px;
+left: 998px;
+top: 30px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 28px;
+}
+#BtnRewards
+{
+position: absolute;
+width: 131px;
+height: 30px;
+left: 1139px;
+top: 30px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 28px;
+}
+#BtnLogOut
+{
+position: absolute;
+width: 86px;
+height: 30px;
+left: 1301px;
+top: 30px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 28px;
+}
+#FinalExam
+{
+position: absolute;
+width: 250px;
+height: 83px;
+left: 60px;
+top: 106px;
+
+font-family: TharLon;
+font-style: normal;
+font-weight: normal;
+font-size: 48px;
+line-height: 70px;
+}
+
+.Q1
+{
+position: absolute;
+width: 869px;
+height: 432px;
+left: 60px;
+top: 291px;
+}
+
+#No1
+{
+left: 62px;
+font-family: TharLon;
+font-style: normal;
+font-weight: normal;
+font-size: 30px;
+line-height: 44px;
+
+}
+#Question1
+{
+position: absolute;
+width: 864px;
+height: 49px;
+left: 65px;
+
+font-family: TharLon;
+font-style: normal;
+font-weight: normal;
+font-size: 30px;
+line-height: 44px;
+}
+.Q1Choices
+{
+position: absolute;
+width: 742px;
+height: 272px;
+left: 0px;
+top: 251px;
+}
+.Q1A
+{
+position: absolute;
+width: 737px;
+height: 51px;
+left: 65px;
+
+
+background: #C4C4C4;
+border-radius: 15px;
+}
+.Q1B
+{
+position: absolute;
+width: 737px;
+height: 51px;
+left: 65px;
+top: 76px;
+
+background: #C4C4C4;
+border-radius: 15px;
+}
+.Q1C
+{
+position: absolute;
+width: 737px;
+height: 51px;
+left: 65px;
+top: 152px;
+
+
+background: #C4C4C4;
+border-radius: 15px;
+}
+.Q1D
+{
+position: absolute;
+width: 737px;
+height: 51px;
+left: 60px;
+top: 228px;
+
+background: #C4C4C4;
+border-radius: 15px;
+}
+
+
+.Q2
+{
+position: absolute;
+width: 869px;
+height: 432px;
+left: 68px;
+top: 801px;
+}
+
+#No2
+{
+left: 62px;
+font-family: TharLon;
+font-style: normal;
+font-weight: normal;
+font-size: 30px;
+line-height: 44px;
+
+}
+#Question2
+{
+position: absolute;
+width: 864px;
+height: 49px;
+left: 65px;
+
+font-family: TharLon;
+font-style: normal;
+font-weight: normal;
+font-size: 30px;
+line-height: 44px;
+}
+.Q2Choices
+{
+position: absolute;
+width: 742px;
+height: 272px;
+left: 0px;
+top: 251px;
+}
+.Q2A
+{
+position: absolute;
+width: 737px;
+height: 51px;
+left: 65px;
+
+
+background: #C4C4C4;
+border-radius: 15px;
+}
+.Q2B
+{
+position: absolute;
+width: 737px;
+height: 51px;
+left: 65px;
+top: 76px;
+
+background: #C4C4C4;
+border-radius: 15px;
+}
+.Q2C
+{
+position: absolute;
+width: 737px;
+height: 51px;
+left: 65px;
+top: 152px;
+
+
+background: #C4C4C4;
+border-radius: 15px;
+}
+.Q2D
+{
+position: absolute;
+width: 737px;
+height: 51px;
+left: 60px;
+top: 228px;
+
+background: #C4C4C4;
+border-radius: 15px;
+}
+
+
+.Q3
+{
+position: absolute;
+width: 869px;
+height: 432px;
+left: 67px;
+top: 1315px;
+}
+
+#No3
+{
+left: 62px;
+font-family: TharLon;
+font-style: normal;
+font-weight: normal;
+font-size: 30px;
+line-height: 44px;
+
+}
+#Question3
+{
+position: absolute;
+width: 864px;
+height: 49px;
+left: 65px;
+
+font-family: TharLon;
+font-style: normal;
+font-weight: normal;
+font-size: 30px;
+line-height: 44px;
+}
+.Q3Choices
+{
+position: absolute;
+width: 742px;
+height: 272px;
+left: 0px;
+top: 251px;
+}
+.Q3A
+{
+position: absolute;
+width: 737px;
+height: 51px;
+left: 65px;
+
+
+background: #C4C4C4;
+border-radius: 15px;
+}
+.Q3B
+{
+position: absolute;
+width: 737px;
+height: 51px;
+left: 65px;
+top: 76px;
+
+background: #C4C4C4;
+border-radius: 15px;
+}
+.Q3C
+{
+position: absolute;
+width: 737px;
+height: 51px;
+left: 65px;
+top: 152px;
+
+
+background: #C4C4C4;
+border-radius: 15px;
+}
+.Q3D
+{
+position: absolute;
+width: 737px;
+height: 51px;
+left: 60px;
+top: 228px;
+
+background: #C4C4C4;
+border-radius: 15px;
+}
+
+.Q4
+{
+position: absolute;
+width: 869px;
+height: 432px;
+left: 65px;
+top: 1829px;
+}
+
+#No4
+{
+left: 62px;
+font-family: TharLon;
+font-style: normal;
+font-weight: normal;
+font-size: 30px;
+line-height: 44px;
+
+}
+#Question4
+{
+position: absolute;
+width: 864px;
+height: 49px;
+left: 65px;
+
+font-family: TharLon;
+font-style: normal;
+font-weight: normal;
+font-size: 30px;
+line-height: 44px;
+}
+.Q4Choices
+{
+position: absolute;
+width: 742px;
+height: 272px;
+left: 0px;
+top: 251px;
+}
+.Q4A
+{
+position: absolute;
+width: 737px;
+height: 51px;
+left: 65px;
+
+
+background: #C4C4C4;
+border-radius: 15px;
+}
+.Q4B
+{
+position: absolute;
+width: 737px;
+height: 51px;
+left: 65px;
+top: 76px;
+
+background: #C4C4C4;
+border-radius: 15px;
+}
+.Q4C
+{
+position: absolute;
+width: 737px;
+height: 51px;
+left: 65px;
+top: 152px;
+
+
+background: #C4C4C4;
+border-radius: 15px;
+}
+.Q4D
+{
+position: absolute;
+width: 737px;
+height: 51px;
+left: 60px;
+top: 228px;
+
+background: #C4C4C4;
+border-radius: 15px;
+}
+
+.Q5
+{
+position: absolute;
+width: 869px;
+height: 432px;
+left: 70px;
+top: 2329px;
+}
+
+#No5
+{
+left: 62px;
+font-family: TharLon;
+font-style: normal;
+font-weight: normal;
+font-size: 30px;
+line-height: 44px;
+
+}
+#Question5
+{
+position: absolute;
+width: 864px;
+height: 49px;
+left: 65px;
+
+font-family: TharLon;
+font-style: normal;
+font-weight: normal;
+font-size: 30px;
+line-height: 44px;
+}
+.Q5Choices
+{
+position: absolute;
+width: 742px;
+height: 272px;
+left: 0px;
+top: 251px;
+}
+.Q5A
+{
+position: absolute;
+width: 737px;
+height: 51px;
+left: 65px;
+
+
+background: #C4C4C4;
+border-radius: 15px;
+}
+.Q5B
+{
+position: absolute;
+width: 737px;
+height: 51px;
+left: 65px;
+top: 76px;
+
+background: #C4C4C4;
+border-radius: 15px;
+}
+.Q5C
+{
+position: absolute;
+width: 737px;
+height: 51px;
+left: 65px;
+top: 152px;
+
+
+background: #C4C4C4;
+border-radius: 15px;
+}
+.Q5D
+{
+position: absolute;
+width: 737px;
+height: 51px;
+left: 60px;
+top: 228px;
+
+background: #C4C4C4;
+border-radius: 15px;
+}
+
+.Q6
+{
+position: absolute;
+width: 869px;
+height: 432px;
+left: 65px;
+top: 2829px;
+}
+
+#No6
+{
+left: 62px;
+font-family: TharLon;
+font-style: normal;
+font-weight: normal;
+font-size: 30px;
+line-height: 44px;
+
+}
+#Question6
+{
+position: absolute;
+width: 864px;
+height: 49px;
+left: 65px;
+
+font-family: TharLon;
+font-style: normal;
+font-weight: normal;
+font-size: 30px;
+line-height: 44px;
+}
+.Q6Choices
+{
+position: absolute;
+width: 742px;
+height: 272px;
+left: 0px;
+top: 251px;
+}
+.Q6A
+{
+position: absolute;
+width: 737px;
+height: 51px;
+left: 65px;
+
+
+background: #C4C4C4;
+border-radius: 15px;
+}
+.Q6B
+{
+position: absolute;
+width: 737px;
+height: 51px;
+left: 65px;
+top: 76px;
+
+background: #C4C4C4;
+border-radius: 15px;
+}
+.Q6C
+{
+position: absolute;
+width: 737px;
+height: 51px;
+left: 65px;
+top: 152px;
+
+
+background: #C4C4C4;
+border-radius: 15px;
+}
+.Q6D
+{
+position: absolute;
+width: 737px;
+height: 51px;
+left: 60px;
+top: 228px;
+
+background: #C4C4C4;
+border-radius: 15px;
+}
+
+.Q7
+{
+position: absolute;
+width: 869px;
+height: 432px;
+left: 72px;
+top: 3329px;
+}
+
+#No7
+{
+left: 62px;
+font-family: TharLon;
+font-style: normal;
+font-weight: normal;
+font-size: 30px;
+line-height: 44px;
+
+}
+#Question7
+{
+position: absolute;
+width: 864px;
+height: 49px;
+left: 65px;
+
+font-family: TharLon;
+font-style: normal;
+font-weight: normal;
+font-size: 30px;
+line-height: 44px;
+}
+.Q7Choices
+{
+position: absolute;
+width: 742px;
+height: 272px;
+left: 0px;
+top: 251px;
+}
+.Q7A
+{
+position: absolute;
+width: 737px;
+height: 51px;
+left: 65px;
+
+
+background: #C4C4C4;
+border-radius: 15px;
+}
+.Q7B
+{
+position: absolute;
+width: 737px;
+height: 51px;
+left: 65px;
+top: 76px;
+
+background: #C4C4C4;
+border-radius: 15px;
+}
+.Q7C
+{
+position: absolute;
+width: 737px;
+height: 51px;
+left: 65px;
+top: 152px;
+
+
+background: #C4C4C4;
+border-radius: 15px;
+}
+.Q7D
+{
+position: absolute;
+width: 737px;
+height: 51px;
+left: 60px;
+top: 228px;
+
+background: #C4C4C4;
+border-radius: 15px;
+}
+
+.Q8
+{
+position: absolute;
+width: 869px;
+height: 432px;
+left: 72px;
+top: 3829px;
+}
+
+#No8
+{
+left: 62px;
+font-family: TharLon;
+font-style: normal;
+font-weight: normal;
+font-size: 30px;
+line-height: 44px;
+
+}
+#Question8
+{
+position: absolute;
+width: 864px;
+height: 49px;
+left: 65px;
+
+font-family: TharLon;
+font-style: normal;
+font-weight: normal;
+font-size: 30px;
+line-height: 44px;
+}
+.Q8Choices
+{
+position: absolute;
+width: 742px;
+height: 272px;
+left: 0px;
+top: 251px;
+}
+.Q8A
+{
+position: absolute;
+width: 737px;
+height: 51px;
+left: 65px;
+
+
+background: #C4C4C4;
+border-radius: 15px;
+}
+.Q8B
+{
+position: absolute;
+width: 737px;
+height: 51px;
+left: 65px;
+top: 76px;
+
+background: #C4C4C4;
+border-radius: 15px;
+}
+.Q8C
+{
+position: absolute;
+width: 737px;
+height: 51px;
+left: 65px;
+top: 152px;
+
+
+background: #C4C4C4;
+border-radius: 15px;
+}
+.Q8D
+{
+position: absolute;
+width: 737px;
+height: 51px;
+left: 60px;
+top: 228px;
+
+background: #C4C4C4;
+border-radius: 15px;
+}
+
+.Q9
+{
+position: absolute;
+width: 869px;
+height: 432px;
+left: 75px;
+top: 4329px;
+}
+
+#No9
+{
+left: 62px;
+font-family: TharLon;
+font-style: normal;
+font-weight: normal;
+font-size: 30px;
+line-height: 44px;
+
+}
+#Question9
+{
+position: absolute;
+width: 864px;
+height: 49px;
+left: 65px;
+
+font-family: TharLon;
+font-style: normal;
+font-weight: normal;
+font-size: 30px;
+line-height: 44px;
+}
+.Q9Choices
+{
+position: absolute;
+width: 742px;
+height: 272px;
+left: 0px;
+top: 251px;
+}
+.Q9A
+{
+position: absolute;
+width: 737px;
+height: 51px;
+left: 65px;
+
+
+background: #C4C4C4;
+border-radius: 15px;
+}
+.Q9B
+{
+position: absolute;
+width: 737px;
+height: 51px;
+left: 65px;
+top: 76px;
+
+background: #C4C4C4;
+border-radius: 15px;
+}
+.Q9C
+{
+position: absolute;
+width: 737px;
+height: 51px;
+left: 65px;
+top: 152px;
+
+
+background: #C4C4C4;
+border-radius: 15px;
+}
+.Q9D
+{
+position: absolute;
+width: 737px;
+height: 51px;
+left: 60px;
+top: 228px;
+
+background: #C4C4C4;
+border-radius: 15px;
+}
+
+.Q10
+{
+position: absolute;
+width: 869px;
+height: 432px;
+left: 80px;
+top: 4829px;
+}
+
+#No10
+{
+left: 62px;
+font-family: TharLon;
+font-style: normal;
+font-weight: normal;
+font-size: 30px;
+line-height: 44px;
+
+}
+#Question10
+{
+position: absolute;
+width: 864px;
+height: 49px;
+left: 65px;
+
+font-family: TharLon;
+font-style: normal;
+font-weight: normal;
+font-size: 30px;
+line-height: 44px;
+}
+.Q10Choices
+{
+position: absolute;
+width: 742px;
+height: 272px;
+left: 0px;
+top: 251px;
+}
+.Q10A
+{
+position: absolute;
+width: 737px;
+height: 51px;
+left: 65px;
+
+
+background: #C4C4C4;
+border-radius: 15px;
+}
+.Q10B
+{
+position: absolute;
+width: 737px;
+height: 51px;
+left: 65px;
+top: 76px;
+
+background: #C4C4C4;
+border-radius: 15px;
+}
+.Q10C
+{
+position: absolute;
+width: 737px;
+height: 51px;
+left: 65px;
+top: 152px;
+
+
+background: #C4C4C4;
+border-radius: 15px;
+}
+.Q10D
+{
+position: absolute;
+width: 737px;
+height: 51px;
+left: 60px;
+top: 228px;
+
+background: #C4C4C4;
+border-radius: 15px;
+}
+
+#BtnSubmit
+{
+position: absolute;
+width: 199px;
+height: 50px;
+left: 80px;
+top: 5432px;
+
+background: #3EC563;
+box-shadow: 5px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 15px;
+}

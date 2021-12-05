@@ -1,0 +1,212 @@
+.body
+{
+position: relative;
+width: 1440px;
+height: 900px;
+}
+.NavBar
+{
+position: absolute;
+width: 1440px;
+height: 100px;
+left: 0px;
+top:  0px;
+background: #3EC563;
+}
+#BtnCourse
+{
+position: absolute;
+width: 90px;
+height: 30px;
+left: 877px;
+top: 30px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 28px;
+}
+#BtnProfile
+{
+position: absolute;
+width: 110px;
+height: 30px;
+left: 998px;
+top: 30px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 28px;
+}
+#BtnRewards
+{
+position: absolute;
+width: 131px;
+height: 30px;
+left: 1139px;
+top: 30px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 28px;
+}
+#BtnLogOut
+{
+position: absolute;
+width: 86px;
+height: 30px;
+left: 1301px;
+top: 30px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 28px;
+}
+#Welcome-img
+{
+position: absolute;
+width: 305px;
+height: 208px;
+left: 80px;
+top: 184px;
+}
+.Welcome
+{
+position: absolute;
+width: 694px;
+height: 186px;
+left: 471px;
+top: 137px;
+}
+#Greet
+{
+position: absolute;
+width: 304px;
+height: 92px;
+
+font-family: TharLon;
+font-style: normal;
+font-weight: normal;
+font-size: 64px;
+line-height: 93px;
+}
+#Greet-Desc
+{
+position: absolute;
+width: 687px;
+height: 79px;
+top: 130px;
+left: 10px;
+
+font-family: TharLon;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 35px;
+}
+#Available-Course
+{
+position: absolute;
+width: 255px;
+height: 52px;
+left: 71px;
+top: 455px;
+
+font-family: TharLon;
+font-style: normal;
+font-weight: normal;
+font-size: 30px;
+line-height: 44px;
+}
+.Rectangle
+{
+position: absolute;
+width: 508px;
+height: 375px;
+left: 68px;
+top: 569px;
+
+background: #E5E5E5;
+border-radius: 15px;	
+}
+.Course-Python
+{
+position: absolute;
+width: 508px;
+height: 375px;
+left: 68px;
+top: 569px;
+
+filter: drop-shadow(2px 4px 50px rgba(0, 0, 0, 0.5));
+}
+#Course-Cover
+{
+position: absolute;
+width: 506px;
+height: 221px;
+
+
+filter:contrast(50%) brightness(40%) blur(1px);
+border-radius: 15px;
+}
+#Python-Logo
+{
+position: absolute;
+width: 120px;
+height: 120px;
+top: 126px;
+left: -4px;
+background: url(python-logo.png);
+border-radius: 26px;
+}
+#Intro
+{
+position: absolute;
+width: 345px;
+height: 67px;
+top: 120px;
+left: 129px;
+color: white;
+
+font-family: TharLon;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 35px;
+text-align: right;
+}
+#Lessons
+{
+position: absolute;
+width: 78px;
+height: 21px;
+left: 23px;
+top: 320px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 19px;
+
+color: #717171;
+}
+#BtnVisit
+{
+position: absolute;
+width: 117px;
+height: 34px;
+left: 358px;
+top: 330px;
+
+
+background: #225866;
+border-radius: 15px;
+}

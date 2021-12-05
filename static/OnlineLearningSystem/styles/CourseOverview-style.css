@@ -1,0 +1,130 @@
+.body
+{
+position: relative;
+width: 1440px;
+height: 900px;
+
+}
+.NavBar
+{
+position: absolute;
+width: 1440px;
+height: 100px;
+left: 0px;
+top:  0px;
+background: #3EC563;
+}
+#BtnCourse
+{
+position: absolute;
+width: 90px;
+height: 30px;
+left: 877px;
+top: 30px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 28px;
+}
+#BtnProfile
+{
+position: absolute;
+width: 110px;
+height: 30px;
+left: 998px;
+top: 30px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 28px;
+}
+#BtnRewards
+{
+position: absolute;
+width: 131px;
+height: 30px;
+left: 1139px;
+top: 30px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 28px;
+}
+#BtnLogOut
+{
+position: absolute;
+width: 86px;
+height: 30px;
+left: 1301px;
+top: 30px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 28px;
+}
+.Header
+{
+position: absolute;
+width: 1440px;
+height: 410px;
+left: 0px;
+top: 80px;
+}
+#intro
+{
+position: absolute;
+width: 910px;
+height: 175px;
+left: 454px;
+top: 56px;
+color: white;
+
+font-family: TharLon;
+font-style: normal;
+font-weight: normal;
+font-size: 64px;
+line-height: 93px;
+text-align: right;
+}
+#CourseOverview
+{
+position: absolute;
+width: 370px;
+height: 72px;
+left: 1031px;
+top: 288px;
+
+font-family: TharLon;
+font-style: normal;
+font-weight: normal;
+font-size: 48px;
+line-height: 70px;
+}
+#PythonLogo
+{
+position: absolute;
+width: 247.08px;
+height: 220px;
+left: -5px;
+top: 250px;
+border-radius: 360px;
+}
+#PythonCover
+{
+position: absolute;
+width: 1440px;
+height: 300px;
+left: 0px;
+top: 99px;
+object-fit: cover;
+filter:contrast(50%) brightness(40%) blur(2px);
+background: rgba(69, 67, 67, 0.78);
+}

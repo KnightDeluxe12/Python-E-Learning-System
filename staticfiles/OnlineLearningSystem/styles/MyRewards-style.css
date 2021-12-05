@@ -1,0 +1,204 @@
+.body
+{
+position: relative;
+width: 1440px;
+height: 900px;
+}
+.NavBar
+{
+position: absolute;
+width: 1440px;
+height: 100px;
+left: 0px;
+top:  0px;
+background: #3EC563;
+}
+#BtnCourse
+{
+position: absolute;
+width: 90px;
+height: 30px;
+left: 877px;
+top: 30px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 28px;
+}
+#BtnProfile
+{
+position: absolute;
+width: 110px;
+height: 30px;
+left: 998px;
+top: 30px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 28px;
+}
+#BtnRewards
+{
+position: absolute;
+width: 131px;
+height: 30px;
+left: 1139px;
+top: 30px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 28px;
+}
+#BtnLogOut
+{
+position: absolute;
+width: 86px;
+height: 30px;
+left: 1301px;
+top: 30px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 28px;
+}
+.Options
+{
+position: absolute;
+width: 1290px;
+height: 742px;
+left: 4px;
+top: 64px;
+
+filter: drop-shadow(5px 4px 25px rgba(0, 0, 0, 0.25));
+}
+#MyRewards
+{
+position: absolute;
+width: 359px;
+height: 44px;
+left: 64px;
+top: 94px;
+
+font-family: TharLon;
+font-style: normal;
+font-weight: normal;
+font-size: 59px;
+line-height: 86px;
+}
+.Achievements
+{
+position: absolute;
+width: 384px;
+height: 628px;
+left: 70px;
+top: 208px;
+}
+#achievements-bg
+{
+position: absolute;
+width: 384px;
+height: 628px;
+filter:contrast(70%) brightness(40%);
+
+
+border-radius: 20px;
+object-fit: cover;
+}
+#Option1-text
+{
+position: absolute;
+width: 297px;
+height: 47px;
+top: 180px;
+left: 50px;
+
+
+font-family: TharLon;
+font-style: normal;
+font-weight: normal;
+font-size: 30px;
+line-height: 44px;
+text-align: center;
+
+color: #FFFFFF;
+}
+.Attachments
+{
+position: absolute;
+width: 384px;
+height: 628px;
+left: 520px;
+top: 208px;
+}
+#attachments-bg
+{
+position: absolute;
+width: 384px;
+height: 628px;
+
+border-radius: 20px;
+object-fit: cover;
+filter:contrast(70%) brightness(40%);
+}
+#Option2-text
+{
+position: absolute;
+width: 297px;
+height: 47px;
+top: 180px;
+left: 35px;
+
+
+font-family: TharLon;
+font-style: normal;
+font-weight: normal;
+font-size: 30px;
+line-height: 44px;
+text-align: center;
+
+color: #FFFFFF;
+}
+.Dl-Photo
+{
+position: absolute;
+width: 384px;
+height: 628px;
+left: 970px;
+top: 208px;	
+}
+#dlWallpaper-bg
+{
+position: absolute;
+width: 384px;
+height: 628px;
+
+border-radius: 20px;
+object-fit: cover;
+filter:contrast(70%) brightness(40%);
+}
+#Option3-text
+{
+position: absolute;
+width: 297px;
+height: 47px;
+top: 180px;
+left: 35px;
+
+
+font-family: TharLon;
+font-style: normal;
+font-weight: normal;
+font-size: 30px;
+line-height: 44px;
+text-align: center;
+
+color: #FFFFFF;
+}

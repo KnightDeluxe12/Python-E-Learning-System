@@ -1,0 +1,140 @@
+.body
+{
+position: absolute;
+width: 1200px;
+height: 800px;
+background-color: #F2F2F2;
+overflow-y: hidden;
+}
+.Forms
+{
+position: absolute;
+width: 696px;
+height: 303px;
+left: 663px;
+top: 305px;
+}
+.Email
+{
+position: absolute;
+width: 696px;
+height: 122px;
+left: 0px;
+top: 0px	
+}
+#email
+{
+position: absolute;
+width: 689px;
+height: 63px;
+
+background: #FFFFFF;
+border: 1px solid #BCBCBC;
+box-sizing: border-box;
+border-radius: 15px;
+}
+#text-email
+{
+position: absolute;
+width: 696px;
+height: 52px;
+left: 0px;
+top: -100px;
+
+font-family: Preah Vihear;
+font-style: normal;
+font-weight: normal;
+font-size: 35px;
+line-height: 64px;
+}
+.Password
+{
+position: absolute;
+width: 696px;
+height: 119px;
+
+}
+#text-pass
+{
+position: absolute;
+width: 696px;
+height: 49px;
+
+font-family: Preah Vihear;
+font-style: normal;
+font-weight: normal;
+font-size: 35px;
+line-height: 64px;
+top:  50px;
+}
+#password
+{
+position: absolute;
+width: 689px;
+height: 63px;
+top:  150px;
+
+background: #FFFFFF;
+border: 1px solid #BCBCBC;
+box-sizing: border-box;
+border-radius: 15px;
+}
+.BgPhoto
+{
+position: absolute;
+width: 562px;
+height: 900px;
+left: 0px;
+top: 0px;
+
+}
+#login_bg
+{
+	position: absolute;
+width: 562px;
+height: 900px;
+left: 0px;
+top: 0px;
+}
+.BtnLogIn
+{
+position: absolute;
+width: 133.24px;
+height: 52px;
+left: 663px;
+top: 650px;
+}
+#BtnLogIn
+{
+position: absolute;
+width: 133.24px;
+height: 52px;
+
+background: #3EC563;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 10px;
+color:  white;
+}
+.NavSignIn
+{
+position: absolute;
+width: 681px;
+height: 31px;
+left: 672px;
+top: 746px;
+}
+#back
+{
+position: absolute;
+width: 217px;
+height: 23.73px;
+left: 10px;
+top: 0px;
+
+font-family: TharLon;
+font-style: normal;
+font-weight: normal;
+font-size: 22px;
+line-height: 32px;
+color:  white;
+}

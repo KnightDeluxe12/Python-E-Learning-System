@@ -1,0 +1,162 @@
+.body
+{
+position: relative;
+width: 1440px;
+height: 900px;
+
+background: #F2F2F2;
+}
+.BgPhoto
+{
+position: absolute;
+width: 562px;
+height: 1024px;
+left: 0px;
+top: 0px;
+}
+.Email
+{
+position: absolute;
+width: 696px;
+height: 136px;
+left: 644px;
+top: 137px;
+
+font-family: Preah Vihear;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 44px;
+}
+#Email
+{
+position: absolute;
+width: 660px;
+height: 43px;
+
+
+background: #FFFFFF;
+border: 1px solid #BCBCBC;
+box-sizing: border-box;
+border-radius: 15px;
+}
+.Name
+{
+position: absolute;
+width: 696px;
+height: 136px;
+left: 644px;
+top: 252px;
+
+font-family: Preah Vihear;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 44px;
+}
+#FullName
+{
+position: absolute;
+width: 660px;
+height: 43px;
+
+background: #FFFFFF;
+border: 1px solid #BCBCBC;
+box-sizing: border-box;
+border-radius: 15px;
+}
+.Password
+{
+position: absolute;
+width: 696px;
+height: 136px;
+left: 644px;
+top: 376px;
+
+font-family: Preah Vihear;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 44px;
+}
+#Password
+{
+position: absolute;
+width: 660px;
+height: 43px;
+
+
+background: #FFFFFF;
+border: 1px solid #BCBCBC;
+box-sizing: border-box;
+border-radius: 15px;
+}
+.RePassword
+{
+position: absolute;
+width: 696px;
+height: 136px;
+left: 643px;
+top: 487px;
+
+font-family: Preah Vihear;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 44px;
+}
+#RePassword
+{
+position: absolute;
+width: 660px;
+height: 43px;
+
+background: #FFFFFF;
+border: 1px solid #BCBCBC;
+box-sizing: border-box;
+border-radius: 15px;
+}
+.BtnSignUp
+{
+position: absolute;
+width: 135px;
+height: 40px;
+left: 644px;
+top: 648px;
+}
+#BtnSignUp
+{
+font-family: TharLon;
+font-style: normal;
+font-weight: normal;
+font-size: 23px;
+line-height: 33px;
+
+background: #3EC563;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+border-radius: 10px;
+color: white;
+}
+.NavLogIn
+{
+position: absolute;
+width: 681px;
+height: 31px;
+left: 644px;
+top: 728px;
+}
+#back
+{
+position: absolute;
+width: 217px;
+height: 23.73px;
+left: 10px;
+top: 0px;
+
+font-family: TharLon;
+font-style: normal;
+font-weight: normal;
+font-size: 22px;
+line-height: 32px;
+color:  white;
+}

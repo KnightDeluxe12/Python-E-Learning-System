@@ -1,0 +1,59 @@
+{% load static %}
+
+
+{% load crispy_forms_tags %}
+{% include 'nav.html' %}
+
+
+<link href="{% static 'css/kye.css' %}" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/four/css/bootstrap.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/three/css/bootstrap.min.css' %}">
+<style type="text/css">
+  #bg{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 120%;
+    background-color: #ececec;
+  }
+</style>
+
+
+<body id="bg" style="background-image: url('{% static "img/registerbg.svg"%}');">
+    <div class="container bg-transparent text-center " style="width: 200px;top:125px; right:-210px;">
+      <img src="https://img.icons8.com/color/48/000000/s-key.png" width="30" height="30" alt="">
+      <span class="navbar-brand mb-0 h1 text-dark">
+      Snakelet
+      </span>
+    </div>
+    <div class="rounded bg-light" style="height: 750px; width: 400px; z-index: 2;margin: 100px 0px 0px 450px;position:fixed; left:800px; top:50px;"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4 rounded" style="z-index: 3;padding: 0px 0 0px 0px;margin-top: 10px; position:fixed; left:1300px; top:180px;">
+                    <form class="p-2" method="post" novalidate>
+                        <h2 class="text-dark">Sign Up As Learner</h2>
+                        {% csrf_token %}
+                        <input type="hidden" name="next" value="{{ next }}">
+                        {{ form|crispy }}
+                        <button type="submit" class="btn btn-success">Sign up</button>
+                        <br>
+                        <br>
+                        <small class="">Already catch-up and have an account? <a class="text-success font-weight-bold" href="{% url 'login_form' %}">Login here</a> </small>
+                        <br>
+                    </form>
+{#                    <div class="card-footer">#}
+{#                    <div class="d-flex justify-content-center">#}
+{#                    <div class="messages">#}
+{#                        {% for message in messages %}#}
+{#                            <a class="alert alert-success" style="color:red;"> {{ message }}</a>#}
+{#                        {% endfor %}#}
+{#                    </div>#}
+{#                </div>#}
+{#                </div>#}
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
