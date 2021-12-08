@@ -680,7 +680,8 @@ class LearnerSignUpView(CreateView):
 
 def ltutorial(request):
     tutorials = Tutorial.objects.all().order_by('-created_at')
-    tutorials = {'tutorials': tutorials}
+    courses = Course.objects.all()
+    tutorials = {'tutorials': tutorials, 'courses': courses}
     return render(request, 'dashboard/learner/list_tutorial.html', tutorials)
 
 
