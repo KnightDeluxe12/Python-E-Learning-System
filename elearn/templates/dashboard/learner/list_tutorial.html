@@ -4,40 +4,7 @@
 
 {% load static %}
 {% block body %}
-<style>
-
-
-    img {
-        width:400px;
-        height:200px;
-        object-fit: cover;
-    }
-    .column1
-    {
-        {#float:right;#}
-        position: sticky;
-        top: 0px;
-        margin-left: 15px;
-    }
-    .topics__list {
-      list-style: none;
-    }
-
-    .topics__list li a {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 20px;
-      font-weight: 500;
-      color: #000000;
-      transition: all 0.3s ease-in-out;
-    }
-
-    .topics__list li a.active,
-    .topics__list li a:hover {
-      color: #000000;
-    }
-
-</style>
+<link href="{% static 'css/list_tutorial.css' %}" rel="stylesheet">
       <div class="row" style="left: 25%;">
           <div class="col-md-8 ml-5 mr-3">
                 {% for tutorial in tutorials %}
@@ -83,29 +50,22 @@
                 </ul>
                 {% endif %}
             </div>
-          <div class="col sticky-top my-5 column1">
+          <div class="col mt-4 column1">
                 <div style="width: 300px; background-clip: border-box;border: 1px solid rgba(0, 0, 0, 0.125);">
                 <div class="topics__header">
                     <h3 style="margin-bottom:30px; margin-left:30px; padding-top: 30px">Browse Topics</h3>
                 </div>
                 <ul class="topics__list">
                     <li>
-                        <a href="{% url 'home' %}" class="active">All <span style="padding-right: 35px;">{{courses.count}}</span></a>
+                        <a href="{% url 'ltutorial' %}" class="active">All <span style="padding-right: 35px;">{{tutorials.count}}</span></a>
                     </li>
                     {% for course in courses %}
                     <li>
 {#                        <a href="{% url 'home' %}?q={{topic.name}}">{{topic.name}}<span>{{topic.room_set.all.count}}</span></a>#}
-                          <a href="{% url 'home' %}">{{course.name}}<span>{{course.room_set.all.count}}</span></a>
+                          <a href="{% url 'ltutorial' %}?q={{course.name}}">{{course.name}}<span style="padding-right: 35px;">{{course.tutorial_set.all.count}}</span></a>
                     </li>
                     {% endfor %}
                 </ul>
-                <a class="btn btn--link" href="{% url 'home' %}">
-                    More
-                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-                        <title>chevron-down</title>
-                        <path d="M16 21l-13-13h-3l16 16 16-16h-3l-13 13z"></path>
-                    </svg>
-                </a>
             </div>
            </div>
 {#      end#}
