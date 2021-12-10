@@ -4,67 +4,71 @@
 
 {% load static %}
 {% block body %}
-         <style>
-            img {
-                width:400px;
-                height:200px;
-                object-fit: cover;
-            }
-        </style>
-      <!-- Blog Entries Column -->
-      <div class="col-md-auto" style="left: 25%;">
-            <h1 class="my-4">
-                <small>All Lessons</small>
-            </h1>
-            {% for tutorial in tutorials %}
+<link href="{% static 'css/list_tutorial.css' %}" rel="stylesheet">
+      <div class="row" style="left: 25%;">
+          <div class="col-md-8 ml-5 mr-3">
+                {% for tutorial in tutorials %}
+                    <h1 class="my-4">
+                      <small></small>
+                    </h1>
+                    <div class="card mb-4 ml-4">
+                      <div class="ml-4">
+                          <h2 class="card-title text-primary mt-3">{{ tutorial.course.get_html_badge }}</h2>
+                          <h3 class="card-title ml-3">{{ tutorial.title }}</h3>
+                      </div>
+                      {% if tutorial.thumb %}
+                          <div class="ml-xl-5">
+                          <img src="{{ tutorial.thumb.url }}" alt="{{ tutorial.title }}" >
+                          </div>
+                      {% else %}
+                            <p></p>
+                      {% endif %}
+                      <div class="card-body">
+                        <p class="card-text">{{ tutorial.content | truncatechars:100 }}</p>
+                        <a href="{% url 'tutorial-detail' tutorial.pk %}" class="btn btn-primary">Read More &rarr;</a>
+                      </div>
+                      <div class="card-footer text-muted">
+                        Posted on {{ tutorial.created_at }} by
+                        <a href="#">{{ tutorial.user.username }}</a>
+                      </div>
+                    </div>
+                {% endfor %}
+                {% if is_paginated %}
+                <!-- Pagination -->
+                <ul class="pagination justify-content-center mb-4">
+                   {% if page_obj.has_previous %}
+                  <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}">&larr; Previous page</a>
+                  </li>
+                   {% endif %}
 
-            <h1 class="my-4">
-              <small></small>
-            </h1>
-
-            <!-- Blog Post -->
-            <div class="card mb-4 ml-4">
-              <div class="ml-4">
-                  <h2 class="card-title text-primary mt-3">{{ tutorial.course.get_html_badge }}</h2>
-                  <h3 class="card-title ml-3">{{ tutorial.title }}</h3>
-              </div>
-              {% if tutorial.thumb %}
-                  <div class="ml-xl-5">
-                  <img src="{{ tutorial.thumb.url }}" alt="{{ tutorial.title }}" >
-                  </div>
-              {% else %}
-                    <p></p>
-              {% endif %}
-              <div class="card-body">
-                <p class="card-text">{{ tutorial.content | truncatechars:100 }}</p>
-                <a href="{% url 'tutorial-detail' tutorial.pk %}" class="btn btn-primary">Read More &rarr;</a>
-              </div>
-              <div class="card-footer text-muted">
-                Posted on {{ tutorial.created_at }} by
-                <a href="#">{{ tutorial.user.username }}</a>
-              </div>
+                   {% if page_obj.has_next %}
+                  <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next page &rarr;</a>
+                  </li>
+                   {% endif %}
+                </ul>
+                {% endif %}
             </div>
-
-
-            {% endfor %}
-
-
-             {% if is_paginated %}
-            <!-- Pagination -->
-            <ul class="pagination justify-content-center mb-4">
-               {% if page_obj.has_previous %}
-              <li class="page-item">
-                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">&larr; Previous page</a>
-              </li>
-               {% endif %}
-
-               {% if page_obj.has_next %}
-              <li class="page-item">
-                <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next page &rarr;</a>
-              </li>
-               {% endif %}
-            </ul>
-            {% endif %}
+          <div class="col mt-4 column1">
+                <div style="width: 300px; background-clip: border-box;border: 1px solid rgba(0, 0, 0, 0.125);">
+                <div class="topics__header">
+                    <h3 style="margin-bottom:30px; margin-left:30px; padding-top: 30px">Browse Topics</h3>
+                </div>
+                <ul class="topics__list">
+                    <li>
+                        <a href="{% url 'ltutorial' %}" class="active">All <span style="padding-right: 35px;">{{tutorials.count}}</span></a>
+                    </li>
+                    {% for course in courses %}
+                    <li>
+{#                        <a href="{% url 'home' %}?q={{topic.name}}">{{topic.name}}<span>{{topic.room_set.all.count}}</span></a>#}
+                          <a href="{% url 'ltutorial' %}?q={{course.name}}">{{course.name}}<span style="padding-right: 35px;">{{course.tutorial_set.all.count}}</span></a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+           </div>
+{#      end#}
 
       </div>
 {% endblock %}      

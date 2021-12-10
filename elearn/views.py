@@ -32,7 +32,7 @@ from django.core.exceptions import ValidationError
 from . import models
 import operator
 import itertools
-from django.db.models import Avg, Count, Sum
+from django.db.models import Avg, Count, Sum, Q
 from django.forms import inlineformset_factory
 from .models import TakenQuiz, Profile, Quiz, Question, Answer, Learner, User, Course, Tutorial, Notes, Announcement
 from django.db import transaction
@@ -679,8 +679,16 @@ class LearnerSignUpView(CreateView):
 
 
 def ltutorial(request):
-    tutorials = Tutorial.objects.all().order_by('-created_at')
-    tutorials = {'tutorials': tutorials}
+    q = request.GET.get('q') if request.GET.get('q') != None else ''
+
+    tutorials = Tutorial.objects.filter(
+        Q(course__name__icontains=q) |
+        Q(title__icontains=q) |
+        Q(content__icontains=q)
+    ).order_by('-created_at')
+    # tutorials = Tutorial.objects.all().order_by('-created_at')
+    courses = Course.objects.all()
+    tutorials = {'tutorials': tutorials, 'courses': courses}
     return render(request, 'dashboard/learner/list_tutorial.html', tutorials)
 
 
