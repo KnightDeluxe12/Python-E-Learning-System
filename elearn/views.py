@@ -643,14 +643,14 @@ def update_file(request, pk):
 
 
 # Learner Views
-# def home_learner(request):
-#     learner = User.objects.filter(is_learner=True).count()
-#     instructor = User.objects.filter(is_instructor=True).count()
-#     course = Course.objects.all().count()
-#     users = User.objects.all().count()
-#
-#     context = {'learner': learner, 'course': course, 'instructor': instructor, 'users': users}
-#     return render(request, 'dashboard/learner/home.html', context)
+def home_learner(request):
+    learner = User.objects.filter(is_learner=True).count()
+    instructor = User.objects.filter(is_instructor=True).count()
+    course = Course.objects.all().count()
+    users = User.objects.all().count()
+
+    context = {'learner': learner, 'course': course, 'instructor': instructor, 'users': users}
+    return render(request, 'dashboard/learner/home.html', context)
 
 def luser_profile(request):
     current_user = request.user
@@ -702,13 +702,13 @@ class ITiseList(LoginRequiredMixin, ListView):
         return Announcement.objects.filter(posted_at__lt=timezone.now()).order_by('posted_at')
 
 
-def home_learner(request):
-    current_user = request.user
-    user_id = current_user.id
-    print(user_id)
-    users = Profile.objects.filter(user_id=user_id)
-    users = {'users': users}
-    return render(request, 'dashboard/learner/user_profile.html', users)
+# def home_learner(request):
+#     current_user = request.user
+#     user_id = current_user.id
+#     print(user_id)
+#     users = Profile.objects.filter(user_id=user_id)
+#     users = {'users': users}
+#     return render(request, 'dashboard/learner/user_profile.html', users)
 
 
 def lcreate_profile(request):

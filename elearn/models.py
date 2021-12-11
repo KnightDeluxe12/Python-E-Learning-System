@@ -3,6 +3,7 @@ from django.db import models
 from django.utils.html import escape, mark_safe
 from django.contrib.auth import get_user_model
 from embed_video.fields import EmbedVideoField
+from django.core.validators import RegexValidator
 
 
 
@@ -10,6 +11,7 @@ class User(AbstractUser):
     is_learner = models.BooleanField(default=False)
     is_instructor = models.BooleanField(default=False)
     is_admin = models.BooleanField(default=False)
+    
 
 
 
@@ -46,7 +48,7 @@ class Announcement(models.Model):
 class Course(models.Model):
     name = models.CharField(max_length=30)
     color = models.CharField(max_length=7, default='#007bff')
-
+ 
     def __str__(self):
         return self.name
 

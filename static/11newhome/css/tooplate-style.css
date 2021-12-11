@@ -22,7 +22,7 @@ p {
 }
 .primary-button a {
 	display: inline-block;
-	background-color: #a2cf8d;
+	background-color: #3EC563;
 	padding: 12px 18px;
 	color: #fff;
 	font-size: 11px;
@@ -154,11 +154,11 @@ p {
 }
 .navbar-inverse .navbar-toggle {
 	margin-top: 22px;
-    border-color: #a2cf8d;
-    background-color: #a2cf8d;
+    border-color: #3EC563;
+    background-color: #3EC563;
 }
 .navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
-	background-color: #a2cf8d;
+	background-color: #3EC563;
 }
 /*bootstrap.min.css:5*/
 
@@ -245,7 +245,7 @@ ul.cd-hero-slider {
 }
 
 .service-item:hover {
-	background-color: #a2cf8d;
+	background-color: #3EC563;
 }
 
 .service-item h4 {
@@ -375,7 +375,7 @@ ul.cd-hero-slider {
 }
 
 .filter-categories ul li.active span {
-  color: #a2cf8d;
+  color: #3EC563;
 }
 
 .project-item {
@@ -412,7 +412,7 @@ ul.cd-hero-slider {
 	height: 46px;
 	background-color: #fff;
 	line-height: 46px;
-	color: #a2cf8d;
+	color: #3EC563;
 	border-radius: 50%;
 	font-size: 18px;
 }
@@ -516,7 +516,7 @@ ul.cd-hero-slider {
 	line-height: 44px;
 	color: #fff;
 	text-align: center;
-	background-color: #a2cf8d;
+	background-color: #3EC563;
 }
 
 .pop span:hover, .pop2 span:hover, .pop3 span:hover {
@@ -542,7 +542,7 @@ ul.cd-hero-slider {
 .fact-item .counter {
 	font-size: 24px;
 	font-weight: 700;
-	color: #a2cf8d;
+	color: #3EC563;/*a2cf8d*/
 }
 
 .fact-item span {
@@ -614,7 +614,7 @@ ul.cd-hero-slider {
 
 #contact button {
 	display: inline-block;
-	background-color: #a2cf8d;
+	background-color: #3EC563;
 	padding: 12px 18px;
 	color: #fff;
 	font-size: 11px;
@@ -649,7 +649,7 @@ footer p {
 footer em {
 	font-style: normal;
 	font-weight: 700;
-	color: #a2cf8d;
+	color: #3EC563;
 }
 
 footer ul {
@@ -669,7 +669,7 @@ footer ul li a {
 	line-height: 36px;
 	text-align: center;
 	display: inline-block;
-	background-color: #a2cf8d;
+	background-color: #3EC563;
 	color: #202628;
 	border-radius: 50%;
 }
