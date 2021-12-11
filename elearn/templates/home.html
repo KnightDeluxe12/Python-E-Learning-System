@@ -39,7 +39,6 @@
                 <div id="main-nav" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
 
-
                           <li><a href="#" class="">Home</a></li>
                           <li>
                             <a href="#" class="scroll-link" data-id="about">About Us</a>
@@ -48,10 +47,6 @@
                           <li>
                             <a href="#" class="scroll-link" data-id="portfolio">Topics</a>
 {#                            <a class="" href="{% url 'services' %}">Services</a>#}
-                          </li>
-                          <li>
-                            <a href="#" class="scroll-link" data-id="contact">Contact Us</a>
-{#                            <a class="" href="{% url 'contact' %}">Contact</a>#}
                           </li>
                           {% if not user.is_authenticated %}
                           <li>
@@ -68,7 +63,6 @@
                           </li>
                           {% endif %}
 
-
 {#                        <li><a href="#" class="scroll-link" data-id="blog">Blog</a></li>#}
                     </ul>
                 </div>
@@ -80,7 +74,6 @@
     </div>
     <!--/.header-->
 
-
     <section class="cd-hero">
         <ul class="cd-hero-slider autoplay">
         <!--
@@ -91,7 +84,7 @@
                 <div class="cd-full-width">
                     <div class="tm-slide-content-div slide-caption">
                         <span>Introduction to</span>
-                        <h2>Python Course v2</h2>
+                        <h2>Python Course</h2>
                         <p>Sign up now for a free course and tutorials in basic computer programming.</p>
                         <div class="primary-button">
                             <a href="#" class="scroll-link" data-id="about">Discover More</a>
@@ -105,7 +98,7 @@
                     <div class="tm-slide-content-div slide-caption">
                         <span>Learn within</span>
                         <h2>Your pace</h2>
-                        <p>Donec dolor ipsum, laoreet nec metus non, tempus elementum massa. Donec non elit rhoncus, vestibulum enim sed, rutrum arcu.</p>
+                        <p>Study at your own pace without any rush or deadlines</p>
                         <div class="primary-button">
                             <a href="#">Read More</a>
                         </div>
@@ -118,7 +111,7 @@
                     <div class="tm-slide-content-div slide-caption">
                         <span>Enrich your</span>
                         <h2>Python Skills</h2>
-                        <p>Integer ut dolor eget magna congue gravida ut at arcu. Vivamus maximus neque quis luctus tempus. Vestibulum consequat.</p>
+                        <p>Check out the lessons, discover new codes, and try it on your own to hones your python programming skills!</p>
                         <div class="primary-button">
                             <a href="#">View Details</a>
                         </div>
@@ -155,28 +148,28 @@
                     <div class="service-item first-service">
                         <div class="icon"></div>
                         <h4>Easy to Understand</h4>
-                        <p>Biodiesel schltz suculents phone cliche ramps snackwave coloring book tumeric poke, typewriter.</p>
+                        <p>Python is one of the easiest programming language and easy to learn!</p>
                     </div>
                 </div>
                  <div class="col-md-3 col-sm-6 col-xs-12">
                     <div class="service-item second-service">
                         <div class="icon"></div>
-                        <h4>Bright up Knowledge</h4>
-                        <p>Biodiesel schltz suculents phone cliche ramps snackwave coloring book tumeric poke, typewriter.</p>
+                        <h4>Brighten up Knowledge</h4>
+                        <p>Learning new lessons and discovering new codes will keep you ready for coding!</p>
                     </div>
                 </div>
                  <div class="col-md-3 col-sm-6 col-xs-12">
                     <div class="service-item third-service">
                         <div class="icon"></div>
                         <h4>Free Resources</h4>
-                        <p>Biodiesel schltz suculents phone cliche ramps snackwave coloring book tumeric poke, typewriter.</p>
+                        <p>Learn python anywhere and everywhere! This app is free and can be accessed offline!</p>
                     </div>
                 </div>
                  <div class="col-md-3 col-sm-6 col-xs-12">
                     <div class="service-item fourth-service">
                         <div class="icon"></div>
                         <h4>Open for Everyone</h4>
-                        <p>Biodiesel schltz suculents phone cliche ramps snackwave coloring book tumeric poke, typewriter.</p>
+                        <p>This app isn't just for students but also for those who wants to learn python at all ages.</p>
                     </div>
                 </div>
             </div>
@@ -189,7 +182,10 @@
                 <div class="col-md-6">
                     <div class="left-text">
                         <h4>New offers just arrived,<br>Get it now and create your future.</h4>
-                        <p>Gochujang pitchfork post-ironic hammock kombucha fanny pack cronut. Raw denim chicharrones semiotics af truffaut pinterest. Distillery letterpress authentic adaptogen. Meditation schlitz humblebrag photo booth celiac cliche chartreuse.<br><br>Pinterest 90's wolf celiac dreamcatcher listicle deep v semiotics. Intelligentsia literally meggings trust fund put a bird on it. Shoreditch crucifix artisan pug shaman twee. Health goth bicycle rights retro iPhone.</p>
+                        <p>Python is very famous for its simple programming syntax, code readability and english-like commands that helps you code in Python a lot easier and efficient.
+                            <br>
+                            <br>
+                            Python emphasizes readability and makes coding very easy. It is also the fastest-growing programming language in the world. Its high-level, interpreted, and object-oriented architecture makes it ideal for all types of software solutions.</p>
                         <ul>
                             <li>
                                 <div class="white-button">
@@ -213,7 +209,6 @@
         </div>
     </div>
 
-
     <div id="portfolio" class="page-section">
         <div class="content-wrapper">
             <div class="inner-container container">
@@ -229,15 +224,19 @@
                     <div class="filter-categories">
                         <ul class="project-filter">
                             <li class="filter" data-filter="all"><span>All</span></li>
-                            <li class="filter" data-filter="nature"><span>Introduction</span></li>
-                            <li class="filter" data-filter="workspace"><span>Operators</span></li>
-                            <li class="filter" data-filter="city"><span>Loops</span></li>
-                            <li class="filter" data-filter="technology"><span>Statements</span></li>
+                            <li class="filter" data-filter="intro"><span>Introduction</span></li>
+                            <li class="filter" data-filter="python_syntax"><span>Python and Syntax</span></li>
+                            <li class="filter" data-filter="var_data"><span>Variables and Data Types</span></li>
+                            <li class="filter" data-filter="num_op"><span>Numbers and Operators</span></li>
+                            <li class="filter" data-filter="user_input"><span>User Input</span></li>
+                            <li class="filter" data-filter="con_statement"><span>If and Else Statements</span></li>
+                            <li class="filter" data-filter="loops"><span>Loops</span></li>
+                            <li class="filter" data-filter="array"><span>Arrays</span></li>
                         </ul>
                     </div>
                     <div class="projects-holder">
                         <div class="row">
-                            <div class="col-md-3 col-sm-6 project-item mix workspace">
+                            <div class="col-md-3 col-sm-6 project-item mix intro">
                               <div class="thumb">
                                   <div class="image">
                                     <img src="{% static '11newhome/img/what-we-do-right-image.png'%}">
@@ -247,7 +246,7 @@
                                   </div>
                               </div>
                             </div>
-                            <div class="col-md-3 col-sm-6 project-item mix workspace">
+                            <div class="col-md-3 col-sm-6 project-item mix python_syntax">
                               <div class="thumb">
                                   <div class="image">
                                     <img src="{% static '11newhome/img/what-we-do-right-image.png'%}">
@@ -257,7 +256,7 @@
                                   </div>
                               </div>
                             </div>
-                            <div class="col-md-3 col-sm-6 project-item mix technology">
+                            <div class="col-md-3 col-sm-6 project-item mix var_data">
                               <div class="thumb">
                                   <div class="image">
                                     <img src="{% static '11newhome/img/what-we-do-right-image.png'%}">
@@ -267,7 +266,7 @@
                                   </div>
                               </div>
                             </div>
-                            <div class="col-md-3 col-sm-6 project-item mix city">
+                            <div class="col-md-3 col-sm-6 project-item mix num_op">
                               <div class="thumb">
                                   <div class="image">
                                     <img src="{% static '11newhome/img/what-we-do-right-image.png'%}">
@@ -277,7 +276,7 @@
                                   </div>
                               </div>
                             </div>
-                            <div class="col-md-3 col-sm-6 project-item mix nature">
+                            <div class="col-md-3 col-sm-6 project-item mix user_input">
                               <div class="thumb">
                                   <div class="image">
                                     <img src="{% static '11newhome/img/what-we-do-right-image.png'%}">
@@ -287,7 +286,7 @@
                                   </div>
                               </div>
                             </div>
-                            <div class="col-md-3 col-sm-6 project-item mix technology">
+                            <div class="col-md-3 col-sm-6 project-item mix con_statement">
                               <div class="thumb">
                                   <div class="image">
                                     <img src="{% static '11newhome/img/what-we-do-right-image.png'%}">
@@ -297,7 +296,7 @@
                                   </div>
                               </div>
                             </div>
-                            <div class="col-md-3 col-sm-6 project-item mix workspace">
+                            <div class="col-md-3 col-sm-6 project-item mix loops">
                               <div class="thumb">
                                   <div class="image">
                                     <img src="{% static '11newhome/img/what-we-do-right-image.png'%}">
@@ -307,7 +306,7 @@
                                   </div>
                               </div>
                             </div>
-                            <div class="col-md-3 col-sm-6 project-item mix city">
+                            <div class="col-md-3 col-sm-6 project-item mix array">
                               <div class="thumb">
                                   <div class="image">
                                     <img src="{% static '11newhome/img/what-we-do-right-image.png'%}">
@@ -323,7 +322,6 @@
             </div>
         </div>
     </div>
-
 
     <div id="blog" class="page-section">
         <div class="container">
@@ -394,25 +392,25 @@
             <div class="row">
                 <div class="col-md-3 col-sm-6 col-xs-12">
                     <div class="fact-item">
-                        <div class="counter" data-count="999">0</div>
+                        <div class="counter" data-count="99">0</div>
                         <span>Regular Visitors</span>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-6 col-xs-12">
                     <div class="fact-item">
-                        <div class="counter" data-count="998">0</div>
+                        <div class="counter" data-count="89">0</div>
                         <span>Finished Topics</span>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-6 col-xs-12">
                     <div class="fact-item">
-                        <div class="counter" data-count="1">0</div>
+                        <div class="counter" data-count="3">0</div>
                         <span>Happy Clients</span>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-6 col-xs-12">
                     <div class="fact-item">
-                        <div class="counter" data-count="1">0</div>
+                        <div class="counter" data-count="5">0</div>
                         <span>Total Certificates Given</span>
                     </div>
                 </div>
@@ -421,51 +419,6 @@
     </div>
 
 
-    <div id="contact" class="page-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="section-heading">
-                        <h4>Contact Us</h4>
-                        <div class="line-dec"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="map">
-                        <img src="{% static '11newhome/img/map.jpg'%}" alt="">
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="row">
-                      <form id="contact" action="" method="post">
-                        <div class="col-md-6">
-                          <fieldset>
-                            <input name="name" type="text" class="form-control" id="name" placeholder="Your name..." required="">
-                          </fieldset>
-                        </div>
-                        <div class="col-md-6">
-                          <fieldset>
-                            <input name="email" type="email" class="form-control" id="email" placeholder="Your email..." required="">
-                          </fieldset>
-                        </div>
-                        <div class="col-md-12">
-                          <fieldset>
-                            <textarea name="message" rows="6" class="form-control" id="message" placeholder="Your message..." required=""></textarea>
-                          </fieldset>
-                        </div>
-                        <div class="col-md-12">
-                          <fieldset>
-                            <button type="submit" id="form-submit" class="btn">Send Message</button>
-                          </fieldset>
-                        </div>
-                      </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
     <footer>
@@ -477,30 +430,11 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="social-icons">
-                        <ul>
-                            <li>
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-linkedin"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-rss"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-dribbble"></i></a>
-                            </li>
-                        </ul>
-                    </div>
+
                 </div>
             </div>
         </div>
     </footer>
-
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js'"></script>
     <script>window.jQuery || document.write('<script src="{% static '11newhome/js/vendor/jquery-1.11.2.min.js' %}"><\/script>')</script>
@@ -549,7 +483,6 @@
     </script>
 
 
-
 {#<html>#}
 {#<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/four/css/bootstrap.min.css' %}">#}
 {#<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/three/css/bootstrap.min.css' %}">#}
@@ -566,5 +499,3 @@
 {##}
 {#</body>#}
 {#</html>#}
-
-

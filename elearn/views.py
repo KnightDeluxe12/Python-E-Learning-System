@@ -308,7 +308,7 @@ class QuizCreateView(CreateView):
         return redirect('quiz_change', quiz.pk)
 
 
-# class QuizUpateView(UpdateView):
+# class QuizUpdateView(UpdateView):
 #     model = Quiz
 #     fields = ('name', 'course')
 #     template_name = 'dashboard/instructor/quiz_change_form.html'
@@ -747,6 +747,45 @@ def lcreate_profile(request):
         users = {'users': users}
         return render(request, 'dashboard/learner/create_profile.html', users)
 
+# def lupdate_profile(request):
+#     if request.method == 'POST':
+#         first_name = request.POST['first_name']
+#         last_name = request.POST['last_name']
+#         phonenumber = request.POST['phonenumber']
+#         email = request.POST['email']
+#         city = request.POST['city']
+#         country = request.POST['country']
+#         birth_date = request.POST['birth_date']
+#         avatar = request.FILES['avatar']
+#         current_user = request.user
+#         user_id = current_user.id
+#         print(user_id)
+#
+#         Profile.objects.filter(id=user_id).update(user_id=user_id, first_name=first_name, last_name=last_name,
+#                                                   phonenumber=phonenumber, email=email, city=city, country=country,
+#                                                   birth_date=birth_date, avatar=avatar)
+#
+#         messages.success(request, 'Profile was updated successfully')
+#
+#         current_user = request.user
+#         user_id = current_user.id
+#         print(user_id)
+#         users = Profile.objects.filter(user_id=user_id)
+#         users = {'users': users}
+#         return render(request, 'dashboard/learner/update_profile.html', users)
+
+def lupdate_profile(request):
+    user = request.user
+    form = UserForm(instance=user)
+
+    if request.method == 'POST':
+        form = UserForm(request.POST, request.FILES, instance=user)
+        if form.is_valid():
+            form.save()
+            return redirect('luser_profile')
+
+    return render(request, 'dashboard/learner/update_profile.html', {'form': form})
+
 
 class LTutorialDetail(LoginRequiredMixin, DetailView):
     model = Tutorial
@@ -763,9 +802,8 @@ class LearnerInterestsView(UpdateView):
         return self.request.user.learner
 
     def form_valid(self, form):
-        messages.success(self.request, 'Course Was Updated Successfully')
+        messages.success(self.request, 'Topics was updated successfully.')
         return super().form_valid(form)
-
 
 class LQuizListView(ListView):
     model = Quiz

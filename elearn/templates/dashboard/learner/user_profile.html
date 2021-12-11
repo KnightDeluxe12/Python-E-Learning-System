@@ -62,15 +62,15 @@
                             </tr>
                             <tr>
                                 <td>First Name</td>
-                                <td>{{ user.first_name }}</td>
+                                <td>{{ user.user.first_name }}</td>
                             </tr>
                             <tr>
                                 <td>Last Name</td>
-                                <td>{{ user.last_name }}</td>
+                                <td>{{ user.user.last_name }}</td>
                             </tr>
                             <tr>
                                 <td>Email</td>
-                                <td>{{ user.email }}</td>
+                                <td>{{ user.user.email }}</td>
                             </tr>
                             <tr>
                                 <td>Phone Number</td>
@@ -90,7 +90,8 @@
                   Topic Interests:{% for course in user.learner.interests.all %} {{ course.get_html_badge }}{% endfor %}
                </p>
                <hr>
-               <a href="{% url 'interests' %}"><small>(update topic interests here)</small></a>
+                   <a href="{% url 'interests' %}"><button type="button" class="btn btn-outline-info">Update topic interests</button></a>
+                    <span class="ml-4 mr-4"><a href="{% url 'lupdate_profile' %}"><button type="button" class="btn btn-outline-primary">Update Profile</button></a></span>
                </div>
       </div>
 
