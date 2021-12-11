@@ -1,0 +1,148 @@
+
+.Rectangle
+{
+position: absolute;
+width: 508px;
+height: 375px;
+
+background: #E5E5E5;
+border-radius: 15px;	
+}
+
+.lesson-list
+{
+    width: 1024px;
+    height: 1273px;
+    display: grid;
+    grid-template-columns: 1fr 25px 1fr 25px 1fr;
+    grid-template-rows: 450px 450px 450px;
+}
+.Container1
+{
+position: relative;
+width: 508px;
+height: 375px;
+}
+.Container2
+{
+position: relative;
+width: 508px;
+height: 375px;
+
+}
+.Container3
+{
+position: relative;
+width: 508px;
+height: 375px;
+}
+.Container4
+{
+position: relative;
+width: 508px;
+height: 375px;
+}
+.Container5
+{
+position: relative;
+width: 508px;
+height: 375px;
+}
+.Container6
+{
+position: relative;
+width: 508px;
+height: 375px;
+}
+
+.Container7
+{
+position: relative;
+width: 508px;
+height: 375px;
+}
+.Container8
+{
+position: relative;
+width: 508px;
+height: 375px;
+}
+.Course-Python
+{
+position: absolute;
+width: 508px;
+height: 375px;
+
+filter: drop-shadow(2px 4px 50px rgba(0, 0, 0, 0.5));
+}
+#Course-Cover
+{
+position: absolute;
+width: 506px;
+height: 221px;
+
+
+filter:contrast(50%) brightness(40%) blur(1px);
+border-radius: 15px;
+}
+#Python-Logo
+{
+position: absolute;
+width: 120px;
+height: 120px;
+top: 126px;
+left: -4px;
+background: url(python-logo.png);
+border-radius: 26px;
+}
+#Intro
+{
+position: absolute;
+width: 345px;
+height: 67px;
+top: 120px;
+left: 129px;
+color: white;
+
+font-family: TharLon;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 35px;
+text-align: right;
+}
+#Lessons
+{
+position: absolute;
+width: 78px;
+height: 21px;
+left: 23px;
+top: 320px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 16px;
+line-height: 19px;
+
+color: #717171;
+}
+.BtnVisit
+{
+position: absolute;
+width: 117px;
+height: 34px;
+left: 358px;
+top: 330px;
+
+
+background: #225866;
+border-radius: 15px;
+}
+#txt-visit
+{
+    position: fixed;
+    left: 373px;
+    top: 334px;
+    color:#E5E5E5;
+}
