@@ -1,0 +1,64 @@
+{% extends 'dashboard/learner/base.html' %}
+{% load static %}
+
+{% block body %}
+<style>
+.layout__box {
+  width: 90%;
+  max-width: 22rem;
+  min-height: 23rem;
+  position: absolute;
+  top: 50%;
+  left: 53%;
+  transform: translate(-50%, -46%);
+  border-radius: 1rem;
+  box-shadow: 1px 1px 6px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.layout__boxHeader {
+  display: flex;
+  padding: 1.5rem;
+  background-color: lightgray;
+}
+
+.layout__boxTitle {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+.layout__body {
+  margin: 3rem;
+}
+</style>
+    <div class="container-fluid">
+    <div class="layout__box bg-light">
+      <div class="layout__boxHeader">
+        <div class="layout__boxTitle ml-4">
+          <a class="ml-3 mb-2" href="{% url 'luser_profile' %}">
+              <i class="fa fa-arrow-left text-dark" aria-hidden="true"></i>
+          </a>
+          <h4>Edit your profile</h4>
+        </div>
+      </div>
+      <div class="layout__body">
+        <form class="form" action="" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+
+          {% for field in form %}
+          <div class="mb-4">
+            <label>{{field.label}}</label>
+            <div class="ml-5">{{field}}</div>
+          </div>
+          {% endfor %}
+
+
+          <div class="ml-2">
+            <a class="ml-4 btn btn-outline-secondary" href="index.html">Cancel</a>
+            <button class="ml-4 btn btn-success" type="submit">Update</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

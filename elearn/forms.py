@@ -4,19 +4,18 @@ from django.forms.utils import ValidationError
 from django import forms
 
 from elearn.models import (Answer, Question, Learner, LearnerAnswer,
-                              Course, User, Announcement)
-
-
+                           Course, User, Announcement, Profile)
 
 
 class PostForm(forms.ModelForm):
     class Meta:
         model = Announcement
-        fields = ('content', )
+        fields = ('content',)
+
 
 class ProfileForm(forms.ModelForm):
-    email=forms.EmailField(widget=forms.EmailInput())
-    confirm_email=forms.EmailField(widget=forms.EmailInput())
+    email = forms.EmailField(widget=forms.EmailInput())
+    confirm_email = forms.EmailField(widget=forms.EmailInput())
 
     class Meta:
         model = User
@@ -39,11 +38,10 @@ class ProfileForm(forms.ModelForm):
             )
 
 
-
 class UserForm(forms.ModelForm):
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name', 'email') 
+        fields = ('username', 'first_name', 'last_name', 'email')
 
 
 class InstructorSignUpForm(UserCreationForm):
@@ -51,11 +49,11 @@ class InstructorSignUpForm(UserCreationForm):
         model = User
 
     def __init__(self, *args, **kwargs):
-            super(InstructorSignUpForm, self).__init__(*args, **kwargs)
+        super(InstructorSignUpForm, self).__init__(*args, **kwargs)
 
-            for fieldname in ['username', 'password1', 'password2']:
-                self.fields[fieldname].help_text = None
-                    
+        for fieldname in ['username', 'password1', 'password2']:
+            self.fields[fieldname].help_text = None
+
     def save(self, commit=True):
         user = super().save(commit=False)
         user.is_instructor = True
@@ -64,23 +62,22 @@ class InstructorSignUpForm(UserCreationForm):
         return user
 
 
-
 class LearnerSignUpForm(UserCreationForm):
     interests = forms.ModelMultipleChoiceField(
         queryset=Course.objects.all(),
-            widget=forms.CheckboxSelectMultiple,
+        widget=forms.CheckboxSelectMultiple,
         required=True
     )
 
     class Meta(UserCreationForm.Meta):
         model = User
 
-
     def __init__(self, *args, **kwargs):
-            super(LearnerSignUpForm, self).__init__(*args, **kwargs)
-
-            for fieldname in ['username', 'email', 'password1', 'password2']:
+        super(LearnerSignUpForm, self).__init__(*args, **kwargs)
+        
+        for fieldname in ['username', 'email', 'password1', 'password2']:
                 self.fields[fieldname].help_text = None    
+
 
     @transaction.atomic
     def save(self):
@@ -92,11 +89,10 @@ class LearnerSignUpForm(UserCreationForm):
         return user
 
 
-
 class LearnerInterestsForm(forms.ModelForm):
     class Meta:
         model = Learner
-        fields = ('interests', )
+        fields = ('interests',)
         widgets = {
             'interests': forms.CheckboxSelectMultiple
         }
@@ -105,7 +101,7 @@ class LearnerInterestsForm(forms.ModelForm):
 class QuestionForm(forms.ModelForm):
     class Meta:
         model = Question
-        fields = ('text', )
+        fields = ('text',)
 
 
 class BaseAnswerInlineFormSet(forms.BaseInlineFormSet):
@@ -131,7 +127,7 @@ class TakeQuizForm(forms.ModelForm):
 
     class Meta:
         model = LearnerAnswer
-        fields = ('answer', )
+        fields = ('answer',)
 
     def __init__(self, *args, **kwargs):
         question = kwargs.pop('question')
@@ -142,7 +138,7 @@ class TakeQuizForm(forms.ModelForm):
 class LearnerCourse(forms.ModelForm):
     class Meta:
         model = Learner
-        fields = ('interests', )
+        fields = ('interests',)
         widgets = {
             'interests': forms.CheckboxSelectMultiple
         }
