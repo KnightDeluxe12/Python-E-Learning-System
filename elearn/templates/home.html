@@ -59,6 +59,9 @@
 
                           {% if user.is_authenticated %}
                           <li>
+                            <a class="" href="{% url 'learner' %}">Dashboard</a>
+                          </li>
+                          <li>
                             <a class="" href="{% url 'logout' %}">Logout</a>
                           </li>
                           {% endif %}
