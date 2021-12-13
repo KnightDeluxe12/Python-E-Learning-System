@@ -32,8 +32,8 @@ from django.core.exceptions import ValidationError
 from . import models
 import operator
 import itertools
-from django.db.models import Avg, Count, Sum
-from django.forms import inlineformset_factory
+from django.db.models import Avg, Count, Sum, Q
+from django.forms import inlineformset_factory, formset_factory
 from .models import TakenQuiz, Profile, Quiz, Question, Answer, Learner, User, Course, Tutorial, Notes, Announcement
 from django.db import transaction
 from django.contrib.auth.hashers import make_password
@@ -326,7 +326,7 @@ class QuizCreateView(CreateView):
         return redirect('quiz_change', quiz.pk)
 
 
-# class QuizUpateView(UpdateView):
+# class QuizUpdateView(UpdateView):
 #     model = Quiz
 #     fields = ('name', 'course')
 #     template_name = 'dashboard/instructor/quiz_change_form.html'
@@ -697,8 +697,16 @@ class LearnerSignUpView(CreateView):
 
 
 def ltutorial(request):
-    tutorials = Tutorial.objects.all().order_by('-created_at')
-    tutorials = {'tutorials': tutorials}
+    q = request.GET.get('q') if request.GET.get('q') != None else ''
+
+    tutorials = Tutorial.objects.filter(
+        Q(course__name__icontains=q) |
+        Q(title__icontains=q) |
+        Q(content__icontains=q)
+    ).order_by('-created_at')
+    # tutorials = Tutorial.objects.all().order_by('-created_at')
+    courses = Course.objects.all()
+    tutorials = {'tutorials': tutorials, 'courses': courses}
     return render(request, 'dashboard/learner/list_tutorial.html', tutorials)
 
 
@@ -757,6 +765,45 @@ def lcreate_profile(request):
         users = {'users': users}
         return render(request, 'dashboard/learner/create_profile.html', users)
 
+# def lupdate_profile(request):
+#     if request.method == 'POST':
+#         first_name = request.POST['first_name']
+#         last_name = request.POST['last_name']
+#         phonenumber = request.POST['phonenumber']
+#         email = request.POST['email']
+#         city = request.POST['city']
+#         country = request.POST['country']
+#         birth_date = request.POST['birth_date']
+#         avatar = request.FILES['avatar']
+#         current_user = request.user
+#         user_id = current_user.id
+#         print(user_id)
+#
+#         Profile.objects.filter(id=user_id).update(user_id=user_id, first_name=first_name, last_name=last_name,
+#                                                   phonenumber=phonenumber, email=email, city=city, country=country,
+#                                                   birth_date=birth_date, avatar=avatar)
+#
+#         messages.success(request, 'Profile was updated successfully')
+#
+#         current_user = request.user
+#         user_id = current_user.id
+#         print(user_id)
+#         users = Profile.objects.filter(user_id=user_id)
+#         users = {'users': users}
+#         return render(request, 'dashboard/learner/update_profile.html', users)
+
+def lupdate_profile(request):
+    user = request.user
+    form = UserForm(instance=user)
+
+    if request.method == 'POST':
+        form = UserForm(request.POST, request.FILES, instance=user)
+        if form.is_valid():
+            form.save()
+            return redirect('luser_profile')
+
+    return render(request, 'dashboard/learner/update_profile.html', {'form': form})
+
 
 class LTutorialDetail(LoginRequiredMixin, DetailView):
     model = Tutorial
@@ -773,9 +820,8 @@ class LearnerInterestsView(UpdateView):
         return self.request.user.learner
 
     def form_valid(self, form):
-        messages.success(self.request, 'Course Was Updated Successfully')
+        messages.success(self.request, 'Topics was updated successfully.')
         return super().form_valid(form)
-
 
 class LQuizListView(ListView):
     model = Quiz
