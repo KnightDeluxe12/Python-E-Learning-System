@@ -17,6 +17,15 @@ body{
     bottom: 0;
     background-color: rgba(0,0,0,.7);
 }*/
+
+.checkbox label{
+    color:#4e4e4e;
+    margin-left:10px;
+}
+input[type=checkbox], input[type=radio]{
+    color:red;
+    margin-right:10px;
+}
 .container{
     position: absolute;
     left: 50%;

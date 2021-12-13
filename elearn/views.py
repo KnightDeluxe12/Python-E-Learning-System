@@ -644,13 +644,17 @@ def update_file(request, pk):
 
 # Learner Views
 def home_learner(request):
-    learner = User.objects.filter(is_learner=True).count()
-    instructor = User.objects.filter(is_instructor=True).count()
-    course = Course.objects.all().count()
-    users = User.objects.all().count()
-
-    context = {'learner': learner, 'course': course, 'instructor': instructor, 'users': users}
-    return render(request, 'dashboard/learner/home.html', context)
+    # learner = User.objects.filter(is_learner=True).count()
+    # instructor = User.objects.filter(is_instructor=True).count()
+    # course = Course.objects.all().count()
+    # users = User.objects.all().count()
+    # context = {'learner': learner, 'course': course, 'instructor': instructor, 'users': users}
+    current_user = request.user
+    user_id = current_user.id
+    model = Profile
+    users = Profile.objects.get(user_id=user_id)
+    users = {'users': users}
+    return render(request, 'dashboard/learner/home.html', users)
 
 def luser_profile(request):
     current_user = request.user
@@ -674,7 +678,7 @@ class LearnerSignUpView(CreateView):
     def form_valid(self, form):
         user = form.save()
         login(self.request, user)
-        return redirect('learner')
+        return redirect('lcreate_profile')
         # return redirect('home')
 
 
@@ -724,7 +728,7 @@ def lcreate_profile(request):
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
         phonenumber = request.POST['phonenumber']
-        email = request.POST['email']
+        # email = request.POST['email']
         city = request.POST['city']
         country = request.POST['country']
         birth_date = request.POST['birth_date']
@@ -734,9 +738,9 @@ def lcreate_profile(request):
         print(user_id)
 
         Profile.objects.filter(id=user_id).create(user_id=user_id, first_name=first_name, last_name=last_name,
-                                                  phonenumber=phonenumber, email=email, city=city, country=country,
+                                                  phonenumber=phonenumber, city=city, country=country,
                                                   birth_date=birth_date, avatar=avatar)
-        User.objects.filter(id=user_id).update(first_name=first_name, last_name=last_name, email=email)
+        User.objects.filter(id=user_id).update(first_name=first_name, last_name=last_name)
         messages.success(request, 'Profile was created successfully')
         return redirect('luser_profile')
     else:
