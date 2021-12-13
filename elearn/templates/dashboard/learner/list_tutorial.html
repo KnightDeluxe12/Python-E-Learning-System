@@ -146,11 +146,11 @@
                       </div>
                       <div class="card-body ml-2">
                         <p class="card-text  text-center">{{ tutorial.content | truncatechars:200 }}</p>
-                        <a href="{% url 'tutorial-detail' tutorial.pk %}" class="btn btn-primary">Read More &rarr;</a>
+                        <a href="{% url 'tutorial-detail' tutorial.pk %}" class="btn btn-success">Read More &rarr;</a>
                       </div>
                       <div class="card-footer text-muted">
                         Posted on {{ tutorial.created_at }} by
-                        <a href="#">{{ tutorial.user.username }}</a>
+                        <a class="text-muted" href="#">{{ tutorial.user.username }}</a>
                         <span class="text-primary h6 float-right" style="margin-bottom: 0">{{ tutorial.course.get_html_badge }}</span>
                       </div>
                     </div>
