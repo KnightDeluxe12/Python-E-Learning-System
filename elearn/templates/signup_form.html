@@ -19,28 +19,53 @@
 
 
 <body id="bg" style="background-image: url('{% static "img/registerbg.svg"%}');">
-    <div class="container bg-transparent text-center " style="width: 200px;top:125px; right:-210px;">
-      <img src="https://img.icons8.com/color/48/000000/s-key.png" width="30" height="30" alt="">
-      <span class="navbar-brand mb-0 h1 text-dark">
-      Snakelet
-      </span>
-    </div>
-    <div class="rounded bg-light" style="height: 750px; width: 400px; z-index: 2;margin: 100px 0px 0px 450px;position:fixed; left:800px; top:50px;"></div>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-4"></div>
-            <div class="col-sm-4 rounded" style="z-index: 3;padding: 0px 0 0px 0px;margin-top: 10px; position:fixed; left:1300px; top:180px;">
-                    <form class="p-2" method="post" novalidate>
-                        <h2 class="text-dark">Sign Up As Learner</h2>
-                        {% csrf_token %}
-                        <input type="hidden" name="next" value="{{ next }}">
-                        {{ form|crispy }}
-                        <button type="submit" class="btn btn-success">Sign up</button>
-                        <br>
-                        <br>
-                        <small class="">Already catch-up and have an account? <a class="text-success font-weight-bold" href="{% url 'login_form' %}">Login here</a> </small>
-                        <br>
-                    </form>
+
+{#    <div class="container bg-transparent text-center " style="width: 200px;top:125px; right:-210px;">#}
+{#      <img src="https://img.icons8.com/color/48/000000/s-key.png" width="30" height="30" alt="">#}
+{#      <span class="navbar-brand mb-0 h1 text-dark">#}
+{#      Snakelet#}
+{#      </span>#}
+{#    </div>#}
+{#    <div class="rounded bg-light" style="height: 750px; width: 400px; z-index: 2;margin: 100px 0px 0px 450px;position:fixed; left:800px; top:50px;"></div>#}
+<div class="container-fluid" style="padding-top: 12rem;">
+    <div class="row">
+        <div class="col-12 col-md-7">
+            <div class="jumbotron bg-transparent w-75" style="margin:auto; margin-top: 4rem;">
+              <h1 class="display-4 font-weight-bold">Build python skills online</h1>
+              <h6 class="lead ml-4" style="font-size: 2.5rem;font-weight: 500;">Python drives everything. </h6>
+              <hr class="my-4">
+              <p class="lead" style="font-size: 1.5rem;font-weight: 500;">Get the skills you need for the future of work.</p>
+              <p class="lead">
+                <a class="btn btn-outline-primary btn-lg" href="{% url 'home' %}" role="button" style="margin-top: 2rem;">Learn more</a>
+              </p>
+            </div>
+        </div>
+        <div class="col-6 col-md-4">
+            <div class="rounded bg-light py-4 px-5">
+                <form class="" method="post" novalidate>
+                    <div class="h2 text-dark">Sign up as Learner</div>
+                    <hr>
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ next }}">
+                    <div class="row">
+                        <div class="col">
+                            {{ form.username|as_crispy_field }}
+                            {{ form.email|as_crispy_field }}
+                            {{ form.password1|as_crispy_field }}
+                            {{ form.password2|as_crispy_field }}
+                            <div style="padding-bottom:16px;"><button type="submit" class="btn btn-success" >Get started</button></div>
+                            <hr>
+                            <div class="text-center"><small class="">Already catch-up and have an account? <a class="text-success font-weight-bold" href="{% url 'login_form' %}">Login here</a> </small></div>
+                            <br>
+                        </div>
+                        <div class="col">
+                            {{ form.interests|as_crispy_field }}
+                        <hr>
+                        <div><span class="">Select All:</span> <input type="checkbox" id="selectAll"></div>
+
+                        </div>
+                    </div>
+                </form>
 {#                    <div class="card-footer">#}
 {#                    <div class="d-flex justify-content-center">#}
 {#                    <div class="messages">#}
@@ -50,10 +75,24 @@
 {#                    </div>#}
 {#                </div>#}
 {#                </div>#}
-            </div>
         </div>
+      </div>
     </div>
+</div>
 
-
+<script type="text/javascript" src="{% static 'js/jquery-2.1.3.min.js' %}"></script>
+<script type="text/javascript">
+$("#selectAll").change(function() {
+    $("#id_interests_0:checkbox").attr('checked', this.checked);
+    $("#id_interests_1:checkbox").attr('checked', this.checked);
+    $("#id_interests_2:checkbox").attr('checked', this.checked);
+    $("#id_interests_3:checkbox").attr('checked', this.checked);
+    $("#id_interests_4:checkbox").attr('checked', this.checked);
+    $("#id_interests_5:checkbox").attr('checked', this.checked);
+    $("#id_interests_6:checkbox").attr('checked', this.checked);
+    $("#id_interests_7:checkbox").attr('checked', this.checked);
+});
+</script>
 </body>
+
 

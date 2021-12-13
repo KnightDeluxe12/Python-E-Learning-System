@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'elearn',
 ]
 
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
+
 # Install these
 # pip3 install django-widget-tweaks
 # pip3 install django-widget-tweaks

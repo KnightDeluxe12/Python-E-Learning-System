@@ -728,7 +728,7 @@ def lcreate_profile(request):
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
         phonenumber = request.POST['phonenumber']
-        email = request.POST['email']
+        # email = request.POST['email']
         city = request.POST['city']
         country = request.POST['country']
         birth_date = request.POST['birth_date']
@@ -738,9 +738,9 @@ def lcreate_profile(request):
         print(user_id)
 
         Profile.objects.filter(id=user_id).create(user_id=user_id, first_name=first_name, last_name=last_name,
-                                                  phonenumber=phonenumber, email=email, city=city, country=country,
+                                                  phonenumber=phonenumber, city=city, country=country,
                                                   birth_date=birth_date, avatar=avatar)
-        User.objects.filter(id=user_id).update(first_name=first_name, last_name=last_name, email=email)
+        User.objects.filter(id=user_id).update(first_name=first_name, last_name=last_name)
         messages.success(request, 'Profile was created successfully')
         return redirect('luser_profile')
     else:

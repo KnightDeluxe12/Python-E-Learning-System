@@ -22,16 +22,16 @@
 {#                    <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">#}
 {#                                <a class="nav-item nav-link active text-primary" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Your Profile</a>#}
 {#                    </div>#}
-                    <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-                                <h4 class="pt-4 nav-item nav-link active text-dark" >Your Profile</h4>
-                    </div>
-               </nav>
-               <div class="card-body">
                      {% for message in messages %}
                         <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
                             {{ message }}
                         </div>
                      {% endfor %}
+                    <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                                <h4 class="pt-4 nav-item nav-link active text-dark" >Your Profile</h4>
+                    </div>
+               </nav>
+               <div class="card-body">
 
                      {% if user.avatar %}
                          <style>
