@@ -5,6 +5,33 @@
     outline: 0;
     font-family: 'Open Sans', sans-serif;
 }
+
+.hrLines {
+  overflow: hidden;
+  text-align: center;
+}
+
+.hrLines:before,
+.hrLines:after {
+  background-color: #000;
+  content: "";
+  display: inline-block;
+  height: 1px;
+  position: relative;
+  vertical-align: middle;
+  width: 50%;
+}
+
+.hrLines:before {
+  right: 0.5em;
+  margin-left: -50%;
+}
+
+.hrLines:after {
+  left: 0.5em;
+  margin-right: -50%;
+}
+
 body{
     height: 100vh;
     background-color: #e8eaf6;
