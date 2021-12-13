@@ -1,6 +1,7 @@
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UsernameField
 from django.db import transaction
 from django.forms.utils import ValidationError
+from django.forms.fields import EmailField
 from django import forms
 
 from elearn.models import (Answer, Question, Learner, LearnerAnswer,
@@ -71,11 +72,14 @@ class LearnerSignUpForm(UserCreationForm):
 
     class Meta(UserCreationForm.Meta):
         model = User
+        fields = ("username", "email",)
+        field_classes = {'username': UsernameField, 'email': EmailField}
 
     def __init__(self, *args, **kwargs):
         super(LearnerSignUpForm, self).__init__(*args, **kwargs)
         
         for fieldname in ['username', 'email', 'password1', 'password2']:
+    # for fieldname in ['username', 'email', 'password1', 'password2']:
                 self.fields[fieldname].help_text = None    
 
 
