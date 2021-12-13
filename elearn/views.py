@@ -644,13 +644,17 @@ def update_file(request, pk):
 
 # Learner Views
 def home_learner(request):
-    learner = User.objects.filter(is_learner=True).count()
-    instructor = User.objects.filter(is_instructor=True).count()
-    course = Course.objects.all().count()
-    users = User.objects.all().count()
-
-    context = {'learner': learner, 'course': course, 'instructor': instructor, 'users': users}
-    return render(request, 'dashboard/learner/home.html', context)
+    # learner = User.objects.filter(is_learner=True).count()
+    # instructor = User.objects.filter(is_instructor=True).count()
+    # course = Course.objects.all().count()
+    # users = User.objects.all().count()
+    # context = {'learner': learner, 'course': course, 'instructor': instructor, 'users': users}
+    current_user = request.user
+    user_id = current_user.id
+    model = Profile
+    users = Profile.objects.get(user_id=user_id)
+    users = {'users': users}
+    return render(request, 'dashboard/learner/home.html', users)
 
 def luser_profile(request):
     current_user = request.user
@@ -674,7 +678,7 @@ class LearnerSignUpView(CreateView):
     def form_valid(self, form):
         user = form.save()
         login(self.request, user)
-        return redirect('learner')
+        return redirect('lcreate_profile')
         # return redirect('home')
 
 

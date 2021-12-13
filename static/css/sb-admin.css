@@ -10628,7 +10628,7 @@ body {
 }
 
 .navbar-nav .nav-item.active .nav-link {
-  color: #fff;
+  color: black;
 }
 
 .navbar-nav .nav-item.dropdown .dropdown-toggle::after {
@@ -10670,7 +10670,7 @@ body {
 
 .sidebar {
   width: 90px !important;
-  background-color: #212529;
+  background-color: lightgray;
   min-height: calc(100vh - 56px);
 }
 
@@ -10687,6 +10687,7 @@ body {
 .sidebar .nav-item .nav-link span {
   font-size: 0.65rem;
   display: block;
+  margin-left: 15px;
 }
 
 .sidebar .nav-item .dropdown-menu {
@@ -10711,7 +10712,7 @@ body {
 }
 
 .sidebar .nav-item .nav-link:active, .sidebar .nav-item .nav-link:focus, .sidebar .nav-item .nav-link:hover {
-  color: rgba(255, 255, 255, 0.75);
+  color: green;
 }
 
 .sidebar.toggled {
@@ -10757,6 +10758,7 @@ body {
   .sidebar.toggled .nav-item .nav-link span {
     font-size: 0.65rem;
     display: block;
+    margin-left: -1px;
   }
   .sidebar.toggled .nav-item .dropdown-menu {
     position: absolute !important;
