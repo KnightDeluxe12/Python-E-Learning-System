@@ -201,6 +201,24 @@ class ListUserView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         return User.objects.order_by('-id')
 
+class ListLearnerView(LoginRequiredMixin, ListView): #delete if wrong
+    model = User
+    template_name = 'dashboard/admin/list_learner.html'
+    context_object_name = 'users'
+    paginated_by = 10
+
+    def get_queryset(self):
+        return User.objects.filter(is_instructor=0, is_admin=0).order_by('-id') #hanggang dito
+
+class ListInstructorView(LoginRequiredMixin, ListView): #delete if wrong
+    model = User
+    template_name = 'dashboard/admin/list_instructor.html'
+    context_object_name = 'users'
+    paginated_by = 10
+
+    def get_queryset(self):
+        return User.objects.filter(is_learner=0, is_admin=0).order_by('-id') #hanggang dito
+
 
 class ListCourseView(LoginRequiredMixin, ListView):
     model = course
