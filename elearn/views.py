@@ -882,6 +882,8 @@ def take_quiz(request, pk):
                     if score < 50.0:
                         messages.warning(request, 'Better luck next time! Your score for the quiz %s was %s.' % (
                             quiz.name, score))
+                        
+
                     else:
                         messages.success(request,
                                          'Congratulations! You completed the quiz %s with success! You scored %s points.' % (

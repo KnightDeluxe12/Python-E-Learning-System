@@ -24,10 +24,10 @@
 <body id="page-top">
 
 <!-- headers-->
-<nav class="navbar navbar-expand navbar-dark bg-success fixed-top">
+<nav class="navbar navbar-expand navbar-dark bg-warning fixed-top">
 
-    <a class="navbar-brand mr-1 text-light" href="">Admin Portal</a>
-    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+    <a class="navbar-brand mr-1 text-dark" href="">Admin Portal</a>
+    <button class="btn btn-link btn-sm text-dark order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars"></i>
     </button>
 
@@ -47,7 +47,7 @@
     <ul class="navbar-nav ml-auto ml-md-0">
         <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-user-circle fa-fw text-light"></i>
+                <i class="fas fa-user-circle fa-fw text-dark"></i>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                 <a class="dropdown-item">{{ user.username }}</a>
@@ -71,7 +71,7 @@
     </li>
     <li class="nav-item active">
         <a class="nav-link" href="">
-            <i class="fas fa-user-circle fa-fw text-light"></i>
+            <i class="fas fa-user-circle fa-fw text-warning"></i>
             <span>Logged In As Admin {{ user.username }}</span>
         </a>
     </li>
@@ -123,7 +123,7 @@
 
 
     <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="">
+                            <!-- <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="">
         <i class="fas fa-bell"></i>
 
             <span style="color: white">Announcements</span>
@@ -134,7 +134,7 @@
                 <a class="dropdown-item" href="{% url 'alpost' %}">List Announcements</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="{% url 'alistalltise' %}">Delete Announcements</a>
-            </div>
+            </div> -->
         </li>
 </ul>
 
