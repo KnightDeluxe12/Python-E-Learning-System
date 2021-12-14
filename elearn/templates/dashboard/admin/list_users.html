@@ -54,8 +54,9 @@
                                       {% endif %}
                                     </td>
                                     <td>{{ user.email }}</td>
-        <td>
-          <a href="{% url 'aduser' user.pk %}"><button type="button" class="btn btn-danger"> Delete</button></a></td>
+                                    <td>
+                                      <a href="{% url 'aduser' user.pk %}"><button type="button" class="btn btn-danger"> Delete</button></a>
+                                    </td>
                                 </tr>
                             {% endfor %}
                         {% endif %}

@@ -34,14 +34,7 @@
                <div class="card-body">
 
                      {% if user.avatar %}
-                         <style>
-                            .avatar-logo{
-                                height: 300px;
-                                width:  300px;
-                                overflow: hidden;
-                            }
-                         </style>
-                        <center><div class="avatar-logo"><img src="{{ user.avatar.url }}" class="img-thumbnail" alt="{{ user.user.username }}" style="object-fit: cover"></div></center><br>
+                        <center><div class=""><img class="img-fluid" style="max-width: 35%" src="{{ user.avatar.url }}" alt="{{ user.user.username }}"></div></center><br>
                      {% else %}
                          <span class="text-muted">text-danger Picture for {{ user.user.username }}</span>
                      {% endif %}

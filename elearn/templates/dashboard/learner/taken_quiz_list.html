@@ -3,13 +3,9 @@
 
 {% block body %}
   <div class="container-fluid">
-        <div class="row">
-          <div class="col-12 mb-3">
-          <div class="col-12 mb-3">
-           
-
-                <div id="content-wrapper" style="padding-top: 20px">
-        <div class="container-fluid">
+     <div class="row mt-3 mx-5">
+        <div class="col-md-2"></div>
+         <div class="col-sm-push-4 col-md-8">
             <div class="card mb-3">
                 <div class="card-header">
                     <i class="fas fa-table text-primary"></i>
@@ -22,32 +18,39 @@
                         </div>
                     {% endfor %}
                     
-  {% include 'dashboard/learner/_header.html' with active='taken' %}
-    <table class="table mb-0">
-      <thead>
-        <tr>
-          <th>Quiz</th>
-          <th>Topic</th>
-          <th>Score</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for taken_quiz in taken_quizzes %}
-          <tr>
-            <td>{{ taken_quiz.quiz.name }}</td>
-            <td>{{ taken_quiz.quiz.subject.get_html_badge }}</td>
-            <td>{{ taken_quiz.score }}</td>
-            <td><a href="#" class="btn btn-primary">Retake quiz</a></td>
-          </tr>
-        {% empty %}
-          <tr>
-            <td class="bg-light text-center font-italic" colspan="3">You haven't completed any quiz yet.</td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
-</div>
+                    {% include 'dashboard/learner/_header.html' with active='taken' %}
+                    <table class="table mb-0">
+                      <thead>
+                        <tr>
+                          <th>Quiz</th>
+                          <th>Topic</th>
+                          <th>Score</th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for taken_quiz in taken_quizzes %}
+                          <tr>
+                            <td class="align-middle">{{ taken_quiz.quiz.name }}</td>
+                            <td class="align-middle">{{ taken_quiz.quiz.course.get_html_badge }}</td>
+                            <td class="align-middle">{{ taken_quiz.score }}</td>
+                            <td class="text-right">
+{#                                <a href="{% url 'takenquiz_delete' taken_quiz.pk %}" class="btn btn-primary">#}
+                                    Retake quiz
+{#                                </a>#}
+                            </td>
+                          </tr>
+                        {% empty %}
+                          <tr>
+                            <td class="bg-light text-center font-italic" colspan="3">You haven't completed any quiz yet.</td>
+                          </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+         <div class="col-md-2"></div>
+     </div>
   </div>
 {% endblock body %}
