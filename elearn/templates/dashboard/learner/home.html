@@ -26,11 +26,16 @@
                 <div class="col-sm-6 col-md-4">
                     <div class="card bg-light  mb-sm-0 mb-md-5"  style="">
                        <div>
-                           <img class="img-fluid rounded" style="width: 100%; height: 221px; object-fit:cover;" src="{% static 'OnlineLearningSystem\FigmaProjectImages\course-cover.jpg' %}">
-                           <img class="img-fluid" style="position: absolute;top: 40%;left: 70%;max-width: 25%; object-fit:cover;" src="{% static 'OnlineLearningSystem\FigmaProjectImages\python-logo.png' %}">
+                           <img class="img-fluid rounded" style="filter: blur(1px);width: 100%; height: 221px; object-fit:cover;" src="{% static 'OnlineLearningSystem\FigmaProjectImages\course-cover.jpg' %}">
+                           <img class="card-img-overlay img-fluid" style="top:28%;left:72%;max-width: 25%; object-fit:cover;" src="{% static 'OnlineLearningSystem\FigmaProjectImages\python-logo.png' %}">
                        </div>
+                          <div class="card-img-overlay">
+                            <p class="intro h5 text-light" style="margin-top: 10rem;font-weight: 500">{{ course.name }}</p>
+
+                          </div>
                        <div class="card-body">
-                           <p class="intro h5" style="font-weight: 500">{{ course.name }}</p>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <p class="card-text">Last updated 3 mins ago</p>
                            <a class="btn btn-success" href="{% url 'ltutorial' %}?q={{ course.name }}">Visit Course</a>
                        </div>
                        <div class="card-footer">
