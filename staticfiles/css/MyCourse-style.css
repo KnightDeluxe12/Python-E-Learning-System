@@ -1,148 +1,77 @@
-.body
-{
-position: relative;
-width: 1440px;
-height: 900px;
-}
-.NavBar
-{
-position: absolute;
-width: 1440px;
-height: 100px;
-left: 0px;
-top:  0px;
-background: #3EC563;
-}
-#BtnCourse
-{
-position: absolute;
-width: 90px;
-height: 30px;
-left: 877px;
-top: 30px;
 
-font-family: Roboto;
-font-style: normal;
-font-weight: normal;
-font-size: 24px;
-line-height: 28px;
-}
-#BtnProfile
-{
-position: absolute;
-width: 110px;
-height: 30px;
-left: 998px;
-top: 30px;
-
-font-family: Roboto;
-font-style: normal;
-font-weight: normal;
-font-size: 24px;
-line-height: 28px;
-}
-#BtnRewards
-{
-position: absolute;
-width: 131px;
-height: 30px;
-left: 1139px;
-top: 30px;
-
-font-family: Roboto;
-font-style: normal;
-font-weight: normal;
-font-size: 24px;
-line-height: 28px;
-}
-#BtnLogOut
-{
-position: absolute;
-width: 86px;
-height: 30px;
-left: 1301px;
-top: 30px;
-
-font-family: Roboto;
-font-style: normal;
-font-weight: normal;
-font-size: 24px;
-line-height: 28px;
-}
-#Welcome-img
-{
-position: absolute;
-width: 305px;
-height: 208px;
-left: 80px;
-top: 184px;
-}
-.Welcome
-{
-position: absolute;
-width: 694px;
-height: 186px;
-left: 471px;
-top: 137px;
-}
-#Greet
-{
-position: absolute;
-width: 304px;
-height: 92px;
-
-font-family: TharLon;
-font-style: normal;
-font-weight: normal;
-font-size: 64px;
-line-height: 93px;
-}
-#Greet-Desc
-{
-position: absolute;
-width: 687px;
-height: 79px;
-top: 130px;
-left: 10px;
-
-font-family: TharLon;
-font-style: normal;
-font-weight: normal;
-font-size: 24px;
-line-height: 35px;
-}
-#Available-Course
-{
-position: absolute;
-width: 255px;
-height: 52px;
-left: 71px;
-top: 455px;
-
-font-family: TharLon;
-font-style: normal;
-font-weight: normal;
-font-size: 30px;
-line-height: 44px;
-}
 .Rectangle
 {
 position: absolute;
 width: 508px;
 height: 375px;
-left: 68px;
-top: 569px;
 
 background: #E5E5E5;
 border-radius: 15px;	
+}
+
+.lesson-list
+{
+    width: 1024px;
+    height: 1273px;
+    display: grid;
+    grid-template-columns: 1fr 25px 1fr 25px 1fr;
+    grid-template-rows: 450px 450px 450px;
+}
+.Container1
+{
+position: relative;
+width: 508px;
+height: 375px;
+}
+.Container2
+{
+position: relative;
+width: 508px;
+height: 375px;
+
+}
+.Container3
+{
+position: relative;
+width: 508px;
+height: 375px;
+}
+.Container4
+{
+position: relative;
+width: 508px;
+height: 375px;
+}
+.Container5
+{
+position: relative;
+width: 508px;
+height: 375px;
+}
+.Container6
+{
+position: relative;
+width: 508px;
+height: 375px;
+}
+
+.Container7
+{
+position: relative;
+width: 508px;
+height: 375px;
+}
+.Container8
+{
+position: relative;
+width: 508px;
+height: 375px;
 }
 .Course-Python
 {
 position: absolute;
 width: 508px;
 height: 375px;
-left: 325px;
-top: 175px;
 
 filter: drop-shadow(2px 4px 50px rgba(0, 0, 0, 0.5));
 }
@@ -163,42 +92,28 @@ width: 120px;
 height: 120px;
 top: 126px;
 left: -4px;
-background: url(python-logo.png);
+/*background: url(python-logo.png);*/
 border-radius: 26px;
 }
-#Intro
+.background-tint {
+    background-color:black;
+    background-color: rgba(0, 0, 0, .5); /* Tint color */
+    background-blend-mode: multiply;
+}
+.intro
 {
-position: absolute;
-width: 345px;
-height: 67px;
-top: 120px;
-left: 129px;
-color: white;
-
-font-family: TharLon;
 font-style: normal;
 font-weight: normal;
-font-size: 24px;
-line-height: 35px;
-text-align: right;
 }
-#Lessons
+.Lessons
 {
-position: absolute;
-width: 78px;
-height: 21px;
-left: 23px;
-top: 320px;
 
 font-family: Roboto;
 font-style: normal;
 font-weight: normal;
 font-size: 16px;
-line-height: 19px;
-
-color: #717171;
 }
-#BtnVisit
+.BtnVisit
 {
 position: absolute;
 width: 117px;
@@ -209,4 +124,11 @@ top: 330px;
 
 background: #225866;
 border-radius: 15px;
+}
+#txt-visit
+{
+    position: fixed;
+    left: 373px;
+    top: 334px;
+    color:#E5E5E5;
 }

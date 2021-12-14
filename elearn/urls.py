@@ -71,5 +71,5 @@ urlpatterns = [
     path('taken/', views.TakenQuizListView.as_view(), name='taken_quiz_list'),
     path('quiz/<int:pk>/', views.take_quiz, name='take_quiz'),
     path('lupdate_profile/', views.lupdate_profile, name="lupdate_profile"),
-
+    path('takenquiz/<int:pk>/delete/', views.LTakenQuizDeleteView.as_view(), name='takenquiz_delete'),
 ]

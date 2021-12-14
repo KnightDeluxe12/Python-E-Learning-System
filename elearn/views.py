@@ -14,7 +14,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse, Http404, JsonResponse
 # from .models import Customer, Profile
 from .forms import TakeQuizForm, LearnerSignUpForm, InstructorSignUpForm, QuestionForm, BaseAnswerInlineFormSet, \
     LearnerInterestsForm, LearnerCourse, UserForm, ProfileForm, PostForm
@@ -458,6 +458,21 @@ class QuizResultsView(DeleteView):
         return self.request.user.quizzes.all()
 
 
+class LTakenQuizDeleteView(DeleteView):
+    model = TakenQuiz
+    context_object_name = 'taken_quizzes'
+    template_name = 'dashboard/learner/question_delete_confirm.html'
+    success_url = reverse_lazy('taken_quiz_list')
+
+    def delete(self, request, *args, **kwargs):
+        taken_quizzes = self.get_object()
+        messages.success(request, 'The quiz ' + taken_quizzes.quiz.name + ' was deleted with success!')
+        return super().delete(request, *args, **kwargs)
+
+    def get_queryset(self):
+        queryset = self.request.user.learner.taken_quizzes.all()
+        return queryset
+
 class QuizDeleteView(DeleteView):
     model = Quiz
     context_object_name = 'quiz'
@@ -471,6 +486,7 @@ class QuizDeleteView(DeleteView):
 
     def get_queryset(self):
         return self.request.user.quizzes.all()
+
 
 
 def question_add(request, pk):
@@ -860,7 +876,7 @@ class LQuizListView(ListView):
         taken_quizzes = learner.quizzes.values_list('pk', flat=True)
         queryset = Quiz.objects.filter(course__in=learner_interests) \
             .exclude(pk__in=taken_quizzes) \
-            .annotate(questions_count=Count('questions')) \
+            .annotate(questions_count=Count('questions', course__count=Count('quizzes'))) \
             .filter(questions_count__gt=0, course__name__icontains=q)
         return queryset
 

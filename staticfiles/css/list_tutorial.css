@@ -1,0 +1,26 @@
+    img {
+    }
+    .column1
+    {
+        float:right;
+        position: sticky;
+        top: 0px;
+        margin-left: 15px;
+    }
+    .topics__list {
+      list-style: none;
+    }
+
+    .topics__list li a {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      font-weight: 500;
+      color: #000000;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .topics__list li a.active,
+    .topics__list li a:hover {
+      color: #000000;
+    }
