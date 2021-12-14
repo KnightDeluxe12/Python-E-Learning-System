@@ -201,23 +201,25 @@ class ListUserView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         return User.objects.order_by('-id')
 
-class ListLearnerView(LoginRequiredMixin, ListView): #delete if wrong
+
+class ListLearnerView(LoginRequiredMixin, ListView):  # delete if wrong
     model = User
     template_name = 'dashboard/admin/list_learner.html'
     context_object_name = 'users'
     paginated_by = 10
 
     def get_queryset(self):
-        return User.objects.filter(is_instructor=0, is_admin=0).order_by('-id') #hanggang dito
+        return User.objects.filter(is_instructor=0, is_admin=0).order_by('-id')  # hanggang dito
 
-class ListInstructorView(LoginRequiredMixin, ListView): #delete if wrong
+
+class ListInstructorView(LoginRequiredMixin, ListView):  # delete if wrong
     model = User
     template_name = 'dashboard/admin/list_instructor.html'
     context_object_name = 'users'
     paginated_by = 10
 
     def get_queryset(self):
-        return User.objects.filter(is_learner=0, is_admin=0).order_by('-id') #hanggang dito
+        return User.objects.filter(is_learner=0, is_admin=0).order_by('-id')  # hanggang dito
 
 
 class ListCourseView(LoginRequiredMixin, ListView):
@@ -235,6 +237,7 @@ class ADeleteuser(SuccessMessageMixin, DeleteView):
     template_name = 'dashboard/admin/confirm_delete2.html'
     success_url = reverse_lazy('aluser')
     success_message = "User Was Deleted Successfully"
+
 
 class ADeleteCourse(SuccessMessageMixin, DeleteView):
     model = Course
@@ -396,7 +399,7 @@ def question_change(request, quiz_pk, question_pk):
 
 class QuizListView(ListView):
     model = Quiz
-    ordering = ('name',)
+    ordering = ['name']
     context_object_name = 'quizzes'
     template_name = 'dashboard/instructor/quiz_change_list.html'
 
@@ -463,7 +466,7 @@ class QuizDeleteView(DeleteView):
 
     def delete(self, request, *args, **kwargs):
         quiz = self.get_object()
-        messages.success(request, 'The quiz ' + quiz.name +' was deleted with success!')
+        messages.success(request, 'The quiz ' + quiz.name + ' was deleted with success!')
         return super().delete(request, *args, **kwargs)
 
     def get_queryset(self):
@@ -675,9 +678,10 @@ def update_file(request, pk):
 #     # return render(request, 'dashboard/learner/home.html', users)
 
 class HomeLearnerListView(ListView):
-    model = Course
+    model = Tutorial
     template_name = 'dashboard/learner/home.html'
-    context_object_name = 'courses'
+    context_object_name = 'tutorials'
+
 
 def luser_profile(request):
     current_user = request.user
@@ -686,7 +690,6 @@ def luser_profile(request):
     users = Profile.objects.filter(user_id=user_id)
     users = {'users': users}
     return render(request, 'dashboard/learner/user_profile.html', users)
-
 
 
 class LearnerSignUpView(CreateView):
@@ -774,6 +777,7 @@ def lcreate_profile(request):
         users = {'users': users}
         return render(request, 'dashboard/learner/create_profile.html', users)
 
+
 # def lupdate_profile(request):
 #     if request.method == 'POST':
 #         first_name = request.POST['first_name']
@@ -819,11 +823,21 @@ class LTutorialDetail(LoginRequiredMixin, DetailView):
     template_name = 'dashboard/learner/tutorial_detail.html'
 
 
-class LearnerInterestsView(UpdateView):
+class RedirectToPreviousMixin:
+    default_redirect = '/'
+
+    def get(self, request, *args, **kwargs):
+        request.session['previous_page'] = request.META.get('HTTP_REFERER', self.default_redirect)
+        return super().get(request, *args, **kwargs)
+
+    def get_success_url(self):
+        return self.request.session['previous_page']
+
+
+class LearnerInterestsView(RedirectToPreviousMixin, UpdateView):
     model = Learner
     form_class = LearnerInterestsForm
     template_name = 'dashboard/learner/interests_form.html'
-    success_url = reverse_lazy('lquiz_list')
 
     def get_object(self):
         return self.request.user.learner
@@ -832,21 +846,27 @@ class LearnerInterestsView(UpdateView):
         messages.success(self.request, 'Topics was updated successfully.')
         return super().form_valid(form)
 
+
 class LQuizListView(ListView):
     model = Quiz
-    ordering = ('name',)
     context_object_name = 'quizzes'
     template_name = 'dashboard/learner/quiz_list.html'
 
     def get_queryset(self):
+        q = self.request.GET.get('q') if self.request.GET.get('q') != None else ''
+
         learner = self.request.user.learner
         learner_interests = learner.interests.values_list('pk', flat=True)
         taken_quizzes = learner.quizzes.values_list('pk', flat=True)
         queryset = Quiz.objects.filter(course__in=learner_interests) \
             .exclude(pk__in=taken_quizzes) \
             .annotate(questions_count=Count('questions')) \
-            .filter(questions_count__gt=0)
+            .filter(questions_count__gt=0, course__name__icontains=q)
         return queryset
+
+    def get_ordering(self):
+        ordering = self.request.GET.get('ordering', 'name')
+        return ordering
 
 
 class TakenQuizListView(ListView):
@@ -891,7 +911,7 @@ def take_quiz(request, pk):
                     if score < 50.0:
                         messages.warning(request, 'Better luck next time! Your score for the quiz %s was %s.' % (
                             quiz.name, score))
-                        
+
 
                     else:
                         messages.success(request,

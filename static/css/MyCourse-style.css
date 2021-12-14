@@ -92,8 +92,13 @@ width: 120px;
 height: 120px;
 top: 126px;
 left: -4px;
-background: url(python-logo.png);
+/*background: url(python-logo.png);*/
 border-radius: 26px;
+}
+.background-tint {
+    background-color:black;
+    background-color: rgba(0, 0, 0, .5); /* Tint color */
+    background-blend-mode: multiply;
 }
 .intro
 {
