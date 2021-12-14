@@ -13,23 +13,98 @@
         </h1>
 
         <!-- Blog Post -->
-        <div class="card mb-4">
-            <h2 class="card-title text-primary">{{ tutorial.course.name }} - {{ tutorial.title }}</h2>
 
-          {% if tutorial.thumb %}
-              <img src="{{ tutorial.thumb.url }}" alt="{{ tutorial.title }}" style="width:400px; height: 400px">
-          {% else %}
-                <p></p>
-          {% endif %}
-          <div class="card-body">
-            <p class="card-text">{{ tutorial.content | truncatechars:100 }}</p>
-            <a href="{% url 'itutorial-detail' tutorial.pk %}" class="btn btn-primary">Read More &rarr;</a>
-          </div>
-          <div class="card-footer text-muted">
-            Posted on {{ tutorial.created_at }} by
-            <a href="#">{{ tutorial.user.username }}</a>  
-          </div>
-        </div>
+            <link href="{% static 'css/list_tutorial.css' %}" rel="stylesheet">
+      <div class="container-fluid mt-3">
+      <ol class="breadcrumb">
+                <li class="breadcrumb-item  ">
+                    <a href="{% url 'instructor' %}">Topics</a>
+                </li>
+                <li class="breadcrumb-item active">
+                    Lessons
+                </li>
+      </ol>
+      <div class="row" style="left: 25%;">
+          <div class="col-md-8 ml-5 mr-3">
+                {% for tutorial in tutorials %}
+                    <div class="card mb-4" style="margin:25px 125px 0 125px">
+                      {% if tutorial.thumb %}
+                          <div class="">
+                          <img class="img-fluid" style="" src="{{ tutorial.thumb.url }}" alt="{{ tutorial.title }}" >
+                          </div>
+                      {% else %}
+                            <p></p>
+                      {% endif %}
+                      <div class="ml-4" style="margin:30px 100px -10px 100px">
+                          <h3 class="card-title ml-3">{{ tutorial.title }}</h3>
+                      </div>
+                      <div class="card-body ml-2">
+                        <p class="card-text  text-center">{{ tutorial.content | truncatechars:200 }}</p>
+                        <a href="{% url 'itutorial-detail' tutorial.pk %}" class="btn btn-success">Read More &rarr;</a>
+                      </div>
+                      <div class="card-footer text-muted">
+                        Posted on {{ tutorial.created_at }} by
+                        <a class="text-muted" href="#">{{ tutorial.user.username }}</a>
+                        <span class="text-primary h6 float-right" style="margin-bottom: 0">{{ tutorial.course.get_html_badge }}</span>
+                      </div>
+                    </div>
+                {% endfor %}
+                {% if is_paginated %}
+                <!-- Pagination -->
+                <ul class="pagination justify-content-center mb-4">
+                   {% if page_obj.has_previous %}
+                  <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}">&larr; Previous page</a>
+                  </li>
+                   {% endif %}
+
+                   {% if page_obj.has_next %}
+                  <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next page &rarr;</a>
+                  </li>
+                   {% endif %}
+                </ul>
+                {% endif %}
+            </div>
+          <div class="col mt-4 column1">
+                <div style="width: 300px; background-clip: border-box;border: 1px solid rgba(0, 0, 0, 0.125);">
+                <div class="topics__header">
+                    <h3 style="margin-bottom:30px; margin-left:30px; padding-top: 30px">Browse Topics</h3>
+                </div>
+                <ul class="topics__list">
+                    <li>
+                        <a href="{% url 'itutorial' %}" class="active">All <span style="padding-right: 35px;">{{tutorials.count}}</span></a>
+                    </li>
+                    {% for course in courses %}
+                    <li>
+                          <a href="{% url 'itutorial' %}?q={{course.name}}">{{course.name}}<span style="padding-right: 35px;">{{course.tutorial_set.all.count}}</span></a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+           </div>
+{#      end#}
+
+      </div>
+      </div>
+
+{#        <div class="card mb-4">#}
+{#            <h2 class="card-title text-primary">{{ tutorial.course.name }} - {{ tutorial.title }}</h2>#}
+{##}
+{#          {% if tutorial.thumb %}#}
+{#              <img src="{{ tutorial.thumb.url }}" alt="{{ tutorial.title }}" style="width:400px; height: 400px">#}
+{#          {% else %}#}
+{#                <p></p>#}
+{#          {% endif %}#}
+{#          <div class="card-body">#}
+{#            <p class="card-text">{{ tutorial.content | truncatechars:100 }}</p>#}
+{#            <a href="{% url 'itutorial-detail' tutorial.pk %}" class="btn btn-primary">Read More &rarr;</a>#}
+{#          </div>#}
+{#          <div class="card-footer text-muted">#}
+{#            Posted on {{ tutorial.created_at }} by#}
+{#            <a href="#">{{ tutorial.user.username }}</a>#}
+{#          </div>#}
+{#        </div>#}
 
 
         {% endfor %}

@@ -6,27 +6,31 @@
 {% block body %}
  
       <!-- Blog Entries Column -->
-      <div class="col-md-8" style="padding-top: 20px">
-           <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                  <a href="{% url 'itutorial' %}" style="padding-left: 10px">
-                            <button type="submit" class="btn btn-primary">Back</button>
-                            </a>
+      <div class="d-flex justify-content-center">
+      <!-- Blog Entries Column -->
+      <div class="p-2" style="padding-top: 20px;margin: 10px 100px 0 100px;">
+        <ol class="breadcrumb" style="margin-bottom: 0">
+            <li class="breadcrumb-item">
+              <a class="" href="{% url 'itutorial' %}" style="padding-left: 10px">
+                 <i class="fa fa-arrow-left text-success" aria-hidden="true"></i>
+              </a>
 
-                    <a href="" style="color: green; font-weight: bold; letter-spacing: 10px; padding-left: 30px">{{ object.title }} </a>
+              <span style="font-size: 23px; padding-left: 30px">
+                  {{ object.title }}
+              </span>
 
 
-                </li>
-            </ol>
+            </li>
+        </ol>
 
-        <h1 class="my-4">
-          <small></small>
-        </h1>
+        <div class="breadcrumb" style="margin-top: -24px;">
+          <span class="mr-2" style="margin-left: 103px">Topic tags:</span><div>{{ object.course.get_html_badge }}</div>
+        </div>
 
         <!-- Blog Post -->
         <div class="card mb-4">
           {% if object.thumb %}
-              <img src="{{ object.thumb.url }}" alt="{{ object.title }}" style="width:500px; height:500px">
+              <img class="img-fluid" style="max-width: 75%; margin:auto;" src="{{ object.thumb.url }}" alt="{{ object.title }}">
           {% else %}
                 <p></p>
           {% endif %}
@@ -41,4 +45,5 @@
           </div>
         </div>
       </div>
+</div>
 {% endblock %}      
