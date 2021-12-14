@@ -6,18 +6,15 @@ from embed_video.fields import EmbedVideoField
 from django.core.validators import RegexValidator
 
 
-
 class User(AbstractUser):
     is_learner = models.BooleanField(default=False)
     is_instructor = models.BooleanField(default=False)
     is_admin = models.BooleanField(default=False)
-    
-
 
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    avatar = models.ImageField(upload_to = '', default = 'no-img.jpg', blank=True)
+    avatar = models.ImageField(upload_to='', default='no-img.jpg', blank=True)
     first_name = models.CharField(max_length=255, default='')
     last_name = models.CharField(max_length=255, default='')
     email = models.EmailField(default='none@email.com')
@@ -34,12 +31,10 @@ class Profile(models.Model):
         return self.user.username
 
 
-
 class Announcement(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField()
     posted_at = models.DateTimeField(auto_now=True, null=True)
-
 
     def __str__(self):
         return str(self.content)
@@ -48,7 +43,7 @@ class Announcement(models.Model):
 class Course(models.Model):
     name = models.CharField(max_length=30)
     color = models.CharField(max_length=7, default='#007bff')
- 
+
     def __str__(self):
         return self.name
 
@@ -57,6 +52,7 @@ class Course(models.Model):
         color = escape(self.color)
         html = '<span class="badge badge-primary" style="background-color: %s">%s</span>' % (color, name)
         return mark_safe(html)
+
 
 class Tutorial(models.Model):
     title = models.CharField(max_length=50)
@@ -75,16 +71,14 @@ class Notes(models.Model):
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
-
     def __str__(self):
         return self.title
 
     def delete(self, *args, **kwargs):
         self.file.delete()
         self.cover.delete()
-        super().delete(*args, **kwargs)    
+        super().delete(*args, **kwargs)
 
-  
 
 class Quiz(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='quizzes')
@@ -128,7 +122,6 @@ class Learner(models.Model):
         return self.user.username
 
 
-
 class Instructor(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     interest = models.ManyToManyField(Course, related_name="more_locations")
@@ -141,9 +134,6 @@ class TakenQuiz(models.Model):
     date = models.DateTimeField(auto_now_add=True)
 
 
-
 class LearnerAnswer(models.Model):
     student = models.ForeignKey(Learner, on_delete=models.CASCADE, related_name='quiz_answers')
-    answer = models.ForeignKey(Answer, on_delete=models.CASCADE, related_name='+')    
-
-
+    answer = models.ForeignKey(Answer, on_delete=models.CASCADE, related_name='+')

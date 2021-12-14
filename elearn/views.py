@@ -470,8 +470,7 @@ class LTakenQuizDeleteView(DeleteView):
         return super().delete(request, *args, **kwargs)
 
     def get_queryset(self):
-        queryset = self.request.user.learner.taken_quizzes.all()
-        return queryset
+        return self.request.user.learner.takenquiz.all()
 
 class QuizDeleteView(DeleteView):
     model = Quiz
