@@ -4,168 +4,69 @@
 
 {% block body %}
 <link href="{% static 'css/MyCourse-style.css' %}" rel="stylesheet">
+<div class="container-fluid">
 
- <div id="content-wrapper">
+    <!-- Icon Cards-->
+    <div class="row">
+        <div class="container-fluid mt-3">
 
-        <div class="container-fluid">
-
-            <!-- Icon Cards-->
+            <!-- Breadcrumbs-->
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item active">Overview</li>
+            </ol>
+            {% if courses %}
             <div class="row">
-                <div class="container-fluid">
-
-                    <!-- Breadcrumbs-->
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a href="">Dashboard</a>
-                        </li>
-                        <li class="breadcrumb-item active">Overview</li>
-                    </ol>
-                    <div class="lesson-list">
-                        <!-- Container 1-->
-                        <div class="Container1">
-                            <div class="Rectangle"></div>
-                            <div class="Course-Python">
-                                <img id="Course-Cover" src="{% static 'OnlineLearningSystem\FigmaProjectImages\course-cover.jpg' %}">
-                                <img id="Python-Logo" src="{% static 'OnlineLearningSystem\FigmaProjectImages\python-logo.png' %}">
-                                <p id="Intro">Lesson 1: Introduction to Computer Programming</p>
-                                <a href="#">
-                                <div class="BtnVisit">
-                                    <p id="txt-visit">
-                                        Visit Course
-                                    </p>
-                                </div>
-                                </a>
-                                
-                            </div>
-                        </div>
-                        <div></div>
-                        <!-- Container 2-->
-                        <div class="Container2">
-                            <div class="Rectangle"></div>
-                            <div class="Course-Python">
-                                <img id="Course-Cover" src="{% static 'OnlineLearningSystem\FigmaProjectImages\course-cover.jpg' %}">
-                                <img id="Python-Logo" src="{% static 'OnlineLearningSystem\FigmaProjectImages\python-logo.png' %}">
-                                <p id="Intro">Lesson 2: Python and its Syntax</p>
-                                <a href="#">
-                                <div class="BtnVisit">
-                                    <p id="txt-visit">
-                                        Visit Course
-                                    </p>
-                                </div>
-                                </a>
-                                
-                            </div>
-
-                        </div>
-                        <div></div>
-                        <!-- Container 3-->
-                        <div class="Container3">
-                            <div class="Rectangle"></div>
-                            <div class="Course-Python">
-                                <img id="Course-Cover" src="{% static 'OnlineLearningSystem\FigmaProjectImages\course-cover.jpg' %}">
-                                <img id="Python-Logo" src="{% static 'OnlineLearningSystem\FigmaProjectImages\python-logo.png' %}">
-                                <p id="Intro">Lesson 3: Variables and Data Types</p>
-                                <a href="#">
-                                <div class="BtnVisit">
-                                    <p id="txt-visit">
-                                        Visit Course
-                                    </p>
-                                </div>
-                                </a>
-                                
-                            </div>
-                        </div>
-                        <!-- Container 4-->
-                        <div class="Container4">
-                            <div class="Rectangle"></div>
-                            <div class="Course-Python">
-                                <img id="Course-Cover" src="{% static 'OnlineLearningSystem\FigmaProjectImages\course-cover.jpg' %}">
-                                <img id="Python-Logo" src="{% static 'OnlineLearningSystem\FigmaProjectImages\python-logo.png' %}">
-                                <p id="Intro">Lesson 4: Numbers and Operators</p>
-                                <a href="#">
-                                <div class="BtnVisit">
-                                    <p id="txt-visit">
-                                        Visit Course
-                                    </p>
-                                </div>
-                                </a>
-                                
-                            </div>
-                        </div>
-                        <div></div>
-                        <!-- Container 5-->
-                        <div class="Container5">
-                            <div class="Rectangle"></div>
-                            <div class="Course-Python">
-                                <img id="Course-Cover" src="{% static 'OnlineLearningSystem\FigmaProjectImages\course-cover.jpg' %}">
-                                <img id="Python-Logo" src="{% static 'OnlineLearningSystem\FigmaProjectImages\python-logo.png' %}">
-                                <p id="Intro">Lesson 5: User Input</p>
-                                <a href="#">
-                                <div class="BtnVisit">
-                                    <p id="txt-visit">
-                                        Visit Course
-                                    </p>
-                                </div>
-                                </a>
-                                
-                            </div>
-                        </div>
-                        <div></div>
-                        <!-- Container 6-->
-                        <div class="Container6">
-                            <div class="Rectangle"></div>
-                            <div class="Course-Python">
-                                <img id="Course-Cover" src="{% static 'OnlineLearningSystem\FigmaProjectImages\course-cover.jpg' %}">
-                                <img id="Python-Logo" src="{% static 'OnlineLearningSystem\FigmaProjectImages\python-logo.png' %}">
-                                <p id="Intro">Lesson 6: Conditional Statements</p>
-                                <a href="#">
-                                <div class="BtnVisit">
-                                    <p id="txt-visit">
-                                        Visit Course
-                                    </p>
-                                </div>
-                                </a>
-                                
-                            </div>
-                        </div>
-                        <!-- Container 7-->
-                        <div class="Container7">
-                            <div class="Rectangle"></div>
-                            <div class="Course-Python">
-                                <img id="Course-Cover" src="{% static 'OnlineLearningSystem\FigmaProjectImages\course-cover.jpg' %}">
-                                <img id="Python-Logo" src="{% static 'OnlineLearningSystem\FigmaProjectImages\python-logo.png' %}">
-                                <p id="Intro">Lesson 7: Loops</p>
-                                <a href="#">
-                                <div class="BtnVisit">
-                                    <p id="txt-visit">
-                                        Visit Course
-                                    </p>
-                                </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div></div>
-                        <!-- Container 8-->
-                        <div class="Container8">
-                            <div class="Rectangle"></div>
-                            <div class="Course-Python">
-                                <img id="Course-Cover" src="{% static 'OnlineLearningSystem\FigmaProjectImages\course-cover.jpg' %}">
-                                <img id="Python-Logo" src="{% static 'OnlineLearningSystem\FigmaProjectImages\python-logo.png' %}">
-                                <p id="Intro">Lesson 8: Arrays</p>
-                                <a href="#">
-                                <div class="BtnVisit">
-                                    <p id="txt-visit">
-                                        Visit Course
-                                    </p>
-                                </div>
-                                </a>
-                            </div>
-                        </div>
+                {% for course in courses %}
+                {% if forloop.counter0|divisibleby:3 and not forloop.first %}
+                    <div class="w-100"></div>
+                {% endif %}
+                <div class="col-sm-6 col-md-4">
+                    <div class="card bg-light  mb-sm-0 mb-md-5"  style="">
+                       <div>
+                           <img class="img-fluid rounded" style="width: 100%; height: 221px; object-fit:cover;" src="{% static 'OnlineLearningSystem\FigmaProjectImages\course-cover.jpg' %}">
+                           <img class="img-fluid" style="position: absolute;top: 40%;left: 70%;max-width: 25%; object-fit:cover;" src="{% static 'OnlineLearningSystem\FigmaProjectImages\python-logo.png' %}">
+                       </div>
+                       <div class="card-body">
+                           <p class="intro h5" style="font-weight: 500">{{ course.name }}</p>
+                           <a class="btn btn-success" href="{% url 'ltutorial' %}?q={{ course.name }}">Visit Course</a>
+                       </div>
+                       <div class="card-footer">
+                            <span class="text-muted float-right" style="margin-bottom: 0">Topic tag:   {{ course.get_html_badge }}</span>
+                       </div>
                     </div>
                 </div>
+                {% endfor %}
             </div>
+            {% endif %}
+{#                <div class="col-md-4">#}
+{#                    <div class="Rectangle"></div>#}
+{#                    <div class="Course-Python">#}
+{#                        <img id="Course-Cover" src="{% static 'OnlineLearningSystem\FigmaProjectImages\course-cover.jpg' %}">#}
+{#                        <img id="Python-Logo" src="{% static 'OnlineLearningSystem\FigmaProjectImages\python-logo.png' %}">#}
+{#                        <p id="Intro">Lesson 1: Introduction to Computer Programming</p>#}
+{#                        <a href="#">#}
+{#                    <div class="BtnVisit">#}
+{#                        <a href="{% url 'ltutorial' %}?q=Python%20and%20its%20Syntax" id="txt-visit">#}
+{#                            Visit Course#}
+{#                        </a>#}
+{#                    </div>#}
+{#                        </a>#}
+{##}
+{#                    </div>#}
+{#                </div>#}
         </div>
-        </div>  
-
+    </div>
+</div>
 {% endblock %}
+
+{#                                <tr>#}
+{#                                    <td>{{ course.id }}</td>#}
+{#                                    <td>{{ course.name }}</td>#}
+{#                                    <td>{{ course.color }}</td>#}
+{#        <td>#}
+{#          <a href="{% url 'adcourse' course.pk %}"><button type="button" class="btn btn-danger"> Delete</button></a></td>#}
+{#                                </tr>#}
 

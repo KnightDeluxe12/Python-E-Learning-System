@@ -661,18 +661,23 @@ def update_file(request, pk):
 
 
 # Learner Views
-def home_learner(request):
-    # learner = User.objects.filter(is_learner=True).count()
-    # instructor = User.objects.filter(is_instructor=True).count()
-    # course = Course.objects.all().count()
-    # users = User.objects.all().count()
-    # context = {'learner': learner, 'course': course, 'instructor': instructor, 'users': users}
-    current_user = request.user
-    user_id = current_user.id
-    model = Profile
-    users = Profile.objects.get(user_id=user_id)
-    users = {'users': users}
-    return render(request, 'dashboard/learner/home.html', users)
+# def home_learner(request):
+#     # learner = User.objects.filter(is_learner=True).count()
+#     # instructor = User.objects.filter(is_instructor=True).count()
+#     # course = Course.objects.all().count()
+#     # users = User.objects.all().count()
+#     # context = {'learner': learner, 'course': course, 'instructor': instructor, 'users': users}
+#     # current_user = request.user
+#     # user_id = current_user.id
+#     # model = Profile
+#     # users = Profile.objects.get(user_id=user_id)
+#     # users = {'users': users}
+#     # return render(request, 'dashboard/learner/home.html', users)
+
+class HomeLearnerListView(ListView):
+    model = Course
+    template_name = 'dashboard/learner/home.html'
+    context_object_name = 'courses'
 
 def luser_profile(request):
     current_user = request.user
