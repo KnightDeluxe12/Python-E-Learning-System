@@ -35,9 +35,9 @@
                             <td class="align-middle">{{ taken_quiz.quiz.course.get_html_badge }}</td>
                             <td class="align-middle">{{ taken_quiz.score }}</td>
                             <td class="text-right">
-{#                                <a href="{% url 'takenquiz_delete' taken_quiz.pk %}" class="btn btn-primary">#}
+                                <a href="{% url 'takenquiz_delete' taken_quiz.pk %}" class="btn btn-primary">
                                     Retake quiz
-{#                                </a>#}
+                                </a>
                             </td>
                           </tr>
                         {% empty %}
