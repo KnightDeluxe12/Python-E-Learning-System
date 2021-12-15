@@ -1,11 +1,11 @@
 {% extends 'dashboard/admin/base.html' %}
 
 {% block body %}
-<div class="container-fluid">
-        <div class="row">
-          <div class="col-12 mb-3">
-          <div class="col-12 mb-3">
-              <div id="content-wrapper">
+    <div class="container-fluid">
+    <div class="row">
+    <div class="col-12 mb-3">
+    <div class="col-12 mb-3">
+    <div id="content-wrapper">
         <div class="container-fluid">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
@@ -24,24 +24,22 @@
                         </div>
                     {% endfor %}
 
-    <div class="row">
-        <div class="col-12">
-            <form method="post">
-                {% csrf_token %}
-                <div class="alert alert-warning" role="alert">
-                  Are you sure to delete detail of {{ object }} ?
+                    <div class="row">
+                        <div class="col-12">
+                            <form method="post">
+                                {% csrf_token %}
+                                <div class="alert alert-warning" role="alert">
+                                    Are you sure to delete detail of {{ object }} ?
+                                </div>
+                                <input type="submit" class="btn btn-danger" value="Yes, delete it"/>
+                                <a class="btn btn-success" href="{% url 'dashboard' %}">No, I changed my mind.</a>
+                            </form>
+                        </div>
+                    </div>
+
+
                 </div>
-                <input type="submit" class="btn btn-danger" value="Yes, delete it" />
-                <a class="btn btn-success" href="{% url 'dashboard' %}">No, I changed my mind.</a>
-            </form>
+            </div>
         </div>
-    </div>
-
-                  
-
-
-          </div>
-        </div>
-      </div>
     </div>
 {% endblock %}

@@ -1,49 +1,50 @@
 {% extends 'dashboard/instructor/base.html' %}
 
 
-
 {% load static %}
 {% block body %}
- 
-      <!-- Blog Entries Column -->
-      <div class="d-flex justify-content-center">
-      <!-- Blog Entries Column -->
-      <div class="p-2" style="padding-top: 20px;margin: 10px 100px 0 100px;">
-        <ol class="breadcrumb" style="margin-bottom: 0">
-            <li class="breadcrumb-item">
-              <a class="" href="{% url 'itutorial' %}" style="padding-left: 10px">
-                 <i class="fa fa-arrow-left text-success" aria-hidden="true"></i>
-              </a>
 
-              <span style="font-size: 23px; padding-left: 30px">
+    <!-- Blog Entries Column -->
+    <div class="d-flex justify-content-center">
+        <!-- Blog Entries Column -->
+        <div class="p-2" style="padding-top: 20px;margin: 10px 100px 0 100px;">
+            <ol class="breadcrumb" style="margin-bottom: 0">
+                <li class="breadcrumb-item">
+                    <a class="" href="{% url 'itutorial' %}" style="padding-left: 10px">
+                        <i class="fa fa-arrow-left text-success" aria-hidden="true"></i>
+                    </a>
+
+                    <span style="font-size: 23px; padding-left: 30px">
                   {{ object.title }}
               </span>
 
 
-            </li>
-        </ol>
+                </li>
+            </ol>
 
-        <div class="breadcrumb" style="margin-top: -24px;">
-          <span class="mr-2" style="margin-left: 103px">Topic tags:</span><div>{{ object.course.get_html_badge }}</div>
+            <div class="breadcrumb" style="margin-top: -24px;">
+                <span class="mr-2" style="margin-left: 103px">Topic tags:</span>
+                <div>{{ object.course.get_html_badge }}</div>
+            </div>
+
+            <!-- Blog Post -->
+            <div class="card mb-4">
+                {% if object.thumb %}
+                    <img class="img-fluid" style="max-width: 75%; margin:auto;" src="{{ object.thumb.url }}"
+                         alt="{{ object.title }}">
+                {% else %}
+                    <p></p>
+                {% endif %}
+                <div class="card-body">
+                    <h2 class="card-title"></h2>
+                    <p class="card-text">{{ object.content|linebreaks }}</p>
+                </div>
+                <div class="card-footer text-muted">
+                    Posted on {{ object.created_at }} by
+                    <a href="#">{{ object.user.username }}</a>
+
+                </div>
+            </div>
         </div>
-
-        <!-- Blog Post -->
-        <div class="card mb-4">
-          {% if object.thumb %}
-              <img class="img-fluid" style="max-width: 75%; margin:auto;" src="{{ object.thumb.url }}" alt="{{ object.title }}">
-          {% else %}
-                <p></p>
-          {% endif %}
-          <div class="card-body">
-            <h2 class="card-title"></h2>
-            <p class="card-text">{{ object.content|linebreaks }}</p>
-          </div>
-          <div class="card-footer text-muted">
-            Posted on {{ object.created_at }} by
-            <a href="#">{{ object.user.username }}</a>
-
-          </div>
-        </div>
-      </div>
-</div>
+    </div>
 {% endblock %}      
