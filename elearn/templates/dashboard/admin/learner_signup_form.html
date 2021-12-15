@@ -5,62 +5,63 @@
 {% load crispy_forms_tags %}
 
 {% block body %}
-  <div class="container-fluid">
-        <div class="row">
-          <div class="col-12 mb-3">
-          <div class="col-12 mb-3">
-           
+    <div class="container-fluid">
+    <div class="row">
+    <div class="col-12 mb-3">
+    <div class="col-12 mb-3">
 
-                <div id="content-wrapper" style="padding-top: 20px">
-        <div class="container-fluid">
-            <div class="card mb-3">
-                <div class="card-header">
-                    <i class="fas fa-table text-danger"></i>
-                    Please Add New Learner For E-Learning
+
+    <div id="content-wrapper" style="padding-top: 20px">
+    <div class="container-fluid">
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fas fa-table text-danger"></i>
+            Please Add New Learner For E-Learning
+        </div>
+        <div class="card-body">
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+                    {{ message }}
                 </div>
-                <div class="card-body">
-                    {% for message in messages %}
-                        <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
-                            {{ message }}
-                        </div>
-                    {% endfor %}
-      <h4 class="text-danger">Add New Learner</h4>
-      <form method="post" novalidate>
-        {% csrf_token %}
-        <input type="hidden" name="next" value="{{ next }}">
-        {{ form|crispy }}
-        <input type="checkbox" id="selectAll"><span class="">All</span>
-        <br><br><button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-      <br>
+            {% endfor %}
+            <h4 class="text-danger">Add New Learner</h4>
+            <form method="post" novalidate>
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ next }}">
+                {{ form|crispy }}
+                <input type="checkbox" id="selectAll"><span class="">All</span>
+                <br><br>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            <br>
 
-        <div class="card-footer">
-        <div class="d-flex justify-content-center">
-            <div class="messages">
-                {% for message in messages %}
+            <div class="card-footer">
+                <div class="d-flex justify-content-center">
+                    <div class="messages">
+                        {% for message in messages %}
 
-                    <a class="alert alert-success" style="color:red;"> {{ message }}</a>
+                            <a class="alert alert-success" style="color:red;"> {{ message }}</a>
 
-                {% endfor %}
+                        {% endfor %}
+                    </div>
+                </div>
             </div>
-          </div>
-      </div>
-              
+
+        </div>
     </div>
-  </div>
-  <script type="text/javascript" src="{% static 'js/jquery-2.1.3.min.js' %}"></script>
-<script type="text/javascript">
-$("#selectAll").change(function() {
-    $("#id_interests_0:checkbox").attr('checked', this.checked);
-    $("#id_interests_1:checkbox").attr('checked', this.checked);
-    $("#id_interests_2:checkbox").attr('checked', this.checked);
-    $("#id_interests_3:checkbox").attr('checked', this.checked);
-    $("#id_interests_4:checkbox").attr('checked', this.checked);
-    $("#id_interests_5:checkbox").attr('checked', this.checked);
-    $("#id_interests_6:checkbox").attr('checked', this.checked);
-    $("#id_interests_7:checkbox").attr('checked', this.checked);
-});
-</script>
+    <script type="text/javascript" src="{% static 'js/jquery-2.1.3.min.js' %}"></script>
+    <script type="text/javascript">
+        $("#selectAll").change(function () {
+            $("#id_interests_0:checkbox").attr('checked', this.checked);
+            $("#id_interests_1:checkbox").attr('checked', this.checked);
+            $("#id_interests_2:checkbox").attr('checked', this.checked);
+            $("#id_interests_3:checkbox").attr('checked', this.checked);
+            $("#id_interests_4:checkbox").attr('checked', this.checked);
+            $("#id_interests_5:checkbox").attr('checked', this.checked);
+            $("#id_interests_6:checkbox").attr('checked', this.checked);
+            $("#id_interests_7:checkbox").attr('checked', this.checked);
+        });
+    </script>
 {% endblock body %}
 
 

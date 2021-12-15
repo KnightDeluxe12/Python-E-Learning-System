@@ -1,39 +1,79 @@
 {% extends 'dashboard/learner/base.html' %}
 
 {% load crispy_forms_tags %}
+{% load static %}
 
 {% block body %}
-  <div class="container-fluid">
+    <div class="container-fluid">
         <div class="row">
-          <div class="col-12 mb-3">
-          <div class="col-12 mb-3">
-           
+            <div class="col-2"></div>
+            <div class="col-8 mb-3">
+                <div class="bg-dark" style="margin: 7.5rem 0 0 0; border-radius: 15px;">
+                    <div>
+                        <img class="img-fluid rounded"
+                             style="filter: blur(1px);width: 100%; height: 221px; object-fit:cover;"
+                             src="{% static 'OnlineLearningSystem\FigmaProjectImages\course-cover.jpg' %}">
+                    </div>
+                    <div class="text-light ml-4" style="margin-top: -10rem; position: relative;">
+                        <h1 class="display-4" style="position: relative;">{{ quiz.name }}</h1>
+                        <p class="lead ml-2" style="position: relative;">All questions are multiple choice question.
+                            Only one choice is correct.</p>
+                        <hr class="my-4">
+                    </div>
+                    <div style="padding-bottom: 0rem"></div>
 
-                <div id="content-wrapper" style="padding-top: 20px">
-        <div class="container-fluid">
-            <div class="card mb-3">
-                <div class="card-header">
-                    <i class="fas fa-table text-primary"></i>
-                    List of Taken Quiz
-                </div>
-                <div class="card-body">
-                    {% for message in messages %}
-                        <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
-                            {{ message }}
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="fas fa-table text-primary ml-3"></i> <span
+                                class="ml-4">{{ quiz.course.get_html_badge }}</span>
                         </div>
-                    {% endfor %}
+                        <div class="card-body">
+                            {% for message in messages %}
+                                <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                            <div class="mb-1">
+                                <div class="float-left mr-2 bg-primary text-light px-2"
+                                     style="border-radius: 5px;">{{ total_unanswered }} / {{ total_question }}</div>
+                                <div class="progress" style="height: 23px;">
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="{{ progress }}"
+                                         aria-valuemin="0" aria-valuemax="100"
+                                         style="width: {{ progress }}%">{{ progress }}%
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="progress mb-3" style="height: 1.5px;">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="{{ progress }}"
+                                     aria-valuemin="0" aria-valuemax="100" style="width: {{ progress }}%"></div>
+                            </div>
+                            <div class="ml-4">
+                                <p class="lead">{{ question.text }}</p>
+                                <style>
+                                    .radio label {
+                                        margin-left: 1rem;
+                                    }
 
-
-  <div class="progress mb-3">
-    <div class="progress-bar" role="progressbar" aria-valuenow="{{ progress }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ progress }}%"></div>
-  </div>
-  <h2 class="mb-3">{{ quiz.name }}</h2>
-  <p class="lead">{{ question.text }}</p>
-  <form method="post" novalidate>
-    {% csrf_token %}
-    {{ form|crispy }}
-    <button type="submit" class="btn btn-primary">Next →</button>
-  </form>
+                                    input[type=radio] {
+                                        margin-right: 0.75rem;
+                                    }
+                                </style>
+                                <form class="formClass" method="post" novalidate>
+                                    {% csrf_token %}
+                                    {{ form.answer|as_crispy_field }}
+                                    <a href="{% url 'ltutorial' %}" class="text-muted float-left"> Forgot the
+                                        answer?</a>
+                                    <button type="submit" class="btn btn-primary float-right mr-5">Next →</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="padding-bottom: 2rem"></div>
+                </div>
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>
 
 
 {% endblock body %}
