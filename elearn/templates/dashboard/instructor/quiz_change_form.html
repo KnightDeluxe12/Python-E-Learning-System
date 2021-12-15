@@ -12,17 +12,10 @@
 
                 <div id="content-wrapper" style="padding-top: 20px">
         <div class="container-fluid">
-            <ol class="breadcrumb">
-                             
-                <li class="breadcrumb-item">
-                    <a href="">Registered Courses</a>
-                </li>
-                
-            </ol>
             <div class="card mb-3">
                 <div class="card-header">
                     <i class="fas fa-table text-primary"></i>
-                    Please Select Course For Teaching
+                    Update Quiz
                 </div>
                 <div class="card-body">
                    {% for message in messages %}
@@ -39,11 +32,13 @@
       <li class="breadcrumb-item active" aria-current="page">{{ quiz.name }}</li>
     </ol>
   </nav>
-  <h2 class="m-4">
+  <h2 class="m-2">
+
     {{ quiz.name }}
     <a href="{% url 'quiz_results' quiz.pk %}" class="btn btn-primary float-right">View results</a>
   </h2>
-  <div class="row mb-3">
+  <hr>
+  <div class="row mb-4 ml-2">
 
       <form method="post" novalidate>
         {% csrf_token %}
