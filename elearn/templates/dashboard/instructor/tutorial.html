@@ -11,11 +11,9 @@
                 <div id="content-wrapper" style="padding-top: 30px">
         <div class="container-fluid">
             <ol class="breadcrumb">
-                             
                 <li class="breadcrumb-item">
-                    <a href="">Post New Tutorial</a>
+                    <p href="#" style="color: dimgrey; font-weight: bold; font-size: 30px;">Post New Tutorial</p>
                 </li>
-                
             </ol>
             <div class="card mb-3">
                 <div class="card-header">
@@ -31,23 +29,23 @@
               <form method="post" action="{% url 'publish_tutorial' %}" enctype="multipart/form-data">
                   {% csrf_token %}
                   <div class="form-label-group">
-                    <select class="w3-select w3-border" name="course_id" required="">
-                  }
+                    <select class="w3-select w3-border mb-3" name="course_id" required="">
 
-  <option value="">Choose Course</option>
 
-  {% if courses %}
-  {% for course in courses %}
-<option value="{{ course.id }}">{{ course.name }}</option>
-  {% endfor %}
-  {% endif %}
-</select>
-                                </div>
+                        <option value="">Choose Course</option>
+
+                        {% if courses %}
+                        {% for course in courses %}
+                            <option value="{{ course.id }}">{{ course.name }}</option>
+                        {% endfor %}
+                        {% endif %}
+                    </select>
+                  </div>
 
              <div class="form-group">
             <div class="row">
-                <div class="col"><label>Attach Image</label><br>
-                    <input type="file" name="thumb" placeholder="Report Attachment" enctype="multipart/form-data">
+                <div class="col"><label>Attach Image *</label><br>
+                    <input type="file" name="thumb" placeholder="Report Attachment" enctype="multipart/form-data" required>
                 </div>
             </div>          
         </div>
@@ -58,7 +56,7 @@
             <div class="row">
                 <div class="col"><label>Tutorial Title</label><br>
 
-                	<input type="text" name="title">        
+                	<input type="text" name="title" required>
             </div>          
         </div>
       </div>
@@ -66,7 +64,7 @@
           	  <div class="form-group">
             <div class="row">
                 <div class="col"><label>Tutorial Content</label><br>
-            	<textarea name="content"s rows="5" cols="40"></textarea>
+            	<textarea name="content"s rows="5" cols="40" required></textarea>
 
             </div>          
         </div>
@@ -75,7 +73,7 @@
 
           <div class="form-group">
             <div class="row">
-            	<button type="submit" style="background-color:" class="btn btn btn-primary" href="">Post</button>
+            	<button type="submit" style="background-color:" class="btn btn-primary ml-3" href="">Post</button>
 
             </div>          
         </div>  
