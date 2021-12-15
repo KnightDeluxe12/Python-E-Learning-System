@@ -54,7 +54,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 # pip3 install django-crispy-forms
 # pip3 install django-embed-video
 # pip3 install pillow
-#pip3 install django-bootstrap-modal-forms
+# pip3 install django-bootstrap-modal-forms
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

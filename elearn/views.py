@@ -34,7 +34,8 @@ import operator
 import itertools
 from django.db.models import Avg, Count, Sum, Q
 from django.forms import inlineformset_factory, formset_factory
-from .models import TakenQuiz, Profile, Quiz, Question, Answer, Learner, User, Course, Tutorial, Notes, Announcement
+from .models import TakenQuiz, Profile, Quiz, Question, Answer, Learner, User, Course, Tutorial, Notes, Announcement, \
+    LearnerAnswer
 from django.db import transaction
 from django.contrib.auth.hashers import make_password
 from django.core.files.storage import FileSystemStorage
@@ -458,19 +459,31 @@ class QuizResultsView(DeleteView):
         return self.request.user.quizzes.all()
 
 
-class LTakenQuizDeleteView(DeleteView):
-    model = TakenQuiz
-    context_object_name = 'taken_quizzes'
-    template_name = 'dashboard/learner/question_delete_confirm.html'
-    success_url = reverse_lazy('taken_quiz_list')
+# class LTakenQuizDeleteView(DeleteView):
+#     model = TakenQuiz
+#     context_object_name = 'taken_quizzes'
+#     template_name = 'dashboard/learner/question_delete_confirm.html'
+#     success_url = reverse_lazy('taken_quiz_list')
+#
+#     def delete(self, request, *args, **kwargs):
+#         taken_quizzes = self.get_object()
+#         messages.success(request, 'The quiz ' + taken_quizzes.quiz.name + ' was deleted with success!')
+#         return super().delete(request, *args, **kwargs)
+#
+#     def get_queryset(self):
+#         return self.request.user.learner.takenquiz.all()
 
-    def delete(self, request, *args, **kwargs):
-        taken_quizzes = self.get_object()
-        messages.success(request, 'The quiz ' + taken_quizzes.quiz.name + ' was deleted with success!')
-        return super().delete(request, *args, **kwargs)
+def LTakenQuizDeleteView(request, pk):
+    taken_quizzes = get_object_or_404(TakenQuiz, pk=pk, learner=request.user.id)
+    if request.method == 'POST':
+        taken_answer = TakenQuiz.objects.get(id=pk)
+        learner_answer = LearnerAnswer.objects.filter(student_id=request.user.id)
+        learner_answer.all().delete()
+        taken_answer.delete()
+        return redirect('lquiz_list')
 
-    def get_queryset(self):
-        return self.request.user.learner.takenquiz.all()
+    return render(request, 'dashboard/learner/question_delete_confirm.html', {'taken_quizzes': taken_quizzes})
+
 
 class QuizDeleteView(DeleteView):
     model = Quiz
@@ -940,5 +953,8 @@ def take_quiz(request, pk):
         'quiz': quiz,
         'question': question,
         'form': form,
-        'progress': progress
+        'progress': progress,
+        'total_unanswered': total_unanswered_questions,
+        'total_question':total_questions
+
     })

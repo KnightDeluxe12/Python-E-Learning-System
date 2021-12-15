@@ -3,10 +3,10 @@
 
 
 {% block body %}
-  <link href="{% static 'css/list_tutorial.css' %}" rel="stylesheet">
-  <div class="container-fluid">
-     <div class="row mt-3 mx-5">
-         <div class="col-sm-push-4 float-sm-right col-md-9">
+    <link href="{% static 'css/list_tutorial.css' %}" rel="stylesheet">
+    <div class="container-fluid">
+        <div class="row mt-3 mx-5">
+            <div class="col-sm-push-4 float-sm-right col-md-9">
                 <div class="card mb-3">
                     <div class="card-header">
                         <i class="fas fa-table text-primary"></i>
@@ -20,66 +20,73 @@
                         {% endfor %}
                         {% include 'dashboard/learner/_header.html' with active='new' %}
 
-                    <table class="table mb-0">
-                      <thead>
-                        <tr>
-                          <th>Quiz</th>
-                          <th>Topic</th>
-                          <th>Length</th>
-                          <th></th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {% for quiz in quizzes %}
-                          <tr>
-                            <td class="align-middle">{{ quiz.name }}</td>
-                            <td class="align-middle">{{ quiz.course.get_html_badge }}</td>
-                            <td class="align-middle">{{ quiz.questions_count }} questions</td>
-                            <td class="text-right">
-                              <a href="{% url 'take_quiz' quiz.pk %}" class="btn btn-primary">Start quiz</a>
-                            </td>
-                          </tr>
-                        {% empty %}
-                          <tr>
-                            <td class="bg-light text-center font-italic" colspan="4">No quiz matching your interests right now.</td>
-                          </tr>
-                        {% endfor %}
-                      </tbody>
-                    </table>
+                        <table class="table mb-0">
+                            <thead>
+                            <tr>
+                                <th>Quiz</th>
+                                <th>Topic</th>
+                                <th>Length</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for quiz in quizzes %}
+                                <tr>
+                                    <td class="align-middle">{{ quiz.name }}</td>
+                                    <td class="align-middle">{{ quiz.course.get_html_badge }}</td>
+                                    <td class="align-middle">{{ quiz.questions_count }} questions</td>
+                                    <td class="text-right">
+                                        <a href="{% url 'take_quiz' quiz.pk %}" class="btn btn-primary">Start quiz</a>
+                                    </td>
+                                </tr>
+                            {% empty %}
+                                <tr>
+                                    <td class="bg-light text-center font-italic" colspan="4">No quiz matching your
+                                        interests right now.
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-         </div>
-         <div class="col-sm-pull-8 float-sm-left col-md-3">
-              <div class="card">
-                <div class="card-header">
-                    <i class="fas fa-table text-primary"></i>
-                    Your Topics Quizzes
-                </div>
-                  <div class="card-body">
-                    <ul class="topics__list" style="padding: 0 0 0 20px">
-                        <li>
-                            <a href="{% url 'lquiz_list' %}" class="active">All
-                                <span class="text-light bg-success" style="margin-right: 27px; padding: 0.075rem 0.4rem; border-radius: 100px;">
+            </div>
+            <div class="col-sm-pull-8 float-sm-left col-md-3">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-table text-primary"></i>
+                        Your Topics Quizzes
+                    </div>
+                    <div class="card-body">
+                        <ul class="topics__list" style="padding: 0 0 0 20px">
+                            <li>
+                                <a href="{% url 'lquiz_list' %}" class="active">All
+                                    <span class="text-light bg-success"
+                                          style="margin-right: 27px; padding: 0.075rem 0.4rem; border-radius: 100px;">
 {#                                {{quizzes.count}}#}
                             </span>
-                            </a>
-                        </li>
-                        {% for course in user.learner.interests.all %}
-                        <li>
-                              <a class="h6" href="{% url 'lquiz_list' %}?q={{course.name}}">{{course.get_html_badge}}
-                                  <span class="text-light bg-success" style="margin-right: 27px; padding: 0.075rem 0.4rem; border-radius: 100px;">
+                                </a>
+                            </li>
+                            {% for course in user.learner.interests.all %}
+                                <li>
+                                    <a class="h6"
+                                       href="{% url 'lquiz_list' %}?q={{ course.name }}">{{ course.get_html_badge }}
+                                        <span class="text-light bg-success"
+                                              style="margin-right: 27px; padding: 0.075rem 0.4rem; border-radius: 100px;">
                                   </span>
-                              </a>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                   </div>
-                    <div class="card-footer text-center">
-                        <a href="{% url 'interests' %}"><button type="button" class="btn btn-outline-info">Update topic interests</button></a>
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
                     </div>
-                  </div>
-              </div>
-         </div>
-     </div>
-  </div>
+                    <div class="card-footer text-center">
+                        <a href="{% url 'interests' %}">
+                            <button type="button" class="btn btn-outline-info">Update topic interests</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
 {% endblock body %}

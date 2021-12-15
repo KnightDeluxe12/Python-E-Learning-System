@@ -2,95 +2,100 @@
 
 {% block body %}
 
-        <div class="container-fluid">
+    <div class="container-fluid">
         <div class="row">
-          <div class="col-12 mb-3">
-          <div class="col-12 mb-3">
-            
-                <div id="content-wrapper">
-        <div class="container-fluid">
-            <div class="card mb-3">
-                <div class="card-header">
-                    <i class="fas fa-table"></i>
-                    List Of tises
-                </div>
-                <div class="card-body">
-                    {% for message in messages %}
-                        <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
-                            {{ message }}
-                        </div>
-                    {% endfor %}
-                    <div class="table-responsive">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                            <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Anncouncement</th>
-                                <th>Delete</th>
+            <div class="col-12 mb-3">
+                <div class="col-12 mb-3">
 
-                            </tr>
-                            </thead>
-                            <tbody>
-                              {% if tises1 %}
-                              {% for tise1 in tises1 %}
-                       
-                                <tr>
-                                    <td>{{ tise1.id }}</td>
-                                    <td>{{ tise1.content }}</td>
-        <td>
-          <a href="{% url 'adpost' tise1.pk %}"><button type="button" class="btn btn-danger"> Delete</button></a></td>
-                                </tr>
-                                {% endfor %}
-                                {% endif %}
-                         
-                            </tbody>
-                        </table>
-                          {% if is_paginated %}
-  <ul class="pagination">
-    {% if page_obj.has_previous %}
-      <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
-    {% else %}
-      <li class="disabled"><span>&laquo;</span></li>
-    {% endif %}
-    {% for i in paginator.page_range %}
-      {% if page_obj.number == i %}
-        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
-      {% else %}
-        <li><a href="?page={{ i }}">{{ i }}</a></li>
-      {% endif %}
-    {% endfor %}
-    {% if page_obj.has_next %}
-      <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
-    {% else %}
-      <li class="disabled"><span>&raquo;</span></li>
-    {% endif %}
-  </ul>
-{% endif %}
+                    <div id="content-wrapper">
+                        <div class="container-fluid">
+                            <div class="card mb-3">
+                                <div class="card-header">
+                                    <i class="fas fa-table"></i>
+                                    List Of tises
+                                </div>
+                                <div class="card-body">
+                                    {% for message in messages %}
+                                        <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+                                            {{ message }}
+                                        </div>
+                                    {% endfor %}
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                            <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Anncouncement</th>
+                                                <th>Delete</th>
+
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% if tises1 %}
+                                                {% for tise1 in tises1 %}
+
+                                                    <tr>
+                                                        <td>{{ tise1.id }}</td>
+                                                        <td>{{ tise1.content }}</td>
+                                                        <td>
+                                                            <a href="{% url 'adpost' tise1.pk %}">
+                                                                <button type="button" class="btn btn-danger"> Delete
+                                                                </button>
+                                                            </a></td>
+                                                    </tr>
+                                                {% endfor %}
+                                            {% endif %}
+
+                                            </tbody>
+                                        </table>
+                                        {% if is_paginated %}
+                                            <ul class="pagination">
+                                                {% if page_obj.has_previous %}
+                                                    <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a>
+                                                    </li>
+                                                {% else %}
+                                                    <li class="disabled"><span>&laquo;</span></li>
+                                                {% endif %}
+                                                {% for i in paginator.page_range %}
+                                                    {% if page_obj.number == i %}
+                                                        <li class="active"><span>{{ i }} <span
+                                                                class="sr-only">(current)</span></span></li>
+                                                    {% else %}
+                                                        <li><a href="?page={{ i }}">{{ i }}</a></li>
+                                                    {% endif %}
+                                                {% endfor %}
+                                                {% if page_obj.has_next %}
+                                                    <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+                                                {% else %}
+                                                    <li class="disabled"><span>&raquo;</span></li>
+                                                {% endif %}
+                                            </ul>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
+
+                    </tbody>
+                    </table>
+
+
                 </div>
             </div>
         </div>
     </div>
 
-
-  </tbody>
-</table>
-
-
-          </div>
-        </div>
-      </div>
-    </div>
-
 {% endblock %}
 
 {% block extrascripts %}
-  <script type="text/javascript">
-      $(function () {
-          // Hide message
-          $(".alert").fadeTo(2000, 500).slideUp(500, function () {
-              $(".alert").slideUp(500);
-          });
-      });
-  </script>
+    <script type="text/javascript">
+        $(function () {
+            // Hide message
+            $(".alert").fadeTo(2000, 500).slideUp(500, function () {
+                $(".alert").slideUp(500);
+            });
+        });
+    </script>
 {% endblock extrascripts %}
