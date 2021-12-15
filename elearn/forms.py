@@ -127,6 +127,7 @@ class TakeQuizForm(forms.ModelForm):
         queryset=Answer.objects.none(),
         widget=forms.RadioSelect(),
         required=True,
+        label='Select one answer',
         empty_label=None)
 
     class Meta:
