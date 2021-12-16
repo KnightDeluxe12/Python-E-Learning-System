@@ -1,0 +1,48 @@
+{% extends 'dashboard/instructor/base.html' %}
+
+
+{% load crispy_forms_tags %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-1 col-md-2 mt-3"></div>
+            <div class="col-sm-10 col-md-8" style="margin-top: 8rem;">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <i class="fas fa-table text-primary"></i>
+                        Delete current content
+                    </div>
+                    <div class="card-body">
+{#                        <nav aria-label="breadcrumb">#}
+{#                            <ol class="breadcrumb">#}
+{#                                <li class="breadcrumb-item"><a href="{% url 'quiz_change_list' %}">My Quizzes</a></li>#}
+{#                                <li class="breadcrumb-item"><a#}
+{#                                        href="{% url 'quiz_change' quiz.pk %}">{{ quiz.name }}</a></li>#}
+{#                                <li class="breadcrumb-item active" aria-current="page">Confirm deletion</li>#}
+{#                            </ol>#}
+{#                        </nav>#}
+                        <div class="col-sm-12">
+
+                            <div class="display-4 mb-3">Confirm deletion</div>
+                            <p class="lead ml-4 mb-3">Are you sure you want to delete
+                                <strong>"this?"</strong></p>
+                            <form method="post">
+                                {% csrf_token %}
+                                <div class=" text-center ">
+                                    <button type="submit" class="btn btn-danger btn-lg">Yes, I'm sure</button>
+                                    <a href="{% url 'tutorial' %}" class="btn btn-outline-secondary btn-lg"
+                                       role="button">Cancel</a>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-1 col-md-2 mt-3"></div>
+
+        </div>
+    </div>
+{% endblock body %}
+

@@ -165,8 +165,8 @@
                         <div class="card-body ml-2">
                             <p class="card-text text-left">{{ tutorial.content| safe | truncatechars_html:100 }}</p>
 {#                            bug dont ever put iframe at first 100 chars#}
-                            <a href="{% url 'tutorial-detail' tutorial.pk %}" class="btn btn-success">Read More
-                                &rarr;</a>
+                            <a href="{% url 'itutorial-detail' tutorial.pk %}" class="btn btn-success">Read More
+                                &rarr;</a> <a href="{% url 'tutorialcancel' tutorial.pk %}" class="btn btn-danger">Delete</a>
                         </div>
                         <div class="card-footer text-muted">
                             Posted on {{ tutorial.created_at }} by

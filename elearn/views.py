@@ -623,7 +623,7 @@ def publish_tutorial(request):
         a = Tutorial(title=title, content=content, thumb=thumb, user_id=author_id, course_id=course_id)
         a.save()
         messages.success(request, 'Tutorial was published successfully!')
-        return redirect('tutorial')
+        return redirect('tutorial_preview')
     else:
         messages.error(request, 'Tutorial was not published successfully!')
         return redirect('tutorial')
@@ -647,6 +647,23 @@ class ITutorialDetail(LoginRequiredMixin, DetailView):
     model = Tutorial
     template_name = 'dashboard/instructor/tutorial_detail.html'
 
+
+# class TutorialPreview(LoginRequiredMixin, DetailView):
+#     model = Tutorial
+#     template_name = 'dashboard/instructor/tutorial_preview.html'
+
+def tutorialpreview(request):
+    tutorials = Tutorial.objects.all().last()
+    return render(request, 'dashboard/instructor/tutorial_preview.html', {'tutorials':tutorials})
+
+def tutorialcancel(request, pk):
+    tutorials = Tutorial.objects.values_list('title', flat=True).filter(id=pk)
+    if request.method == 'POST':
+        taken_answer = Tutorial.objects.get(id=pk)
+        taken_answer.delete()
+        return redirect('tutorial')
+
+    return render(request, 'dashboard/instructor/tutorial_confirm.html', {'tutorials': tutorials})
 
 class LNotesList(ListView):
     model = Notes

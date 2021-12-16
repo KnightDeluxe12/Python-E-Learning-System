@@ -58,6 +58,9 @@ urlpatterns = [
     path('iadd_notes/', views.iadd_notes, name='iadd_notes'),
     path('publish_notes/', views.publish_notes, name='publish_notes'),
     path('update_file/<int:pk>', views.update_file, name='update_file'),
+    # path('tutorial_preview/<int:pk>/', views.TutorialPreview.as_view(), name="tutorial_preview"),
+    path('tutorial_preview/', views.tutorialpreview, name="tutorial_preview"),
+    path('tutorialcancel/<int:pk>/', views.tutorialcancel, name="tutorialcancel"),
 
     # Learner URl's
     path('learner/', views.home_learner, name='learner'),
