@@ -698,8 +698,8 @@ def home_learner(request):
     tutorials = Tutorial.objects.all()
     courses = Course.objects.all()
     tanginang_tutorial = Tutorial.objects.only('title')
-    tutorials = {'tutorials': tutorials, 'courses': courses, 't1':tanginang_tutorial}
-    return render(request, 'dashboard/learner/home.html', tutorials)
+    context = {'tutorials': tutorials, 'courses': courses, 't1':tanginang_tutorial}
+    return render(request, 'dashboard/learner/home.html', context)
 
 # class HomeLearnerListView(ListView):
 #     model = Tutorial
