@@ -692,23 +692,19 @@ def update_file(request, pk):
 
 
 # Learner Views
-# def home_learner(request):
-#     # learner = User.objects.filter(is_learner=True).count()
-#     # instructor = User.objects.filter(is_instructor=True).count()
-#     # course = Course.objects.all().count()
-#     # users = User.objects.all().count()
-#     # context = {'learner': learner, 'course': course, 'instructor': instructor, 'users': users}
-#     # current_user = request.user
-#     # user_id = current_user.id
-#     # model = Profile
-#     # users = Profile.objects.get(user_id=user_id)
-#     # users = {'users': users}
-#     # return render(request, 'dashboard/learner/home.html', users)
+def home_learner(request):
+    q = request.GET.get('q') if request.GET.get('q') is not None else ''
 
-class HomeLearnerListView(ListView):
-    model = Tutorial
-    template_name = 'dashboard/learner/home.html'
-    context_object_name = 'tutorials'
+    tutorials = Tutorial.objects.all()
+    courses = Course.objects.all()
+    tanginang_tutorial = Tutorial.objects.only('title')
+    tutorials = {'tutorials': tutorials, 'courses': courses, 't1':tanginang_tutorial}
+    return render(request, 'dashboard/learner/home.html', tutorials)
+
+# class HomeLearnerListView(ListView):
+#     model = Tutorial
+#     template_name = 'dashboard/learner/home.html'
+#     context_object_name = 'tutorials'
 
 
 def luser_profile(request):

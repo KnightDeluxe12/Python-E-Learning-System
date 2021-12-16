@@ -59,7 +59,7 @@ urlpatterns = [
     path('update_file/<int:pk>', views.update_file, name='update_file'),
 
     # Learner URl's
-    path('learner/', views.HomeLearnerListView.as_view(), name='learner'),
+    path('learner/', views.home_learner, name='learner'),
     path('ltutorial/', views.ltutorial, name='ltutorial'),
     path('llistnotes/', views.LLNotesList.as_view(), name='llnotes'),
     path('ilchat/', views.ITiseList.as_view(), name='ilchat'),
