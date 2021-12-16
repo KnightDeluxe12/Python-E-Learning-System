@@ -579,7 +579,7 @@ def create_profile(request):
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
         phonenumber = request.POST['phonenumber']
-        bio = request.POST['bio']
+        # email = request.POST['email']
         city = request.POST['city']
         country = request.POST['country']
         birth_date = request.POST['birth_date']
@@ -589,8 +589,9 @@ def create_profile(request):
         print(user_id)
 
         Profile.objects.filter(id=user_id).create(user_id=user_id, first_name=first_name, last_name=last_name,
-                                                  phonenumber=phonenumber, bio=bio, city=city, country=country,
+                                                  phonenumber=phonenumber, city=city, country=country,
                                                   birth_date=birth_date, avatar=avatar)
+        User.objects.filter(id=user_id).update(first_name=first_name, last_name=last_name)
         messages.success(request, 'Profile was created successfully')
         return redirect('user_profile')
     else:
@@ -622,15 +623,23 @@ def publish_tutorial(request):
         a = Tutorial(title=title, content=content, thumb=thumb, user_id=author_id, course_id=course_id)
         a.save()
         messages.success(request, 'Tutorial was published successfully!')
-        return redirect('tutorial')
+        return redirect('tutorial_preview')
     else:
         messages.error(request, 'Tutorial was not published successfully!')
         return redirect('tutorial')
 
 
 def itutorial(request):
-    tutorials = Tutorial.objects.all().order_by('-created_at')
-    tutorials = {'tutorials': tutorials}
+    q = request.GET.get('q') if request.GET.get('q') != None else ''
+
+    tutorials = Tutorial.objects.filter(
+        Q(course__name__icontains=q) |
+        Q(title__icontains=q) |
+        Q(content__icontains=q)
+    ).order_by('-created_at')
+    # tutorials = Tutorial.objects.all().order_by('-created_at')
+    courses = Course.objects.all()
+    tutorials = {'tutorials': tutorials, 'courses': courses}
     return render(request, 'dashboard/instructor/list_tutorial.html', tutorials)
 
 
@@ -638,6 +647,23 @@ class ITutorialDetail(LoginRequiredMixin, DetailView):
     model = Tutorial
     template_name = 'dashboard/instructor/tutorial_detail.html'
 
+
+# class TutorialPreview(LoginRequiredMixin, DetailView):
+#     model = Tutorial
+#     template_name = 'dashboard/instructor/tutorial_preview.html'
+
+def tutorialpreview(request):
+    tutorials = Tutorial.objects.all().last()
+    return render(request, 'dashboard/instructor/tutorial_preview.html', {'tutorials':tutorials})
+
+def tutorialcancel(request, pk):
+    tutorials = Tutorial.objects.values_list('title', flat=True).filter(id=pk)
+    if request.method == 'POST':
+        taken_answer = Tutorial.objects.get(id=pk)
+        taken_answer.delete()
+        return redirect('tutorial')
+
+    return render(request, 'dashboard/instructor/tutorial_confirm.html', {'tutorials': tutorials})
 
 class LNotesList(ListView):
     model = Notes
@@ -692,23 +718,19 @@ def update_file(request, pk):
 
 
 # Learner Views
-# def home_learner(request):
-#     # learner = User.objects.filter(is_learner=True).count()
-#     # instructor = User.objects.filter(is_instructor=True).count()
-#     # course = Course.objects.all().count()
-#     # users = User.objects.all().count()
-#     # context = {'learner': learner, 'course': course, 'instructor': instructor, 'users': users}
-#     # current_user = request.user
-#     # user_id = current_user.id
-#     # model = Profile
-#     # users = Profile.objects.get(user_id=user_id)
-#     # users = {'users': users}
-#     # return render(request, 'dashboard/learner/home.html', users)
+def home_learner(request):
+    q = request.GET.get('q') if request.GET.get('q') is not None else ''
 
-class HomeLearnerListView(ListView):
-    model = Tutorial
-    template_name = 'dashboard/learner/home.html'
-    context_object_name = 'tutorials'
+    tutorials = Tutorial.objects.all()
+    courses = Course.objects.all()
+    tanginang_tutorial = Tutorial.objects.only('title')
+    context = {'tutorials': tutorials, 'courses': courses, 't1':tanginang_tutorial}
+    return render(request, 'dashboard/learner/home.html', context)
+
+# class HomeLearnerListView(ListView):
+#     model = Tutorial
+#     template_name = 'dashboard/learner/home.html'
+#     context_object_name = 'tutorials'
 
 
 def luser_profile(request):
@@ -844,6 +866,18 @@ def lupdate_profile(request):
             return redirect('luser_profile')
 
     return render(request, 'dashboard/learner/update_profile.html', {'form': form})
+
+def iupdate_profile(request):
+    user = request.user
+    form = UserForm(instance=user)
+
+    if request.method == 'POST':
+        form = UserForm(request.POST, request.FILES, instance=user)
+        if form.is_valid():
+            form.save()
+            return redirect('user_profile')
+
+    return render(request, 'dashboard/instructor/update_profile.html', {'form': form})
 
 
 class LTutorialDetail(LoginRequiredMixin, DetailView):

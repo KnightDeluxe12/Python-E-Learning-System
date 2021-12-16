@@ -1,4 +1,4 @@
-{% extends 'dashboard/learner/base.html' %}
+{% extends 'dashboard/instructor/base.html' %}
 
 
 {% load crispy_forms_tags %}
@@ -11,24 +11,27 @@
                 <div class="card mb-3">
                     <div class="card-header">
                         <i class="fas fa-table text-primary"></i>
-                        Update your current quiz state
+                        Delete current content
                     </div>
                     <div class="card-body">
-                        {% for message in messages %}
-                            <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
-                                {{ message }}
-                            </div>
-                        {% endfor %}
+{#                        <nav aria-label="breadcrumb">#}
+{#                            <ol class="breadcrumb">#}
+{#                                <li class="breadcrumb-item"><a href="{% url 'quiz_change_list' %}">My Quizzes</a></li>#}
+{#                                <li class="breadcrumb-item"><a#}
+{#                                        href="{% url 'quiz_change' quiz.pk %}">{{ quiz.name }}</a></li>#}
+{#                                <li class="breadcrumb-item active" aria-current="page">Confirm deletion</li>#}
+{#                            </ol>#}
+{#                        </nav>#}
                         <div class="col-sm-12">
 
-                            <div class="display-4 mb-3">Confirm retake</div>
-                            <p class="lead ml-4 mb-3">Are you sure you want to retake
-                                <strong>"{{ taken_quizzes.quiz.name }}"</strong>? There is no going back.</p>
+                            <div class="display-4 mb-3">Confirm deletion</div>
+                            <p class="lead ml-4 mb-3">Are you sure you want to delete
+                                <strong>"this?"</strong></p>
                             <form method="post">
                                 {% csrf_token %}
                                 <div class=" text-center ">
                                     <button type="submit" class="btn btn-danger btn-lg">Yes, I'm sure</button>
-                                    <a href="{% url 'taken_quiz_list' %}" class="btn btn-outline-secondary btn-lg"
+                                    <a href="{% url 'tutorial' %}" class="btn btn-outline-secondary btn-lg"
                                        role="button">Cancel</a>
                                 </div>
 
@@ -41,4 +44,5 @@
 
         </div>
     </div>
-{% endblock %}
+{% endblock body %}
+

@@ -47,6 +47,9 @@ class Course(models.Model):
     def __str__(self):
         return self.name
 
+    def get_lessons(self):
+        return self.tutorial_set.values_list('created_at', flat=True).last()
+
     def get_html_badge(self):
         name = escape(self.name)
         color = escape(self.color)
@@ -62,7 +65,6 @@ class Tutorial(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     video = EmbedVideoField(blank=True, null=True)
-
 
 class Notes(models.Model):
     title = models.CharField(max_length=500)
@@ -95,6 +97,7 @@ class Question(models.Model):
 
     def __str__(self):
         return self.text
+
 
 
 class Answer(models.Model):
