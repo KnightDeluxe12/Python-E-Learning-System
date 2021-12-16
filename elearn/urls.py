@@ -36,6 +36,7 @@ urlpatterns = [
 
     # Instructor URLs
     path('instructor/', views.home_instructor, name='instructor'),
+    path('iupdate_profile/', views.iupdate_profile, name='iupdate_profile'),
     path('quiz_add/', views.QuizCreateView.as_view(), name='quiz_add'),
     path('question_add/<int:pk>', views.question_add, name='question_add'),
     path('quiz/<int:quiz_pk>/<int:question_pk>/', views.question_change, name='question_change'),
@@ -57,9 +58,12 @@ urlpatterns = [
     path('iadd_notes/', views.iadd_notes, name='iadd_notes'),
     path('publish_notes/', views.publish_notes, name='publish_notes'),
     path('update_file/<int:pk>', views.update_file, name='update_file'),
+    # path('tutorial_preview/<int:pk>/', views.TutorialPreview.as_view(), name="tutorial_preview"),
+    path('tutorial_preview/', views.tutorialpreview, name="tutorial_preview"),
+    path('tutorialcancel/<int:pk>/', views.tutorialcancel, name="tutorialcancel"),
 
     # Learner URl's
-    path('learner/', views.HomeLearnerListView.as_view(), name='learner'),
+    path('learner/', views.home_learner, name='learner'),
     path('ltutorial/', views.ltutorial, name='ltutorial'),
     path('llistnotes/', views.LLNotesList.as_view(), name='llnotes'),
     path('ilchat/', views.ITiseList.as_view(), name='ilchat'),

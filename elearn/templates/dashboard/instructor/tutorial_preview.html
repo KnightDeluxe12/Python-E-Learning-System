@@ -1,0 +1,60 @@
+{% extends 'dashboard/instructor/base.html' %}
+
+
+{% load static %}
+{% block body %}
+    <div class="d-flex justify-content-center">
+        <!-- Blog Entries Column -->
+        <div class="p-2" style="padding-top: 20px;margin: 10px 100px 0 100px;">
+            <ol class="breadcrumb" style="margin-bottom: 0">
+                <li class="breadcrumb-item">
+                    <a class="" href="{% url 'ltutorial' %}" style="padding-left: 10px">
+                        <i class="fa fa-arrow-left" aria-hidden="true" style="color:#e9ecef"></i>
+                    </a>
+
+                    <span style="font-size: 23px; padding-left: 30px">
+                  {{ tutorials.title }}
+              </span>
+
+
+                </li>
+            </ol>
+
+            <div class="breadcrumb" style="margin-top: -24px;">
+                <span class="mr-2" style="margin-left: 103px">Topic tags:</span>
+                <div>{{ tutorials.course.get_html_badge }}</div>
+            </div>
+
+            <!-- Blog Post -->
+            <div class="card mb-4">
+                <div class="card-header lead display-4 text-center">Review your content</div>
+                {% if tutorials.thumb %}
+                    <img class="img-fluid" style="max-width: 75%; margin:auto;" src="{{ tutorials.thumb.url }}"
+                         alt="{{ tutorials.title }}">
+                {% else %}
+                    <p></p>
+                {% endif %}
+                <div class="card-body">
+                    <h2 class="card-title"></h2>
+                    {#                    {% autoescape on %}#}
+                    {{ tutorials.content | safe }}
+                    {#                    {% endautoescape %}#}
+                </div>
+                <div class="card-footer text-muted">
+                    Posted on {{ tutorials.created_at }} by
+                    <a href="#">{{ tutorials.user.username }} [{{ tutorials.id }}]</a>
+
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header">Done reviewing your content?</div>
+                <div class="body text-center m-3">
+                    <a href="{% url 'tutorial' %}" class="btn btn-success">Approve</a>
+                    <a href="{% url 'tutorialcancel' tutorials.pk %}" class="btn btn-danger">Delete</a>
+                </div>
+                <div class="card-footer small">Please make sure all the content is satisfied</div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
