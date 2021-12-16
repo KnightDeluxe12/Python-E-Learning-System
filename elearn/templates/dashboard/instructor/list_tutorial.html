@@ -1,139 +1,276 @@
-{% extends 'dashboard/instructor/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    {% block title %}{% endblock %}
+    <title>LMS</title>
 
-{% load static %}
-{% block body %}
+    {% load static %}
+    <!-- Custom fonts for this template-->
+    <link href="{% static 'vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+
+    <!-- Page level plugin CSS-->
+    <link href="{% static 'vendor/datatables/dataTables.bootstrap4.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="{% static 'css/sb-admin.css' %}" rel="stylesheet">
+    {% block stylesheet %}{% endblock %}
+</head>
+
+<body id="page-top">
+
+<!-- headers-->
+<nav class="navbar navbar-expand navbar-dark bg-info fixed-top">
+
+    <a class="navbar-brand mr-1 text-light" href="">Instructor's Portal</a>
+    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Navbar Search -->
+    <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+        <div class="input-group mr-5">
+            <input type="text" class="form-control" placeholder="Search for..." name="q"
+                   aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-dark" type="submit">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Navbar -->
+    <ul class="navbar-nav ml-auto ml-md-0">
+        <li class="nav-item dropdown no-arrow">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-user-circle fa-fw text-light"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                <a href="{% url 'user_profile' %}" class="dropdown-item">{{ user.username }}</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="" data-toggle="modal" data-target="#logoutModal">Logout</a>
+            </div>
+        </li>
+    </ul>
+
+</nav>
+
+<div id="wrapper" style="padding-top: 50px;">
+    <!-- Sidebar -->
+    <ul class="sidebar navbar-nav">
+
+        <li class="nav-item active">
+            <a class="nav-link" href="{% url 'instructor' %}">
+                <i class="fa fa-home" aria-hidden="true"></i>
+                <span>Instructor Dashboard</span>
+            </a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="{% url 'user_profile' %}">
+                <i class="fas fa-user-circle fa-fw text-info"></i>
+                <span>Logged As Instructor {{ user.username }}</span>
+            </a>
+        </li>
+
+        <li class="nav-item dropdown no-arrow">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+               href="">
+                <i class="fa fa-th-list" aria-hidden="true"></i>
+                <span>Manage Quiz</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="{% url 'quiz_add' %}">Add Quiz</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{% url 'quiz_change_list' %}">List Quiz</a>
+            </div>
+        </li>
 
 
-    <!-- Blog Entries Column -->
-    <div class="col-md-8">
-        {% for tutorial in tutorials %}
+        <li class="nav-item dropdown no-arrow">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+               href="">
+                <i class="fas fa-book-reader" aria-hidden="true"></i>
+                <span>Manage Lessons</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="{% url 'tutorial' %}">Add Lessons</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{% url 'itutorial' %}">List Lessons</a>
+            </div>
+        </li>
 
-            <h1 class="my-4">
-                <small></small>
-            </h1>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'lnotes' %}">
+                <i class="fas fa-pen" aria-hidden="true"></i>
+                <span>Manage Notes</span>
+            </a>
+        </li>
+        <li class="nav-item dropdown no-arrow">
+            <!-- <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="">
+<i class="fas fa-bell"></i>
 
-            <!-- Blog Post -->
+<span style="color: white">Announcements</span>
+</a> -->
+            <!-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="{% url 'ipost' %}">Post Announcements</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{% url 'llchat' %}">List Announcements</a>
+            </div> -->
+        </li>
+{#        <li class="nav-item dropdown no-arrow">#}
+{#            <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"#}
+{#               href="">#}
+{#                <i class="fas fa-user text-default"></i>#}
+{#                <span>Manage Profile</span>#}
+{#            </a>#}
+{#            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">#}
+{#                <a class="dropdown-item" href="{% url 'user_profile' %}">View Profile</a>#}
+{#                <div class="dropdown-divider"></div>#}
+{#                <a class="dropdown-item" href="{% url 'create_profile' %}">Create Profile</a>#}
+{#            </div>#}
+{#        </li>#}
 
-            <link href="{% static 'css/list_tutorial.css' %}" rel="stylesheet">
-            <div class="container-fluid mt-3">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item  ">
-                        <a href="{% url 'instructor' %}">Topics</a>
-                    </li>
-                    <li class="breadcrumb-item active">
-                        Lessons
-                    </li>
-                </ol>
-                <div class="row" style="left: 25%;">
-                    <div class="col-md-8 ml-5 mr-3">
-                        {% for tutorial in tutorials %}
-                            <div class="card mb-4" style="margin:25px 125px 0 125px">
-                                {% if tutorial.thumb %}
-                                    <div class="">
-                                        <img class="img-fluid" style="" src="{{ tutorial.thumb.url }}"
-                                             alt="{{ tutorial.title }}">
-                                    </div>
-                                {% else %}
-                                    <p></p>
-                                {% endif %}
-                                <div class="ml-4" style="margin:30px 100px -10px 100px">
-                                    <h3 class="card-title ml-3">{{ tutorial.title }}</h3>
-                                </div>
-                                <div class="card-body ml-2">
-                                    <p class="card-text  text-center">{{ tutorial.content | truncatechars:200 }}</p>
-                                    <a href="{% url 'itutorial-detail' tutorial.pk %}" class="btn btn-success">Read More
-                                        &rarr;</a>
-                                </div>
-                                <div class="card-footer text-muted">
-                                    Posted on {{ tutorial.created_at }} by
-                                    <a class="text-muted" href="#">{{ tutorial.user.username }}</a>
-                                    <span class="text-primary h6 float-right"
-                                          style="margin-bottom: 0">{{ tutorial.course.get_html_badge }}</span>
-                                </div>
+    </ul>
+    <link href="{% static 'css/list_tutorial.css' %}" rel="stylesheet">
+    <div class="container-fluid mt-3">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item  ">
+                <a href="{% url 'learner' %}">Topics</a>
+            </li>
+            <li class="breadcrumb-item active">
+                Lessons
+            </li>
+        </ol>
+        <div class="row" style="left: 25%;">
+            <div class="col-md-8 ml-5 mr-3">
+                {% for tutorial in tutorials %}
+                    <div class="card mb-4" style="margin:25px 125px 0 125px">
+                        {% if tutorial.thumb %}
+                            <div class="">
+                                <img class="img-fluid" style="" src="{{ tutorial.thumb.url }}"
+                                     alt="{{ tutorial.title }}">
                             </div>
-                        {% endfor %}
-                        {% if is_paginated %}
-                            <!-- Pagination -->
-                            <ul class="pagination justify-content-center mb-4">
-                                {% if page_obj.has_previous %}
-                                    <li class="page-item">
-                                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}">&larr;
-                                            Previous page</a>
-                                    </li>
-                                {% endif %}
-
-                                {% if page_obj.has_next %}
-                                    <li class="page-item">
-                                        <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next page
-                                            &rarr;</a>
-                                    </li>
-                                {% endif %}
-                            </ul>
+                        {% else %}
+                            <p></p>
                         {% endif %}
-                    </div>
-                    <div class="col mt-4 column1">
-                        <div style="width: 300px; background-clip: border-box;border: 1px solid rgba(0, 0, 0, 0.125);">
-                            <div class="topics__header">
-                                <h3 style="margin-bottom:30px; margin-left:30px; padding-top: 30px">Browse Topics</h3>
-                            </div>
-                            <ul class="topics__list">
-                                <li>
-                                    <a href="{% url 'itutorial' %}" class="active">All <span
-                                            style="padding-right: 35px;">{{ tutorials.count }}</span></a>
-                                </li>
-                                {% for course in courses %}
-                                    <li>
-                                        <a href="{% url 'itutorial' %}?q={{ course.name }}">{{ course.name }}<span
-                                                style="padding-right: 35px;">{{ course.tutorial_set.all.count }}</span></a>
-                                    </li>
-                                {% endfor %}
-                            </ul>
+                        <div class="ml-4" style="margin:30px 100px -10px 100px">
+                            <h3 class="card-title ml-3">{{ tutorial.title }}</h3>
+                        </div>
+                        <div class="card-body ml-2">
+                            <p class="card-text text-left">{{ tutorial.content| safe | truncatechars_html:100 }}</p>
+{#                            bug dont ever put iframe at first 100 chars#}
+                            <a href="{% url 'tutorial-detail' tutorial.pk %}" class="btn btn-success">Read More
+                                &rarr;</a>
+                        </div>
+                        <div class="card-footer text-muted">
+                            Posted on {{ tutorial.created_at }} by
+                            <a class="text-muted" href="#">{{ tutorial.user.username }}</a>
+                            <span class="text-primary h6 float-right"
+                                  style="margin-bottom: 0">{{ tutorial.course.get_html_badge }}</span>
                         </div>
                     </div>
-                    {#      end#}
+                {% endfor %}
+                {% if is_paginated %}
+                    <!-- Pagination -->
+                    <ul class="pagination justify-content-center mb-4">
+                        {% if page_obj.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">&larr; Previous
+                                    page</a>
+                            </li>
+                        {% endif %}
 
+                        {% if page_obj.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next page &rarr;</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                {% endif %}
+            </div>
+            <div class="col mt-4 column1">
+                <div style="width: 300px; background-clip: border-box;border: 1px solid rgba(0, 0, 0, 0.125);">
+                    <div class="topics__header">
+                        <h3 style="margin-bottom:30px; margin-left:30px; padding-top: 30px">Browse Topics</h3>
+                    </div>
+                    <ul class="topics__list">
+                        <li>
+                            <a href="{% url 'itutorial' %}" class="active">All <span
+                                    style="padding-right: 35px;">{{ tutorials.count }}</span></a>
+                        </li>
+                        {% for course in courses %}
+                            <li>
+                                <a href="{% url 'itutorial' %}?q={{ course.name }}">{{ course.name }}<span
+                                        style="padding-right: 35px;">{{ course.tutorial_set.all.count }}</span></a>
+                            </li>
+                        {% endfor %}
+                    </ul>
                 </div>
             </div>
+            {#      end#}
 
-            {#        <div class="card mb-4">#}
-            {#            <h2 class="card-title text-primary">{{ tutorial.course.name }} - {{ tutorial.title }}</h2>#}
-            {##}
-            {#          {% if tutorial.thumb %}#}
-            {#              <img src="{{ tutorial.thumb.url }}" alt="{{ tutorial.title }}" style="width:400px; height: 400px">#}
-            {#          {% else %}#}
-            {#                <p></p>#}
-            {#          {% endif %}#}
-            {#          <div class="card-body">#}
-            {#            <p class="card-text">{{ tutorial.content | truncatechars:100 }}</p>#}
-            {#            <a href="{% url 'itutorial-detail' tutorial.pk %}" class="btn btn-primary">Read More &rarr;</a>#}
-            {#          </div>#}
-            {#          <div class="card-footer text-muted">#}
-            {#            Posted on {{ tutorial.created_at }} by#}
-            {#            <a href="#">{{ tutorial.user.username }}</a>#}
-            {#          </div>#}
-            {#        </div>#}
-
-
-        {% endfor %}
-
-
-        {% if is_paginated %}
-            <!-- Pagination -->
-            <ul class="pagination justify-content-center mb-4">
-                {% if page_obj.has_previous %}
-                    <li class="page-item">
-                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}">&larr; Previous page</a>
-                    </li>
-                {% endif %}
-
-                {% if page_obj.has_next %}
-                    <li class="page-item">
-                        <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next page &rarr;</a>
-                    </li>
-                {% endif %}
-            </ul>
-        {% endif %}
-
+        </div>
     </div>
+<!-- /#wrapper -->
 
-{% endblock %}      
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-primary" href="/logout">Logout</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% block content %}
+{% endblock %}
+
+
+<!-- Bootstrap core JavaScript-->
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+<!-- Page level plugin JavaScript-->
+<script src="{% static 'vendor/datatables/jquery.dataTables.js' %}"></script>
+<script src="{% static 'vendor/datatables/dataTables.bootstrap4.js' %}"></script>
+
+<!-- Demo scripts for this page-->
+<script src="{% static 'js/demo/datatables-demo.js' %}"></script>
+<!-- Custom scripts for all pages-->
+<script src="{% static 'js/sb-admin.min.js' %}"></script>
+<script>
+    $(".alert-success").fadeTo(2000, 500).slideUp(500, function () {
+        $(".alert-success").slideUp(500);
+    });
+    $(".alert-error").fadeTo(2000, 500).slideUp(500, function () {
+        $(".alert-error").slideUp(500);
+    });
+</script>
+
+{% block javascript %}{% endblock %}
+

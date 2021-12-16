@@ -579,7 +579,7 @@ def create_profile(request):
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
         phonenumber = request.POST['phonenumber']
-        bio = request.POST['bio']
+        # email = request.POST['email']
         city = request.POST['city']
         country = request.POST['country']
         birth_date = request.POST['birth_date']
@@ -589,8 +589,9 @@ def create_profile(request):
         print(user_id)
 
         Profile.objects.filter(id=user_id).create(user_id=user_id, first_name=first_name, last_name=last_name,
-                                                  phonenumber=phonenumber, bio=bio, city=city, country=country,
+                                                  phonenumber=phonenumber, city=city, country=country,
                                                   birth_date=birth_date, avatar=avatar)
+        User.objects.filter(id=user_id).update(first_name=first_name, last_name=last_name)
         messages.success(request, 'Profile was created successfully')
         return redirect('user_profile')
     else:
@@ -629,8 +630,16 @@ def publish_tutorial(request):
 
 
 def itutorial(request):
-    tutorials = Tutorial.objects.all().order_by('-created_at')
-    tutorials = {'tutorials': tutorials}
+    q = request.GET.get('q') if request.GET.get('q') != None else ''
+
+    tutorials = Tutorial.objects.filter(
+        Q(course__name__icontains=q) |
+        Q(title__icontains=q) |
+        Q(content__icontains=q)
+    ).order_by('-created_at')
+    # tutorials = Tutorial.objects.all().order_by('-created_at')
+    courses = Course.objects.all()
+    tutorials = {'tutorials': tutorials, 'courses': courses}
     return render(request, 'dashboard/instructor/list_tutorial.html', tutorials)
 
 
@@ -840,6 +849,18 @@ def lupdate_profile(request):
             return redirect('luser_profile')
 
     return render(request, 'dashboard/learner/update_profile.html', {'form': form})
+
+def iupdate_profile(request):
+    user = request.user
+    form = UserForm(instance=user)
+
+    if request.method == 'POST':
+        form = UserForm(request.POST, request.FILES, instance=user)
+        if form.is_valid():
+            form.save()
+            return redirect('user_profile')
+
+    return render(request, 'dashboard/instructor/update_profile.html', {'form': form})
 
 
 class LTutorialDetail(LoginRequiredMixin, DetailView):

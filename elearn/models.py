@@ -99,6 +99,7 @@ class Question(models.Model):
         return self.text
 
 
+
 class Answer(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='answers')
     text = models.CharField('Answer', max_length=255)

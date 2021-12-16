@@ -36,6 +36,7 @@ urlpatterns = [
 
     # Instructor URLs
     path('instructor/', views.home_instructor, name='instructor'),
+    path('iupdate_profile/', views.iupdate_profile, name='iupdate_profile'),
     path('quiz_add/', views.QuizCreateView.as_view(), name='quiz_add'),
     path('question_add/<int:pk>', views.question_add, name='question_add'),
     path('quiz/<int:quiz_pk>/<int:question_pk>/', views.question_change, name='question_change'),
