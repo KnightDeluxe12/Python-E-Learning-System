@@ -9,7 +9,6 @@
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 {#        <link rel="apple-touch-icon" href="apple-touch-icon.png">#}
-
 <link rel="stylesheet" href="{% static '11newhome/css/bootstrap.min.css' %}">
 <link rel="stylesheet" href="{% static '11newhome/css/bootstrap-theme.min.css' %}">
 <link rel="stylesheet" href="{% static '11newhome/css/fontAwesome.css' %}">
@@ -23,6 +22,7 @@
 <body>
 <div class="header">
     <div class="container">
+
         <nav class="navbar navbar-inverse" role="navigation">
             <div class="navbar-header">
                 <button type="button" id="nav-toggle" class="navbar-toggle" data-toggle="collapse"
@@ -104,7 +104,7 @@
                     <h2>Your pace</h2>
                     <p>Study at your own pace without any rush or deadlines</p>
                     <div class="primary-button">
-                        <a href="#">Read More</a>
+                        <a href="#" class="scroll-link" data-id="what-we-do">Read More</a>
                     </div>
                 </div>
             </div> <!-- .cd-full-width -->
@@ -355,8 +355,8 @@
                     <div class="thumb">
                         <img src="{% static '11newhome/img/blog_01.jpg' %}" alt="">
                         <div class="text-content">
-                            <h4>Introduction to Python</h4>
-                            <span>Posted: <em>don_instructor</em>  /  Date: <em>21 Nov 2021</em>  /  Topic: <em>Loop</em></span>
+                            <h4>{{ tutorial_title | slice:'-1:' | join:" " }}</h4>
+                            <span>Posted: <em>{{ tutorial_user_name | slice:'1' | join:" " }}</em>  /  Date: <em>{{ tutorial_created_at | slice:'-1:' | join:" " | truncatechars_html:12 }}</em>  /  Topic: <em>{{ tutorial_topic | slice:'-1:'| join:" " | truncatechars_html:25 }}</em></span>
                         </div>
                     </div>
                 </div>
@@ -366,8 +366,8 @@
                     <div class="thumb">
                         <img src="{% static '11newhome/img/blog_02.jpg' %}" alt="">
                         <div class="text-content">
-                            <h4>Arrays and Multidimentional</h4>
-                            <span>Posted: <em>don_instructor</em>  /  Date: <em>21 Nov 2021</em>  /  Topic: <em>Array</em></span>
+                            <h4>{{ tutorial_title | slice:'2:3' | join:" " }}</h4>
+                            <span>Posted: <em>{{ tutorial_user_name | slice:'1' | join:" " }}</em>  /  Date: <em>{{ tutorial_created_at | slice:'2:3' | join:" " | truncatechars_html:12 }}</em>  /  Topic: <em>{{ tutorial_topic | slice:'2:3'| join:" " | truncatechars_html:25 }}</em></span>
                         </div>
                     </div>
                 </div>
@@ -377,8 +377,8 @@
                     <div class="thumb">
                         <img src="{% static '11newhome/img/blog_03.jpg' %}" alt="">
                         <div class="text-content">
-                            <h4>What's the python syntax?</h4>
-                            <span>Posted: <em>don_instructor</em>  /  Date: <em>21 Nov 2021</em>  /  Topic: <em>Statements</em></span>
+                            <h4>{{ tutorial_title | slice:'1:2' | join:" " }}</h4>
+                            <span>Posted: <em>{{ tutorial_user_name | slice:'1' | join:" " }}</em>  /  Date: <em>{{ tutorial_created_at | slice:'1:2' | join:" " | truncatechars_html:12 }}</em>  /  Topic: <em>{{ tutorial_topic | slice:'1:2'| join:" " | truncatechars_html:25 }}</em></span>
                         </div>
                     </div>
                 </div>
@@ -386,42 +386,127 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <div class="pop">
+                <div class="pop" style="    top:8%;">
                     <span>✖</span>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin quis neque lacinia, porta nulla
-                        in, pellentesque ante. Vivamus in luctus mauris, non pharetra nibh. Morbi porttitor nisl sit
-                        amet velit pellentesque consequat. Etiam blandit libero turpis, id vehicula leo posuere a. In
-                        vel massa sollicitudin, tincidunt massa et, tincidunt ex.<br><br>Duis volutpat condimentum
-                        mollis. Sed eleifend libero ut viverra mattis. Suspendisse consectetur diam dolor, ut efficitur
-                        sem finibus vel. Vivamus tristique lacus sed dapibus varius. Fusce pharetra, quam quis congue
-                        pretium, ante dui imperdiet ipsum, eget lobortis leo leo sed diam.</p>
+                    <div class="card" style="
+                        margin-left: 15rem;
+                        margin-right: 15rem;
+                        position: relative;
+                        display: -ms-flexbox;
+                        display: flex;
+                        -ms-flex-direction: column;
+                        flex-direction: column;
+                        min-width: 0;
+                        word-wrap: break-word;
+                        background-color: #fff;
+                        background-clip: border-box;
+                        border: 1px solid rgba(0, 0, 0, .125);
+                        border-radius: .25rem">
+                        <div class="card-header" style="
+                            padding: .75rem 1.25rem;
+                            margin-bottom: 0;
+                            background-color: rgba(0, 0, 0, .03);
+                            border-bottom: 1px solid rgba(0, 0, 0, .125)
+                        ">
+                            {{ tutorial_title | slice:'-1:' | join:" " }}
+                        </div>
+                        <div class="card-body" style="
+                        overflow: auto;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem">
+                            {{ tutorial_contentlist | slice:'-1:' | safeseq | join:" " }}
+                        </div>
+                        <div class="card-footer" style="    padding: .75rem 1.25rem;
+    background-color: rgba(0, 0, 0, .03);
+    border-top: 1px solid rgba(0, 0, 0, .125)">
+                            <div class="float-right">Topic: <em>{{ tutorial_topic | slice:'-1:'| join:" " }}</em></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="pop2">
-                    <span>✖</span>
-                    <p>Praesent purus leo, aliquet et efficitur id, pulvinar scelerisque enim. Maecenas a arcu sagittis,
-                        ornare ante ut, suscipit lectus. Donec dolor ipsum, laoreet nec metus non, tempus elementum
-                        massa. Donec non elit rhoncus, vestibulum enim sed, rutrum arcu. Vestibulum et purus ac diam
-                        condimentum volutpat sed ac est. Phasellus interdum tortor sem. Quisque sit amet condimentum
-                        sem. Phasellus luctus, felis sit amet pulvinar luctus, lectus dui mattis tellus, et placerat
-                        nunc ante at lacus.<br><br>Vivamus vestibulum, nisi sed placerat accumsan, felis felis venenatis
-                        tortor, vel condimentum arcu neque vel mauris. Donec a magna gravida, egestas libero non,
-                        molestie massa. Integer ut dolor eget magna congue gravida ut at arcu. Vivamus maximus neque
-                        quis luctus tempus. Vestibulum consequat a justo id feugiat. </p>
-                </div>
-                <div class="pop3">
-                    <span>✖</span>
-                    <p>Nullam rhoncus, orci et iaculis sodales, quam lectus suscipit augue, ut auctor massa dolor id
-                        metus. Nulla porta ut diam sodales dignissim. Ut sit amet augue vel justo laoreet dignissim.
-                        Maecenas vitae sollicitudin eros. In commodo placerat cursus. Quisque malesuada, nisl ac lacinia
-                        commodo, justo eros maximus ex, quis cursus odio erat at neque. Sed tincidunt eu dolor eget
-                        posuere.<br><br>Curabitur sit amet elit sit amet ligula eleifend aliquam quis eget quam. Mauris
-                        id mi nec justo venenatis tincidunt at ac massa. Sed et volutpat nunc. Quisque at urna quam.
-                        Duis sit amet neque eget quam iaculis iaculis. Quisque maximus porta elementum. Nam ac mattis
-                        erat, quis accumsan odio.</p>
-                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="pop2" style="    top:8%;">
+        <span>✖</span>
+        <div class="card" style="
+                        margin-left: 15rem;
+                        margin-right: 15rem;
+                        position: relative;
+                        display: -ms-flexbox;
+                        display: flex;
+                        -ms-flex-direction: column;
+                        flex-direction: column;
+                        min-width: 0;
+                        word-wrap: break-word;
+                        background-color: #fff;
+                        background-clip: border-box;
+                        border: 1px solid rgba(0, 0, 0, .125);
+                        border-radius: .25rem">
+            <div class="card-header" style="
+                            padding: .75rem 1.25rem;
+                            margin-bottom: 0;
+                            background-color: rgba(0, 0, 0, .03);
+                            border-bottom: 1px solid rgba(0, 0, 0, .125)
+                        ">
+                {{ tutorial_title | slice:'2:3' | join:" " }}
+            </div>
+            <div class="card-body" style="
+                        overflow: auto;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem">
+                {{ tutorial_contentlist | slice:'2:3' | safeseq | join:" " }}
+            </div>
+            <div class="card-footer" style="    padding: .75rem 1.25rem;
+    background-color: rgba(0, 0, 0, .03);
+    border-top: 1px solid rgba(0, 0, 0, .125)">
+                <div class="float-right">Topic: <em>{{ tutorial_topic | slice:'2:3'| join:" " }}</em></div>
             </div>
         </div>
     </div>
+    <div class="pop3" style="    top:8%;">
+        <span>✖</span>
+                    <div class="card" style="
+                        margin-left: 15rem;
+                        margin-right: 15rem;
+                        position: relative;
+                        display: -ms-flexbox;
+                        display: flex;
+                        -ms-flex-direction: column;
+                        flex-direction: column;
+                        min-width: 0;
+                        word-wrap: break-word;
+                        background-color: #fff;
+                        background-clip: border-box;
+                        border: 1px solid rgba(0, 0, 0, .125);
+                        border-radius: .25rem">
+                        <div class="card-header" style="
+                            padding: .75rem 1.25rem;
+                            margin-bottom: 0;
+                            background-color: rgba(0, 0, 0, .03);
+                            border-bottom: 1px solid rgba(0, 0, 0, .125)
+                        ">
+                            {{ tutorial_title | slice:'1:2' | join:" " }}
+                        </div>
+                        <div class="card-body" style="
+                        overflow: auto;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem">
+                            {{ tutorial_contentlist | slice:'1:2' | safeseq | join:" "}}
+                        </div>
+                        <div class="card-footer" style="    padding: .75rem 1.25rem;
+    background-color: rgba(0, 0, 0, .03);
+    border-top: 1px solid rgba(0, 0, 0, .125)">
+                            <div class="float-right">Topic: <em>{{ tutorial_topic | slice:'1:2'| join:" " }}</em></div>
+                        </div>
+                    </div>
+    </div>
+</div>
+</div>
+</div>
 </div>
 
 <div id="fun-facts">

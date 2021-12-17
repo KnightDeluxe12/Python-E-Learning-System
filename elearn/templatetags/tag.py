@@ -4,7 +4,8 @@ register = template.Library()
 
 
 @register.simple_tag
-def hello_world(name):
-    salute = 'Hello' + name
 
-    return salute
+def converttostring(name):
+    name1 = str(name)
+
+    return name1
