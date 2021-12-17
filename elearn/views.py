@@ -57,7 +57,45 @@ from bootstrap_modal_forms.generic import (
 # Shared Views
 
 def home(request):
-    return render(request, 'home.html')
+    q = request.GET.get('q') if request.GET.get('q') != None else ''
+
+    # tutorials = Tutorial.objects.filter(
+    #     Q(course__name__icontains=q) |
+    #     Q(title__icontains=q) |
+    #     Q(content__icontains=q)
+    # ).order_by('-created_at')
+    tutorials = Tutorial.objects.values('id')
+    tutorials1 = Tutorial.objects.all()
+    courses = list(Course.objects.values_list('id', flat=True))
+    tutorial_titlelist = []
+    tutorial_user_namelist = []
+    tutorial_contentlist = []
+    tutorial_created_at = []
+    tutorial_topic_name = []
+    tutorial_topic_name_clean = []
+    tutorial_title = list(Tutorial.objects.filter(id__in=tutorials).values('title').values_list('title', flat=True))[-4:]
+    tutorial_content = list(Tutorial.objects.filter(id__in=tutorials).values('content').values_list('content', flat=True))[-4:]
+    tutorial_user_name = User.objects.filter(id__in=Tutorial.objects.values('user_id')).values_list('username', flat=True)
+    tutorial_created_att = list(Tutorial.objects.filter(id__in=tutorials).values('created_at').values_list('created_at', flat=True))[-4:]
+    tutorial_topic = list(Tutorial.objects.filter(id__in=tutorials).values('course_id').values_list('course_id', flat=True))[-4:]
+    for tutorial in tutorial_topic:
+        for course in courses:
+            if course == tutorial:
+                tutorial_topic_name.append(Course.objects.filter(id=tutorial).values_list('name', flat=True))
+    for tutorial in tutorial_content:
+        tutorial_contentlist.append(tutorial)
+    for tutorial in tutorial_created_att:
+        tutorial_created_at.append(tutorial)
+    for tutorial in tutorial_title:
+        tutorial_titlelist.append(tutorial)
+    for tutorial in tutorial_user_name:
+        tutorial_user_namelist.append(tutorial)
+    for i in tutorial_topic_name:
+        tutorial_topic_name_clean.append(' '.join(list(i)))
+    context = {'tutorial_contentlist': tutorial_contentlist, 'tutorial_topic': tutorial_topic_name_clean, 'tutorial': tutorials1, 'courses': courses, 'tutorial_user_name': tutorial_user_namelist,
+               'tutorial_title': tutorial_titlelist, 'tutorial_created_at':tutorial_created_at}
+
+    return render(request, 'home.html', context)
 
 
 def about(request):
@@ -500,7 +538,6 @@ class QuizDeleteView(DeleteView):
         return self.request.user.quizzes.all()
 
 
-
 def question_add(request, pk):
     # By filtering the quiz by the url keyword argument `pk` and
     # by the owner, which is the logged in user, we are protecting
@@ -654,7 +691,8 @@ class ITutorialDetail(LoginRequiredMixin, DetailView):
 
 def tutorialpreview(request):
     tutorials = Tutorial.objects.all().last()
-    return render(request, 'dashboard/instructor/tutorial_preview.html', {'tutorials':tutorials})
+    return render(request, 'dashboard/instructor/tutorial_preview.html', {'tutorials': tutorials})
+
 
 def tutorialcancel(request, pk):
     tutorials = Tutorial.objects.values_list('title', flat=True).filter(id=pk)
@@ -664,6 +702,7 @@ def tutorialcancel(request, pk):
         return redirect('tutorial')
 
     return render(request, 'dashboard/instructor/tutorial_confirm.html', {'tutorials': tutorials})
+
 
 class LNotesList(ListView):
     model = Notes
@@ -724,8 +763,9 @@ def home_learner(request):
     tutorials = Tutorial.objects.all()
     courses = Course.objects.all()
     tanginang_tutorial = Tutorial.objects.only('title')
-    context = {'tutorials': tutorials, 'courses': courses, 't1':tanginang_tutorial}
+    context = {'tutorials': tutorials, 'courses': courses, 't1': tanginang_tutorial}
     return render(request, 'dashboard/learner/home.html', context)
+
 
 # class HomeLearnerListView(ListView):
 #     model = Tutorial
@@ -867,6 +907,7 @@ def lupdate_profile(request):
 
     return render(request, 'dashboard/learner/update_profile.html', {'form': form})
 
+
 def iupdate_profile(request):
     user = request.user
     form = UserForm(instance=user)
@@ -989,6 +1030,6 @@ def take_quiz(request, pk):
         'form': form,
         'progress': progress,
         'total_unanswered': total_unanswered_questions,
-        'total_question':total_questions
+        'total_question': total_questions
 
     })
