@@ -1,5 +1,5 @@
 {% extends 'dashboard/instructor/base.html' %}
-
+{% autoescape on %}
 {% block body %}
 
     <div class="container-fluid">
@@ -180,6 +180,7 @@
         });
     </script>
 {% endblock extrascripts %}
+{% endautoescape %}
 
 
 

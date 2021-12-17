@@ -37,7 +37,7 @@
                 {% endif %}
                 <div class="card-body">
                     <h2 class="card-title"></h2>
-                    <p class="card-text">{{ object.content|linebreaks }}</p>
+                    <p class="card-text">{{ object.content|safe }}</p>
                 </div>
                 <div class="card-footer text-muted">
                     Posted on {{ object.created_at }} by
