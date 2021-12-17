@@ -307,7 +307,7 @@ def auser_profile(request):
 
 
 # Instructor Views
-def home_instructor(request):
+def  home_instructor(request):
     learner = User.objects.filter(is_learner=True).count()
     instructor = User.objects.filter(is_instructor=True).count()
     course = Course.objects.all().count()
