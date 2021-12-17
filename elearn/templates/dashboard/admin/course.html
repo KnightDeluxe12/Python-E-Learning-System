@@ -16,7 +16,7 @@
                                     E-Learning Management System
                                 </div>
                                 <div class="card-body">
-                                    <div class="h3 mb-4 text-danger">Register Course</div>
+                                    <div class="h3 mb-4 text-danger">Register Topic</div>
                                     {% for message in messages %}
                                         <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
                                             {{ message }}
@@ -28,7 +28,7 @@
 
                                         <div class="form-group">
                                             <div class="row">
-                                                <div class="col"><label>Course Title</label><br>
+                                                <div class="col"><label>Topic Title</label><br>
 
                                                     <input type="text" name="name">
                                                 </div>
@@ -38,7 +38,7 @@
 
                                         <div class="form-group">
                                             <div class="row">
-                                                <div class="col"><label>Course Color Code, Default Color #007bff</label><br>
+                                                <div class="col"><label>Topic Color Code, Default Color #007bff</label><br>
                                                     <input type="text" name="color">
                                                 </div>
                                             </div>

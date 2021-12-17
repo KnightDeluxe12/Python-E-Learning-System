@@ -6,14 +6,12 @@
 {% block body %}
     <div class="container-fluid" style="padding-top: 20px">
         <!-- Breadcrumbs-->
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-                <a href="#" style="color: #999965; font-weight: bold; letter-spacing: 10px">Learning Management
-                    System</a>
-            </li>
-        </ol>
         <div class="card mb-3">
             <div class="card-body">
+                    <div class="card-header">
+                        <i class="fas fa-table text-primary"></i>
+                        Add a new answer
+                    </div>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{% url 'quiz_change_list' %}">My Quizzes</a></li>
@@ -31,13 +29,13 @@
                     <div class="card mb-3{% if formset.errors %} border-danger{% endif %}">
                         <div class="card-header">
                             <div class="row">
-                                <div class="col-8">
+                                <div class="col-10">
                                     <strong>Answers</strong>
                                 </div>
-                                <div class="col-2">
+                                <div class="col-1">
                                     <strong>Correct?</strong>
                                 </div>
-                                <div class="col-2">
+                                <div class="col-1">
                                     <strong>Delete?</strong>
                                 </div>
                             </div>
@@ -49,17 +47,17 @@
                             {% for form in formset %}
                                 <div class="list-group-item">
                                     <div class="row">
-                                        <div class="col-8">
+                                        <div class="col-10">
                                             {% for hidden in form.hidden_fields %}{{ hidden }}{% endfor %}
                                             {{ form.text|as_crispy_field }}
                                             {% if form.instance.pk and form.text.value != form.instance.text %}
                                                 <p class="mb-0 mt-1"><small class="text-muted font-italic"><strong>Old
                                                     answer:</strong> {{ form.instance.text }}</small></p>{% endif %}
                                         </div>
-                                        <div class="col-2">
+                                        <div class="col-1">
                                             {{ form.is_correct }}
                                         </div>
-                                        <div class="col-2">
+                                        <div class="col-1">
                                             {% if form.instance.pk %}
                                                 {{ form.DELETE }}
                                             {% endif %}
@@ -75,7 +73,7 @@
                     </p>
                     <button type="submit" class="btn btn-success">Save changes</button>
                     <a href="{% url 'quiz_change' quiz.pk %}" class="btn btn-outline-secondary"
-                       role="button">Nevermind</a>
+                       role="button">Cancel</a>
                     <a href="{% url 'question_delete' quiz.pk question.pk %}"
                        class="btn btn-danger float-right">Delete</a>
                 </form>

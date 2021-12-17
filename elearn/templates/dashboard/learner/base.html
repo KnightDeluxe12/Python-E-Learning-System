@@ -25,12 +25,10 @@
 
 <!-- headers-->
 <nav class="navbar navbar-expand navbar-dark bg-success fixed-top">
-
     <a class="navbar-brand mr-1 text-white" href="">Learner's Portal</a>
     <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars"></i>
     </button>
-
     {#    <!-- Navbar Search -->#}
     {#    <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">#}
     {#        <div class="input-group">#}
@@ -43,7 +41,6 @@
     {#        </div>#}
     {#    </form>#}
     {#    The content move to list_tutorial.html for now#}
-
     <!-- Navbar -->
     <ul class="navbar-nav ml-auto mr-0 mr-md-3 my-2 my-md-0">
         <li class="nav-item dropdown no-arrow">
@@ -58,10 +55,9 @@
             </div>
         </li>
     </ul>
-
 </nav>
 
-<div id="wrapper" style="padding-top: 50px;">
+	<div id="wrapper" style="padding-top: 50px;">
     <!-- Sidebar -->
     <ul class="sidebar navbar-nav">
         <div style="margin-top: 27px;">
@@ -101,7 +97,6 @@
                     <span>Take Quiz</span>
                 </a>
             </li>
-
             <li class="nav-item active dropdown no-arrow">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                    href="">
@@ -118,7 +113,6 @@
             </li>
         </div>
     </ul>
-
     {% block body %}{% endblock %}
     <!-- /.content-wrapper -->
 </div>
