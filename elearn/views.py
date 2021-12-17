@@ -350,7 +350,9 @@ def  home_instructor(request):
     instructor = User.objects.filter(is_instructor=True).count()
     course = Course.objects.all().count()
     users = User.objects.all().count()
-    context = {'learner': learner, 'course': course, 'instructor': instructor, 'users': users}
+    lessons = Tutorial.objects.filter(user_id=request.user.id).all().count()
+    quizzes = Quiz.objects.filter(owner_id=request.user.id).all().count()
+    context = {'learner': learner, 'course': course, 'instructor': instructor, 'users': users, 'quizzes': quizzes, 'lessons': lessons}
 
     return render(request, 'dashboard/instructor/home.html', context)
 
