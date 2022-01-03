@@ -36,9 +36,45 @@
                                            style="margin-top: 10rem;font-weight: 500">{{ course.name }}</p>
                                     </div>
                                     <div class="card-body">
-                                        <p class="card-text">This is a wider card with supporting text below as a
-                                            natural lead-in to additional content. This content is a little bit
-                                            longer.</p>
+                                        {% if course.name == "Introduction to Computer Programming" %}
+                                        <p class="card-text">In this topic, you will discover the things beyond the
+                                        Computer Programming Languages. You will be able to familiarize and implement
+                                        some basic computer programming languages.
+                                        </p>
+                                        {% endif %}
+                                        {% if course.name == "Python and its Syntax" %}
+                                        <p class="card-text">Oh syntax, oh snap. You will learn the basics of how to
+                                        create a simple program in Python and learn its syntax and how to's to perform
+                                        certain task using Python Language!</p>
+                                        {% endif %}
+                                        {% if course.name == "Variables and Data Types" %}
+                                        <p class="card-text">Variables, variables, and data types?. This topic will
+                                        help you use and utilize the most fundamental thing about Python and its building
+                                        block, so see you there!</p>
+                                        {% endif %}
+                                        {% if course.name == "Numbers and Operators" %}
+                                        <p class="card-text">We are all familiar with numbers and math right? We will going back
+                                        through our high school days and learn again about those but in Python style!</p>
+                                        {% endif %}
+                                        {% if course.name == "User Input" %}
+                                        <p class="card-text">Please insert your input here, because you are about to learn
+                                        on this topic, User Input!. You will learn how Python interpret about our Inputted
+                                        data into our Program!</p>
+                                        {% endif %}
+                                        {% if course.name == "If and Else Statements" %}
+                                        <p class="card-text">If you click this Topic you will learn Else, you should try our
+                                        different topic Else If try this topic too to learn all about Conditional Statements
+                                        in Python!</p>
+                                        {% endif %}
+                                        {% if course.name == "Loops" %}
+                                        <p class="card-text">For this topic your knowledge will increment drastically when you
+                                        iterate more on the lessons! You will be able to master the how looping on the Python
+                                        Language to make Repetitive situtation in just 3 line of code!</p>
+                                        {% endif %}
+                                        {% if course.name == "Array" %}
+                                        <p class="card-text">Array! you're finally at the last topic of this Python Journey, You will
+                                        learn how our datas store inside of our program using Python Built in Syntax Arrays!</p>
+                                        {% endif %}
                                         <a class="btn btn-success"
                                            href="{% url 'ltutorial' %}?q={{ course.name }}"
                                            style="position: relative;">Visit Topic</a>
