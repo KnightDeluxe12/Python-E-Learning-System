@@ -313,18 +313,18 @@ def acreate_profile(request):
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
         birth_date = request.POST['birth_date']
-        bio = request.POST['bio']
+        # bio = request.POST['bio']
         phonenumber = request.POST['phonenumber']
         city = request.POST['city']
         country = request.POST['country']
         avatar = request.FILES['avatar']
-        hobby = request.POST['hobby']
+        # hobby = request.POST['hobby']
         current_user = request.user
         user_id = current_user.id
         print(user_id)
 
         Profile.objects.filter(id=user_id).create(user_id=user_id, phonenumber=phonenumber, first_name=first_name,
-                                                  last_name=last_name, bio=bio, birth_date=birth_date, avatar=avatar,
+                                                  last_name=last_name, birth_date=birth_date, avatar=avatar,
                                                   city=city, country=country)
         messages.success(request, 'Your Profile Was Created Successfully')
         return redirect('auser_profile')

@@ -15,7 +15,7 @@
                         <li class="breadcrumb-item">
                             <a href="#"></a>
                             <a class="btn btn-sm btn-success" href="{% url 'iadd_notes' %}"
-                               style="padding: 8px; float: right; background-color: green; color: white;">Add Notes</a>
+                               style="padding: 8px; float: right; background-color: #17a2b8; color: white;">Add Notes</a>
                         </li>
                     </ol>
                     <div class="card mb-3">
@@ -74,7 +74,7 @@
                                                 <td>
                                                     {% if note.cover %}
                                                         <a href="{{ note.file.url }}" download
-                                                           class="btn btn-outline-success">
+                                                           class="btn btn-outline-info">
                                                             Download PDF</a>
                                                     {% else %}
                                                         <span class="text-muted">No PDF</span>
@@ -82,7 +82,7 @@
                                                 </td>
                                                 <td>
                                                     <a href="{% url 'update_file' note.pk %}">
-                                                        <button type="button" class="btn btn-success">Update Notes
+                                                        <button type="button" class="btn btn-info">Update Notes
                                                         </button>
                                                 </td>
 
