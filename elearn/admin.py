@@ -16,4 +16,5 @@ admin.site.register(Tutorial)
 admin.site.register(Notes)
 admin.site.register(Announcement)
 admin.site.register(LearnerAnswer)
+admin.site.register(LessonProgress)
 

@@ -66,6 +66,17 @@ class Tutorial(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     video = EmbedVideoField(blank=True, null=True)
 
+
+class LessonProgress(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    lesson = models.ForeignKey(Tutorial, on_delete=models.CASCADE)
+    markAsDone = models.BooleanField('Mark as Done', default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.markAsDone
+
+
 class Notes(models.Model):
     title = models.CharField(max_length=500)
     file = models.FileField(upload_to='', null=True, blank=True)

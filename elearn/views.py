@@ -35,7 +35,7 @@ import itertools
 from django.db.models import Avg, Count, Sum, Q
 from django.forms import inlineformset_factory, formset_factory
 from .models import TakenQuiz, Profile, Quiz, Question, Answer, Learner, User, Course, Tutorial, Notes, Announcement, \
-    LearnerAnswer
+    LearnerAnswer, LessonProgress
 from django.db import transaction
 from django.contrib.auth.hashers import make_password
 from django.core.files.storage import FileSystemStorage
@@ -859,6 +859,8 @@ def lcreate_profile(request):
                                                   phonenumber=phonenumber, city=city, country=country,
                                                   birth_date=birth_date, avatar=avatar)
         User.objects.filter(id=user_id).update(first_name=first_name, last_name=last_name)
+        for lesson in Tutorial.objects.values_list('id', flat=True):
+            LessonProgress.objects.filter(id=user_id).create(user_id=user_id, lesson_id=lesson)
         messages.success(request, 'Profile was created successfully')
         return redirect('luser_profile')
     else:
