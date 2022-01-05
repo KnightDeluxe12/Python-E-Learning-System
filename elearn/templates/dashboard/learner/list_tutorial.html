@@ -29,7 +29,7 @@
         <i class="fas fa-bars"></i>
     </button>
     <a class="navbar-brand ml-4 text-light" href="{% url 'learner' %}">Learner's Portal</a>
-    
+
 
     <!-- Navbar Search -->
     <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -156,7 +156,7 @@
                         </div>
                         <div class="card-body ml-2">
                             <p class="card-text text-left">{{ tutorial.content| safe | truncatechars_html:100 }}</p>
-{#                            bug dont ever put iframe at first 100 chars#}
+                            {#                            bug dont ever put iframe at first 100 chars#}
                             <a href="{% url 'tutorial-detail' tutorial.pk %}" class="btn btn-success">Read More
                                 &rarr;</a>
                         </div>
@@ -164,27 +164,34 @@
                             Posted on {{ tutorial.created_at }} by
                             <a class="text-muted" href="#">{{ tutorial.user.username }}</a>
                             <span class="text-primary h6 float-right"
-                                  style="margin-bottom: 0">{{ tutorial.course.get_html_badge }}</span>
+                                  style="margin-bottom: 0">{{ tutorial.course.get_html_badge }}
+{#                                <span class="badge badge-primary"></span>#}
+{#                                {% if tutorial.lessonprogress.markAsDone == False %}#}
+{#                                    <span class="badge badge-success" style="background-color: #b5ff99">Mark as done</span>#}
+{#                                {% else %}#}
+{#                                    <div class="badge badge-success">Done</div>#}
+{#                                {% endif %}#}
+                            </span>
                         </div>
                     </div>
                 {% endfor %}
-{#                {% if is_paginated %}#}
-{#                    <!-- Pagination -->#}
-{#                    <ul class="pagination justify-content-center mb-4">#}
-{#                        {% if page_obj.has_previous %}#}
-{#                            <li class="page-item">#}
-{#                                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">&larr; Previous#}
-{#                                    page</a>#}
-{#                            </li>#}
-{#                        {% endif %}#}
-{##}
-{#                        {% if page_obj.has_next %}#}
-{#                            <li class="page-item">#}
-{#                                <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next page &rarr;</a>#}
-{#                            </li>#}
-{#                        {% endif %}#}
-{#                    </ul>#}
-{#                {% endif %}#}
+                {#                {% if is_paginated %}#}
+                {#                    <!-- Pagination -->#}
+                {#                    <ul class="pagination justify-content-center mb-4">#}
+                {#                        {% if page_obj.has_previous %}#}
+                {#                            <li class="page-item">#}
+                {#                                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">&larr; Previous#}
+                {#                                    page</a>#}
+                {#                            </li>#}
+                {#                        {% endif %}#}
+                {##}
+                {#                        {% if page_obj.has_next %}#}
+                {#                            <li class="page-item">#}
+                {#                                <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next page &rarr;</a>#}
+                {#                            </li>#}
+                {#                        {% endif %}#}
+                {#                    </ul>#}
+                {#                {% endif %}#}
             </div>
             <div class="col mt-4 column1">
                 <div style="width: 300px; background-clip: border-box;border: 1px solid rgba(0, 0, 0, 0.125);">

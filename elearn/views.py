@@ -856,7 +856,7 @@ def ltutorial(request):
         Q(course__name__icontains=q) |
         Q(title__icontains=q) |
         Q(content__icontains=q)
-    ).order_by('-created_at')
+    ).order_by('course_id')
     # tutorials = Tutorial.objects.all().order_by('-created_at')
     courses = Course.objects.all()
     tutorials = {'tutorials': tutorials, 'courses': courses}
