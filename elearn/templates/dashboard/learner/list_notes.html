@@ -38,8 +38,8 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Cover</th>
+{#                                        <th>ID</th>#}
+                                        <th>Thumbnail</th>
                                         <th>Notes Title</th>
                                         <th>Read</th>
                                         <th>Download</th>
@@ -53,18 +53,18 @@
 
 
                                             <tr>
-                                                <td>{{ note.id }}</td>
+{#                                                <td>{{ note.id }}</td>#}
                                                 <td>
                                                     {% if note.cover %}
                                                         <img class="" src="{{ note.cover.url }}" alt="{{ note.title }}"
                                                              style="margin-left: 100px">
                                                     {% else %}
-                                                        <span class="text-muted">No cover</span>
+                                                        <span class="text-muted">No thumbnail</span>
                                                     {% endif %}
                                                 </td>
 
 
-                                                <td>{{ note.course.name }} - {{ note.title }}</td>
+                                                <td>{{ note.title }} - {{ note.course.get_html_badge }}</td>
 
                                                 <td>
                                                     {% if note.file %}

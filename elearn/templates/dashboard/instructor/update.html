@@ -5,14 +5,10 @@
 {% block body %}
 
     <div class="container-fluid" style="padding-top: 20px">
-        <!-- Breadcrumbs-->
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-                <a href="#" style="color: #17a2b8; font-weight: bold; letter-spacing: 10px">Learning Management
-                    System</a>
-            </li>
-        </ol>
-        <div class="card mb-3">
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-6">
+        <div class="card mb-3 mt-5">
             <div class="card-header text-info">
                 <i class="fas fa-table"></i>
                 Please Browse And Update Notes
@@ -29,8 +25,8 @@
 
                     <div class="form-group">
                         <div class="row">
-                            <div class="col"><label>Report</label>
-                                <input type="file" id="myFile" name="file" placeholder="Report Attachment"
+                            <div class="col"><label>Update notes:</label><br>
+                                <input class="ml-5" type="file" id="myFile" name="file" placeholder="Report Attachment"
                                        enctype="multipart/form-data" required></div>
 
                         </div>
@@ -39,16 +35,17 @@
 
                     <div class="form-group">
                         <button type="submit" style="background-color: #17a2b8; color: white" class="btn btn btn-lg btn-block"
-                                href="">Add Now
+                                href="">Update Now
                         </button>
                     </div>
                 </form>
 
             </div>
         </div>
+        </div>
+        <div class="col-3"></div>
     </div>
     </div>
-    </div>
-    </div>
+
 
 {% endblock %}
