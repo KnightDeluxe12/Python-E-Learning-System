@@ -124,6 +124,8 @@ def loginView(request):
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(request, username=username, password=password)
+        current_user = request.user
+        user_id = current_user.id
         if user is not None and user.is_active:
             auth.login(request, user)
             if user.is_admin or user.is_superuser:
@@ -761,11 +763,20 @@ def update_file(request, pk):
 # Learner Views
 def home_learner(request):
     q = request.GET.get('q') if request.GET.get('q') is not None else ''
+    current_user = request.user
+    user_id = current_user.id
 
     tutorials = Tutorial.objects.all()
     courses = Course.objects.all()
-    tanginang_tutorial = Tutorial.objects.only('title')
-    context = {'tutorials': tutorials, 'courses': courses, 't1': tanginang_tutorial}
+    tutorial1 = Tutorial.objects.only('title')
+    context = {'tutorials': tutorials, 'courses': courses, 't1': tutorial1}
+
+    if user_id not in LessonProgress.objects.values_list('user_id', flat=True):
+        for lesson in Tutorial.objects.values_list('id', flat=True):
+            LessonProgress.objects.filter(id=user_id).create(user_id=user_id, lesson_id=lesson)
+    elif user_id in LessonProgress.objects.values_list('user_id', flat=True):
+        for lesson in Tutorial.objects.values_list('id', flat=True):
+            LessonProgress.objects.filter(user_id=user_id).update(lesson_id=lesson)
     return render(request, 'dashboard/learner/home.html', context)
 
 
@@ -925,10 +936,20 @@ def iupdate_profile(request):
     return render(request, 'dashboard/instructor/update_profile.html', {'form': form})
 
 
-class LTutorialDetail(LoginRequiredMixin, DetailView):
-    model = Tutorial
-    template_name = 'dashboard/learner/tutorial_detail.html'
+# class LTutorialDetail(LoginRequiredMixin, DetailView):
+#     model = Tutorial
+#     template_name = 'dashboard/learner/tutorial_detail.html'
 
+def ltutorialdetail(request, pk):
+    current_user = request.user
+    user_id = current_user.id
+    tutorialContext = Tutorial.objects.filter(id=pk).all()
+    lessonProgressMark = LessonProgress.objects.filter(lesson_id=pk, user_id=user_id).all()
+    context = {'object1': tutorialContext, 'object2': lessonProgressMark}
+    if request.method == 'POST':
+        LessonProgress.objects.filter(lesson_id=pk, user_id=user_id).update(markAsDone=1)
+        return redirect('ltutorial')
+    return render(request, 'dashboard/learner/tutorial_detail.html', context)
 
 class RedirectToPreviousMixin:
     default_redirect = '/'

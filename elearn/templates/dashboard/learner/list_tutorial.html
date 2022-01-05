@@ -168,23 +168,23 @@
                         </div>
                     </div>
                 {% endfor %}
-                {% if is_paginated %}
-                    <!-- Pagination -->
-                    <ul class="pagination justify-content-center mb-4">
-                        {% if page_obj.has_previous %}
-                            <li class="page-item">
-                                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">&larr; Previous
-                                    page</a>
-                            </li>
-                        {% endif %}
-
-                        {% if page_obj.has_next %}
-                            <li class="page-item">
-                                <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next page &rarr;</a>
-                            </li>
-                        {% endif %}
-                    </ul>
-                {% endif %}
+{#                {% if is_paginated %}#}
+{#                    <!-- Pagination -->#}
+{#                    <ul class="pagination justify-content-center mb-4">#}
+{#                        {% if page_obj.has_previous %}#}
+{#                            <li class="page-item">#}
+{#                                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">&larr; Previous#}
+{#                                    page</a>#}
+{#                            </li>#}
+{#                        {% endif %}#}
+{##}
+{#                        {% if page_obj.has_next %}#}
+{#                            <li class="page-item">#}
+{#                                <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next page &rarr;</a>#}
+{#                            </li>#}
+{#                        {% endif %}#}
+{#                    </ul>#}
+{#                {% endif %}#}
             </div>
             <div class="col mt-4 column1">
                 <div style="width: 300px; background-clip: border-box;border: 1px solid rgba(0, 0, 0, 0.125);">
