@@ -765,18 +765,56 @@ def home_learner(request):
     q = request.GET.get('q') if request.GET.get('q') is not None else ''
     current_user = request.user
     user_id = current_user.id
+    # lessons =
+
+    total_lessons = Tutorial.objects.filter(course_id=14).all().count()
+    total_marked_lessons = LessonProgress.objects.filter(user_id=user_id, lesson__course_id=14, markAsDone= 1).values_list('markAsDone', flat=True).count()
+    progress = round(((total_marked_lessons) / (1 if total_lessons <= 0 else total_lessons)) * 100)
+
+    total_lessons15 = Tutorial.objects.filter(course_id=15).all().count()
+    total_marked_lessons15 = LessonProgress.objects.filter(user_id=user_id, lesson__course_id=15, markAsDone= 1).values_list('markAsDone', flat=True).count()
+    progress15 = round(((total_marked_lessons15) / (1 if total_lessons15 == 0 else total_lessons15)) * 100)
+
+    total_lessons16 = Tutorial.objects.filter(course_id=16).all().count()
+    total_marked_lessons16 = LessonProgress.objects.filter(user_id=user_id, lesson__course_id=16, markAsDone= 1).values_list('markAsDone', flat=True).count()
+    progress16 = round(((total_marked_lessons16) / (1 if total_lessons16 == 0 else total_lessons16)) * 100)
+
+    total_lessons17 = Tutorial.objects.filter(course_id=17).all().count()
+    total_marked_lessons17 = LessonProgress.objects.filter(user_id=user_id, lesson__course_id=17, markAsDone= 1).values_list('markAsDone', flat=True).count()
+    progress17 = round(((total_marked_lessons17) / (1 if total_lessons17 == 0 else total_lessons17)) * 100)
+
+    total_lessons18 = Tutorial.objects.filter(course_id=18).all().count()
+    total_marked_lessons18 = LessonProgress.objects.filter(user_id=user_id, lesson__course_id=18, markAsDone= 1).values_list('markAsDone', flat=True).count()
+    progress18 = round(((total_marked_lessons18) / (1 if total_lessons18 == 0 else total_lessons18)) * 100)
+
+    total_lessons20 = Tutorial.objects.filter(course_id=20).all().count()
+    total_marked_lessons20 = LessonProgress.objects.filter(user_id=user_id, lesson__course_id=20, markAsDone= 1).values_list('markAsDone', flat=True).count()
+    progress20 = round(((total_marked_lessons20) / (1 if total_lessons20 == 0 else total_lessons20)) * 100)
+
+    total_lessons21 = Tutorial.objects.filter(course_id=21).all().count()
+    total_marked_lessons21 = LessonProgress.objects.filter(user_id=user_id, lesson__course_id=21, markAsDone= 1).values_list('markAsDone', flat=True).count()
+    progress21 = round(((total_marked_lessons21) / (1 if total_lessons21 == 0 else total_lessons21)) * 100)
+
+    total_lessons22 = Tutorial.objects.filter(course_id=22).all().count()
+    total_marked_lessons22 = LessonProgress.objects.filter(user_id=user_id, lesson__course_id=22, markAsDone= 1).values_list('markAsDone', flat=True).count()
+    progress22 = round(((total_marked_lessons22) / (1 if total_lessons22 == 0 else total_lessons22)) * 100)
+
+
 
     tutorials = Tutorial.objects.all()
     courses = Course.objects.all()
     tutorial1 = Tutorial.objects.only('title')
-    context = {'tutorials': tutorials, 'courses': courses, 't1': tutorial1}
+    context = {'tutorials': tutorials, 'courses': courses, 't1': tutorial1, 'progress':progress, 'progress15':progress15, 'progress16':progress16, 'progress17':progress17, 'progress18':progress18, 'progress20':progress20, 'progress21':progress21, 'progress22':progress22}
+
+
 
     if user_id not in LessonProgress.objects.values_list('user_id', flat=True):
         for lesson in Tutorial.objects.values_list('id', flat=True):
             LessonProgress.objects.filter(id=user_id).create(user_id=user_id, lesson_id=lesson)
-    elif user_id in LessonProgress.objects.values_list('user_id', flat=True):
-        for lesson in Tutorial.objects.values_list('id', flat=True):
-            LessonProgress.objects.filter(user_id=user_id).update(lesson_id=lesson)
+    # elif user_id in LessonProgress.objects.values_list('user_id', flat=True):
+    #     for lesson in Tutorial.objects.filter(user_id=user_id).values_list('id', flat=True):
+    #         if
+    #             LessonProgress.objects.filter(user_id=user_id).update(lesson_id=lesson)
     return render(request, 'dashboard/learner/home.html', context)
 
 
@@ -948,7 +986,7 @@ def ltutorialdetail(request, pk):
     context = {'object1': tutorialContext, 'object2': lessonProgressMark}
     if request.method == 'POST':
         LessonProgress.objects.filter(lesson_id=pk, user_id=user_id).update(markAsDone=1)
-        return redirect('ltutorial')
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
     return render(request, 'dashboard/learner/tutorial_detail.html', context)
 
 class RedirectToPreviousMixin:
