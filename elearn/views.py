@@ -859,8 +859,8 @@ def lcreate_profile(request):
                                                   phonenumber=phonenumber, city=city, country=country,
                                                   birth_date=birth_date, avatar=avatar)
         User.objects.filter(id=user_id).update(first_name=first_name, last_name=last_name)
-        for lesson in Tutorial.objects.values_list(id, flat=True):
-            LessonProgress.objects.filter(id=user_id).create(user_id=user_id, tutorial_id=lesson)
+        for lesson in Tutorial.objects.values_list('id', flat=True):
+            LessonProgress.objects.filter(id=user_id).create(user_id=user_id, lesson_id=lesson)
         messages.success(request, 'Profile was created successfully')
         return redirect('luser_profile')
     else:
