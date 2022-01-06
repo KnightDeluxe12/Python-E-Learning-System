@@ -5,72 +5,74 @@
 
 
 {% block body %}
-<style>
-.avatar {
-  position: relative;
-  display: inline-block;
-  border-radius: 50%;
-  border: 2px solid lightskyblue;
-}
+    <style>
+        .avatar {
+            position: relative;
+            display: inline-block;
+            border-radius: 50%;
+            border: 2px solid lightskyblue;
+        }
 
-.avatar img {
-  display: block;
-  border-radius: 50%;
-  object-fit: cover;
-  object-position: center;
-}
-.avatar.avatar--small img {
-  width: 2.8rem;
-  height: 2.8rem;
-}
-.avatar.avatar--small:after {
-  width: 0.7rem;
-  height: 0.7rem;
-  bottom: 0px;
-  right: -6px;
-}
+        .avatar img {
+            display: block;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center;
+        }
 
-.avatar.avatar--medium img {
-  width: 3.6rem;
-  height: 3.6rem;
-  border-radius: 50%;
-}
+        .avatar.avatar--small img {
+            width: 2.8rem;
+            height: 2.8rem;
+        }
 
-.avatar.avatar--medium:after {
-  width: 0.7rem;
-  height: 0.7rem;
-  bottom: 0px;
-  right: -6px;
-}
+        .avatar.avatar--small:after {
+            width: 0.7rem;
+            height: 0.7rem;
+            bottom: 0px;
+            right: -6px;
+        }
 
-.avatar.avatar--large img {
-  display: block;
-  width: 8rem;
-  height: 8rem;
-  border-radius: 50%;
-}
+        .avatar.avatar--medium img {
+            width: 3.6rem;
+            height: 3.6rem;
+            border-radius: 50%;
+        }
 
-.avatar.avatar--large:after {
-  width: 1rem;
-  height: 1rem;
-  bottom: 2px;
-  right: 3.5px;
-}
+        .avatar.avatar--medium:after {
+            width: 0.7rem;
+            height: 0.7rem;
+            bottom: 0px;
+            right: -6px;
+        }
 
-.avatar.avatar--xlarge img {
-  display: block;
-  width: 12rem;
-  height: 12rem;
-  border-radius: 50%;
-}
+        .avatar.avatar--large img {
+            display: block;
+            width: 8rem;
+            height: 8rem;
+            border-radius: 50%;
+        }
 
-.avatar.avatar--xlarge:after {
-  width: 1rem;
-  height: 1rem;
-  bottom: 2px;
-  right: 3.5px;
-}
-</style>
+        .avatar.avatar--large:after {
+            width: 1rem;
+            height: 1rem;
+            bottom: 2px;
+            right: 3.5px;
+        }
+
+        .avatar.avatar--xlarge img {
+            display: block;
+            width: 12rem;
+            height: 12rem;
+            border-radius: 50%;
+        }
+
+        .avatar.avatar--xlarge:after {
+            width: 1rem;
+            height: 1rem;
+            bottom: 2px;
+            right: 3.5px;
+        }
+    </style>
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-3" style="color: red">
@@ -100,14 +102,24 @@
                                 {% if user.avatar %}
                                     <center>
                                         <div class="avatar avatar--xlarge"><img class="" style=""
-                                                           src="{{ user.avatar.url }}" alt="{{ user.user.username }}">
+                                                                                src="{{ user.avatar.url }}"
+                                                                                alt="{{ user.user.username }}">
                                         </div>
                                     </center><br>
                                 {% else %}
                                     <span class="text-muted">text-danger Picture for {{ user.user.username }}</span>
                                 {% endif %}
 
-
+                                <ul class="nav nav-tabs mb-3">
+                                    <li class="nav-item">
+                                        <a class="nav-link active"
+                                           href="{% url 'luser_profile' %}">Personal info</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link{% if active == 'taken' %} active{% endif %}"
+                                           href="{% url 'luser_stats' %}">Stats</a>
+                                    </li>
+                                </ul>
 
                                 <table class="table table-bordered">
                                     <thead>
@@ -178,16 +190,10 @@
     <div class="col-sm-3" style="color: red">
     </div>
 
-    </div>
-    </div>
-
     <script type="text/javascript" src="{% static 'js/jquery-2.1.3.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/jquery.dataTables.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
-    </body>
-
-    </html>
 {% endblock %}
 
 

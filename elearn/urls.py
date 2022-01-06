@@ -68,6 +68,7 @@ urlpatterns = [
     path('llistnotes/', views.LLNotesList.as_view(), name='llnotes'),
     path('ilchat/', views.ITiseList.as_view(), name='ilchat'),
     path('luser_profile/', views.luser_profile, name='luser_profile'),
+    path('luser_stats/', views.luser_stats, name='luser_stats'),
     path('lcreate_profile/', views.lcreate_profile, name='lcreate_profile'),
     # path('tutorials/<int:pk>/', views.LTutorialDetail.as_view(), name="tutorial-detail"),
     path('tutorials/<int:pk>/', views.ltutorialdetail, name="tutorial-detail"),

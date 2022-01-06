@@ -73,11 +73,16 @@ def home(request):
     tutorial_created_at = []
     tutorial_topic_name = []
     tutorial_topic_name_clean = []
-    tutorial_title = list(Tutorial.objects.filter(id__in=tutorials).values('title').values_list('title', flat=True))[-4:]
-    tutorial_content = list(Tutorial.objects.filter(id__in=tutorials).values('content').values_list('content', flat=True))[-4:]
-    tutorial_user_name = User.objects.filter(id__in=Tutorial.objects.values('user_id')).values_list('username', flat=True)
-    tutorial_created_att = list(Tutorial.objects.filter(id__in=tutorials).values('created_at').values_list('created_at', flat=True))[-4:]
-    tutorial_topic = list(Tutorial.objects.filter(id__in=tutorials).values('course_id').values_list('course_id', flat=True))[-4:]
+    tutorial_title = list(Tutorial.objects.filter(id__in=tutorials).values('title').values_list('title', flat=True))[
+                     -4:]
+    tutorial_content = list(
+        Tutorial.objects.filter(id__in=tutorials).values('content').values_list('content', flat=True))[-4:]
+    tutorial_user_name = User.objects.filter(id__in=Tutorial.objects.values('user_id')).values_list('username',
+                                                                                                    flat=True)
+    tutorial_created_att = list(
+        Tutorial.objects.filter(id__in=tutorials).values('created_at').values_list('created_at', flat=True))[-4:]
+    tutorial_topic = list(
+        Tutorial.objects.filter(id__in=tutorials).values('course_id').values_list('course_id', flat=True))[-4:]
     for tutorial in tutorial_topic:
         for course in courses:
             if course == tutorial:
@@ -92,8 +97,9 @@ def home(request):
         tutorial_user_namelist.append(tutorial)
     for i in tutorial_topic_name:
         tutorial_topic_name_clean.append(' '.join(list(i)))
-    context = {'tutorial_contentlist': tutorial_contentlist, 'tutorial_topic': tutorial_topic_name_clean, 'tutorial': tutorials1, 'courses': courses, 'tutorial_user_name': tutorial_user_namelist,
-               'tutorial_title': tutorial_titlelist, 'tutorial_created_at':tutorial_created_at}
+    context = {'tutorial_contentlist': tutorial_contentlist, 'tutorial_topic': tutorial_topic_name_clean,
+               'tutorial': tutorials1, 'courses': courses, 'tutorial_user_name': tutorial_user_namelist,
+               'tutorial_title': tutorial_titlelist, 'tutorial_created_at': tutorial_created_at}
 
     return render(request, 'home.html', context)
 
@@ -347,14 +353,15 @@ def auser_profile(request):
 
 
 # Instructor Views
-def  home_instructor(request):
+def home_instructor(request):
     learner = User.objects.filter(is_learner=True).count()
     instructor = User.objects.filter(is_instructor=True).count()
     course = Course.objects.all().count()
     users = User.objects.all().count()
     lessons = Tutorial.objects.filter(user_id=request.user.id).all().count()
     quizzes = Quiz.objects.filter(owner_id=request.user.id).all().count()
-    context = {'learner': learner, 'course': course, 'instructor': instructor, 'users': users, 'quizzes': quizzes, 'lessons': lessons}
+    context = {'learner': learner, 'course': course, 'instructor': instructor, 'users': users, 'quizzes': quizzes,
+               'lessons': lessons}
 
     return render(request, 'dashboard/instructor/home.html', context)
 
@@ -768,45 +775,51 @@ def home_learner(request):
     # lessons =
 
     total_lessons = Tutorial.objects.filter(course_id=14).all().count()
-    total_marked_lessons = LessonProgress.objects.filter(user_id=user_id, lesson__course_id=14, markAsDone= 1).values_list('markAsDone', flat=True).count()
+    total_marked_lessons = LessonProgress.objects.filter(user_id=user_id, lesson__course_id=14,
+                                                         markAsDone=1).values_list('markAsDone', flat=True).count()
     progress = round(((total_marked_lessons) / (1 if total_lessons <= 0 else total_lessons)) * 100)
 
     total_lessons15 = Tutorial.objects.filter(course_id=15).all().count()
-    total_marked_lessons15 = LessonProgress.objects.filter(user_id=user_id, lesson__course_id=15, markAsDone= 1).values_list('markAsDone', flat=True).count()
+    total_marked_lessons15 = LessonProgress.objects.filter(user_id=user_id, lesson__course_id=15,
+                                                           markAsDone=1).values_list('markAsDone', flat=True).count()
     progress15 = round(((total_marked_lessons15) / (1 if total_lessons15 == 0 else total_lessons15)) * 100)
 
     total_lessons16 = Tutorial.objects.filter(course_id=16).all().count()
-    total_marked_lessons16 = LessonProgress.objects.filter(user_id=user_id, lesson__course_id=16, markAsDone= 1).values_list('markAsDone', flat=True).count()
+    total_marked_lessons16 = LessonProgress.objects.filter(user_id=user_id, lesson__course_id=16,
+                                                           markAsDone=1).values_list('markAsDone', flat=True).count()
     progress16 = round(((total_marked_lessons16) / (1 if total_lessons16 == 0 else total_lessons16)) * 100)
 
     total_lessons17 = Tutorial.objects.filter(course_id=17).all().count()
-    total_marked_lessons17 = LessonProgress.objects.filter(user_id=user_id, lesson__course_id=17, markAsDone= 1).values_list('markAsDone', flat=True).count()
+    total_marked_lessons17 = LessonProgress.objects.filter(user_id=user_id, lesson__course_id=17,
+                                                           markAsDone=1).values_list('markAsDone', flat=True).count()
     progress17 = round(((total_marked_lessons17) / (1 if total_lessons17 == 0 else total_lessons17)) * 100)
 
     total_lessons18 = Tutorial.objects.filter(course_id=18).all().count()
-    total_marked_lessons18 = LessonProgress.objects.filter(user_id=user_id, lesson__course_id=18, markAsDone= 1).values_list('markAsDone', flat=True).count()
+    total_marked_lessons18 = LessonProgress.objects.filter(user_id=user_id, lesson__course_id=18,
+                                                           markAsDone=1).values_list('markAsDone', flat=True).count()
     progress18 = round(((total_marked_lessons18) / (1 if total_lessons18 == 0 else total_lessons18)) * 100)
 
     total_lessons20 = Tutorial.objects.filter(course_id=20).all().count()
-    total_marked_lessons20 = LessonProgress.objects.filter(user_id=user_id, lesson__course_id=20, markAsDone= 1).values_list('markAsDone', flat=True).count()
+    total_marked_lessons20 = LessonProgress.objects.filter(user_id=user_id, lesson__course_id=20,
+                                                           markAsDone=1).values_list('markAsDone', flat=True).count()
     progress20 = round(((total_marked_lessons20) / (1 if total_lessons20 == 0 else total_lessons20)) * 100)
 
     total_lessons21 = Tutorial.objects.filter(course_id=21).all().count()
-    total_marked_lessons21 = LessonProgress.objects.filter(user_id=user_id, lesson__course_id=21, markAsDone= 1).values_list('markAsDone', flat=True).count()
+    total_marked_lessons21 = LessonProgress.objects.filter(user_id=user_id, lesson__course_id=21,
+                                                           markAsDone=1).values_list('markAsDone', flat=True).count()
     progress21 = round(((total_marked_lessons21) / (1 if total_lessons21 == 0 else total_lessons21)) * 100)
 
     total_lessons22 = Tutorial.objects.filter(course_id=22).all().count()
-    total_marked_lessons22 = LessonProgress.objects.filter(user_id=user_id, lesson__course_id=22, markAsDone= 1).values_list('markAsDone', flat=True).count()
+    total_marked_lessons22 = LessonProgress.objects.filter(user_id=user_id, lesson__course_id=22,
+                                                           markAsDone=1).values_list('markAsDone', flat=True).count()
     progress22 = round(((total_marked_lessons22) / (1 if total_lessons22 == 0 else total_lessons22)) * 100)
-
-
 
     tutorials = Tutorial.objects.all()
     courses = Course.objects.all()
     tutorial1 = Tutorial.objects.only('title')
-    context = {'tutorials': tutorials, 'courses': courses, 't1': tutorial1, 'progress':progress, 'progress15':progress15, 'progress16':progress16, 'progress17':progress17, 'progress18':progress18, 'progress20':progress20, 'progress21':progress21, 'progress22':progress22}
-
-
+    context = {'tutorials': tutorials, 'courses': courses, 't1': tutorial1, 'progress': progress,
+               'progress15': progress15, 'progress16': progress16, 'progress17': progress17, 'progress18': progress18,
+               'progress20': progress20, 'progress21': progress21, 'progress22': progress22}
 
     if user_id not in LessonProgress.objects.values_list('user_id', flat=True):
         for lesson in Tutorial.objects.values_list('id', flat=True):
@@ -831,6 +844,60 @@ def luser_profile(request):
     users = Profile.objects.filter(user_id=user_id)
     users = {'users': users}
     return render(request, 'dashboard/learner/user_profile.html', users)
+
+
+def luser_stats(request):
+    current_user = request.user
+    user_id = current_user.id
+    print(user_id)
+    users = Profile.objects.filter(user_id=user_id)
+    taken_quizzes = TakenQuiz.objects.filter(learner_id=user_id)
+
+    total_lessons = Tutorial.objects.filter(course_id=14).all().count()
+    total_marked_lessons = LessonProgress.objects.filter(user_id=user_id, lesson__course_id=14,
+                                                         markAsDone=1).values_list('markAsDone', flat=True).count()
+    progress = round((total_marked_lessons / (1 if total_lessons <= 0 else total_lessons)) * 100)
+
+    total_lessons15 = Tutorial.objects.filter(course_id=15).all().count()
+    total_marked_lessons15 = LessonProgress.objects.filter(user_id=user_id, lesson__course_id=15,
+                                                           markAsDone=1).values_list('markAsDone', flat=True).count()
+    progress15 = round((total_marked_lessons15 / (1 if total_lessons15 == 0 else total_lessons15)) * 100)
+
+    total_lessons16 = Tutorial.objects.filter(course_id=16).all().count()
+    total_marked_lessons16 = LessonProgress.objects.filter(user_id=user_id, lesson__course_id=16,
+                                                           markAsDone=1).values_list('markAsDone', flat=True).count()
+    progress16 = round((total_marked_lessons16 / (1 if total_lessons16 == 0 else total_lessons16)) * 100)
+
+    total_lessons17 = Tutorial.objects.filter(course_id=17).all().count()
+    total_marked_lessons17 = LessonProgress.objects.filter(user_id=user_id, lesson__course_id=17,
+                                                           markAsDone=1).values_list('markAsDone', flat=True).count()
+    progress17 = round((total_marked_lessons17 / (1 if total_lessons17 == 0 else total_lessons17)) * 100)
+
+    total_lessons18 = Tutorial.objects.filter(course_id=18).all().count()
+    total_marked_lessons18 = LessonProgress.objects.filter(user_id=user_id, lesson__course_id=18,
+                                                           markAsDone=1).values_list('markAsDone', flat=True).count()
+    progress18 = round((total_marked_lessons18 / (1 if total_lessons18 == 0 else total_lessons18)) * 100)
+
+    total_lessons20 = Tutorial.objects.filter(course_id=20).all().count()
+    total_marked_lessons20 = LessonProgress.objects.filter(user_id=user_id, lesson__course_id=20,
+                                                           markAsDone=1).values_list('markAsDone', flat=True).count()
+    progress20 = round((total_marked_lessons20 / (1 if total_lessons20 == 0 else total_lessons20)) * 100)
+
+    total_lessons21 = Tutorial.objects.filter(course_id=21).all().count()
+    total_marked_lessons21 = LessonProgress.objects.filter(user_id=user_id, lesson__course_id=21,
+                                                           markAsDone=1).values_list('markAsDone', flat=True).count()
+    progress21 = round((total_marked_lessons21 / (1 if total_lessons21 == 0 else total_lessons21)) * 100)
+
+    total_lessons22 = Tutorial.objects.filter(course_id=22).all().count()
+    total_marked_lessons22 = LessonProgress.objects.filter(user_id=user_id, lesson__course_id=22,
+                                                           markAsDone=1).values_list('markAsDone', flat=True).count()
+    progress22 = round((total_marked_lessons22 / (1 if total_lessons22 == 0 else total_lessons22)) * 100)
+
+    courses = Course.objects.all()
+    users = {'courses': courses, 'users': users, 'taken_quizzes': taken_quizzes, 'progress': progress, 'progress15': progress15,
+             'progress16': progress16, 'progress17': progress17, 'progress18': progress18, 'progress20': progress20,
+             'progress21': progress21, 'progress22': progress22}
+    return render(request, 'dashboard/learner/user_stats.html', users)
 
 
 class LearnerSignUpView(CreateView):
@@ -988,6 +1055,7 @@ def ltutorialdetail(request, pk):
         LessonProgress.objects.filter(lesson_id=pk, user_id=user_id).update(markAsDone=1)
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
     return render(request, 'dashboard/learner/tutorial_detail.html', context)
+
 
 class RedirectToPreviousMixin:
     default_redirect = '/'
