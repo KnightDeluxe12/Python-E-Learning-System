@@ -31,14 +31,28 @@
                             </thead>
                             <tbody>
                             {% for quiz in quizzes %}
-                                <tr>
-                                    <td class="align-middle">{{ quiz.name }}</td>
-                                    <td class="align-middle">{{ quiz.course.get_html_badge }}</td>
-                                    <td class="align-middle">{{ quiz.questions_count }} questions</td>
-                                    <td class="text-right">
-                                        <a href="{% url 'take_quiz' quiz.pk %}" class="btn btn-primary">Start quiz</a>
-                                    </td>
-                                </tr>
+                                {#                                {% if  quiz.requiredprogress <= topicprogress %}#}
+                                {% for topicprog in topicprogress %}
+                                    {% if topicprog.topic_id == quiz.course_id %}
+                                        <tr>
+                                            <td class="align-middle">{{ quiz.name }}</td>
+                                            <td class="align-middle">{{ quiz.course.get_html_badge }}</td>
+                                            <td class="align-middle">{{ quiz.questions_count }} questions</td>
+                                            {% if quiz.requiredprogress <= topicprog.progress %}
+                                                <td class="text-right">
+                                                    <a href="{% url 'take_quiz' quiz.pk %}" class="btn btn-primary">Start
+                                                        quiz</a>
+                                                </td>
+                                            {% else %}
+                                                <td class="text-right">
+                                                    <div class="badge badge-primary text-light">Finish the topic first</div>
+                                                </td>
+                                            {% endif %}
+                                        </tr>
+                                    {% endif %}
+                                {% endfor %}
+
+                                {#                                {% endif %}#}
                             {% empty %}
                                 <tr>
                                     <td class="bg-light text-center font-italic" colspan="4">No quiz matching your
